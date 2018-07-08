@@ -1,0 +1,6046 @@
+object MySQLQueryModule: TMySQLQueryModule
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 537
+  HorizontalOffset = 251
+  VerticalOffset = 138
+  Width = 1544
+  object SQLRelationPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'RelationPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'RelationToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperty'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLRelationPropertyValueAfterDelete
+    AfterInsert = SQLRelationPropertyValueAfterInsert
+    AfterPost = SQLRelationPropertyValueAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   RelationPropertyValueId, RelationToPropertyValue, MasterProperty, PropertyValue,'
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from RelationPropertyValue   '
+      'WHERE  (RelationToPropertyValue = :RelationId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE RelationPropertyValue SET  RelationPropertyValue.RelationToPropertyValue = :RelationToPropertyValue,  RelationPropertyValue.PropertyValue = :PropertyValue,  RelationPropertyValue.`VERSION`= CURRENT_TIMESTAMP, RelationPropertyValue.UPDATEDBY = :UpdatedBy, RelationPropertyValue.UPDATEDON = Now() '
+      'WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into RelationPropertyValue (  RelationPropertyValueId, RelationToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :RelationPropertyValueId, :RelationToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM RelationPropertyValue WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RelationId'
+        ParamType = ptInput
+      end>
+    left = 296
+    top = 224
+    object SQLRelationPropertyValueRelationPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RelationPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationPropertyValueRelationToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RelationToPropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLRelationPropertyValuePropertyValue: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 2000
+    end
+    object SQLRelationPropertyValueVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationPropertyValueCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLRelationPropertyValueUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLRelationPropertyValueCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationPropertyValueUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationPropertyValueMasterProperty: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperty'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLModel: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ModelId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLModelAfterDelete
+    AfterInsert = SQLModelAfterInsert
+    AfterPost = SQLModelAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ModelId ,   name ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from Model  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Model SET  Model.name = :name,  Model.`VERSION`= CURRENT_TIMESTAMP, Model.UPDATEDBY = :UpdatedBy, Model.UPDATEDON = Now() '
+      'WHERE Model.ModelId = :ModelId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Model (  ModelId,  name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ModelId,  :name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Model WHERE Model.ModelId = :ModelId;'
+    )
+    Params = <>
+    left = 170
+    top = 16
+    object SQLModelModelId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLModelname: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLModelVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLModelCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLModelUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLModelCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLModelUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLAssociation: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'AssociationId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ModelAssociation'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'type'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Owned'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Owner'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLAssociationAfterDelete
+    AfterInsert = SQLAssociationAfterInsert
+    AfterPost = SQLAssociationAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   AssociationId ,   ModelAssociation ,   Name ,   type ,  Owned, Owner,'
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from Association   '
+      'WHERE  (ModelAssociation = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Association SET  Association.ModelAssociation = :ModelAssociation,  Association.Name = :Name,'
+      ' Association.type = :type, Owner = :Owner, Owned = :Owned,'
+      ' Association.`VERSION`= CURRENT_TIMESTAMP, Association.UPDATEDBY = :UpdatedBy, Association.UPDATEDON = Now()'
+      'WHERE Association.AssociationId = :AssociationId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Association (  AssociationId,  ModelAssociation,  Name,  type, Owner, Owned,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :AssociationId,  :ModelAssociation,  :Name,  :type, :Owner, :Owned,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Association WHERE Association.AssociationId = :AssociationId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 320
+    top = 16
+    object SQLAssociationAssociationId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AssociationId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationModelAssociation: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelAssociation'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAssociationName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object OwnerLookup: TStringField
+      DisplayLabel = 'Owner'
+      DisplayWidth = 30
+      FieldKind = fkLookup
+      FieldName = 'OwnerLookup'
+      Index = 3
+      KeyFields = 'Owner'
+      LookupCache = False
+      LookupDataSet = MySqlLookups.SQLRelationLookup
+      LookupKeyFields = 'RelationId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object OwnedLookup: TStringField
+      DisplayLabel = 'Owned'
+      DisplayWidth = 30
+      FieldKind = fkLookup
+      FieldName = 'OwnedLookup'
+      Index = 4
+      KeyFields = 'Owned'
+      LookupCache = False
+      LookupDataSet = MySqlLookups.SQLRelationLookup
+      LookupKeyFields = 'RelationId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLAssociationOwner: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Owner'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationOwned: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Owned'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object AssociationTypeLookup: TStringField
+      DisplayLabel = 'Type'
+      DisplayWidth = 10
+      FieldKind = fkLookup
+      FieldName = 'AssociationTypeLookup'
+      Index = 7
+      KeyFields = 'Type'
+      LookupCache = False
+      LookupDataSet = MySqlLookups.SQLAssociationTypes
+      LookupKeyFields = 'code'
+      LookupResultField = 'label'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLAssociationtype: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'type'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLAssociationUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLAssociationCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLRelation: TSQLQuery
+    FieldDefs = <>
+    AfterDelete = SQLRelationAfterDelete
+    AfterInsert = SQLRelationAfterInsert
+    AfterPost = SQLRelationAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   RelationId ,   ModelRelation ,   name ,   lastmodified ,   lastbuilt ,  convert(frozen, unsigned) as frozen  ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from Relation   '
+      'WHERE  (ModelRelation = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Relation SET  Relation.ModelRelation = :ModelRelation,  Relation.name = :name,  Relation.lastmodified = :lastmodified,  Relation.lastbuilt = :lastbuilt,  Relation.frozen = :frozen,  Relation.`VERSION`= CURRENT_TIMESTAMP, Relation.UPDATEDBY = :UpdatedBy, Relation.UPDATEDON = Now() '
+      'WHERE Relation.RelationId = :RelationId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Relation (  RelationId,  ModelRelation,  name,  lastmodified,  lastbuilt,  frozen,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :RelationId,  :ModelRelation,  :name,  :lastmodified,  :lastbuilt,  :frozen,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Relation WHERE Relation.RelationId = :RelationId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 470
+    top = 16
+    object SQLRelationRelationId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RelationId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationModelRelation: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelRelation'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLRelationname: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLRelationlastmodified: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'lastmodified'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationlastbuilt: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'lastbuilt'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationfrozen: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'frozen'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLRelationVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLRelationUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLRelationCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLAttribute: TSQLQuery
+    FieldDefs = <>
+    AfterDelete = SQLAttributeAfterDelete
+    AfterInsert = SQLAttributeAfterInsert
+    AfterPost = SQLAttributeAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   AttributeId ,   RelationAttribute ,   name ,   type ,   attributelength ,  convert(allownull, unsigned) as allownull  ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from Attribute   '
+      'WHERE  (RelationAttribute = :RelationId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Attribute SET  Attribute.RelationAttribute = :RelationAttribute,  Attribute.name = :name,  Attribute.type = :type,  Attribute.attributelength = :attributelength,  Attribute.allownull = :allownull,  Attribute.`VERSION`= CURRENT_TIMESTAMP, Attribute.UPDATEDBY = :UpdatedBy, Attribute.UPDATEDON = Now() '
+      'WHERE Attribute.AttributeId = :AttributeId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Attribute (  AttributeId,  RelationAttribute,  name,  type,  attributelength,  allownull,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :AttributeId,  :RelationAttribute,  :name,  :type,  :attributelength,  :allownull,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Attribute WHERE Attribute.AttributeId = :AttributeId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RelationId'
+        ParamType = ptInput
+      end>
+    left = 620
+    top = 16
+    object SQLAttributeAttributeId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AttributeId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributeRelationAttribute: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RelationAttribute'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAttributename: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLAttributetype: TIntegerField
+      DisplayLabel = 'Type'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'type'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributeattributelength: TIntegerField
+      DisplayLabel = 'Length'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'attributelength'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLAttributeallownull: TLargeintField
+      DisplayLabel = 'Allow Null'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'allownull'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLAttributeVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributeCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLAttributeUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLAttributeCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributeUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object TypeLookup: TStringField
+      DisplayLabel = 'Type'
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'TypeLookup'
+      Index = 11
+      KeyFields = 'Type'
+      LookupCache = True
+      LookupDataSet = MySqlLookups.SQLAttributeTypes
+      LookupKeyFields = 'code'
+      LookupResultField = 'label'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+  end
+  object SQLMasterProperty: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MasterPropertyId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'DefaultValue'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'Notes'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'MASTERPROPERTYTOGROUP'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MASTERPROPERTYTOTYPE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLMasterPropertyAfterDelete
+    AfterInsert = SQLMasterPropertyAfterInsert
+    AfterPost = SQLMasterPropertyAfterPost
+    AfterScroll = SQLMasterPropertyAfterScroll
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   MasterPropertyId ,   Name ,   DefaultValue ,   Notes ,'
+      'MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE,'
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from MasterProperty  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterProperty SET  MasterProperty.Name = :Name,'
+      'MASTERPROPERTYTOTYPE = :MASTERPROPERTYTOTYPE,'
+      'MASTERPROPERTYTOGROUP = :MASTERPROPERTYTOGROUP,'
+      'MasterProperty.DefaultValue = :DefaultValue,  MasterProperty.Notes = :Notes,  MasterProperty.`VERSION`= CURRENT_TIMESTAMP, MasterProperty.UPDATEDBY = :UpdatedBy, MasterProperty.UPDATEDON = Now()'
+      'WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MasterProperty (  MasterPropertyId, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE, Name,  DefaultValue,  Notes,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MasterPropertyId, :MASTERPROPERTYTOGROUP, :MASTERPROPERTYTOTYPE,  :Name,  :DefaultValue,  :Notes,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MasterProperty WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
+    )
+    Params = <>
+    left = 770
+    top = 16
+    object SQLMasterPropertyMasterPropertyId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterPropertyId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object SQLMasterPropertyDefaultValue: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'DefaultValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMasterPropertyNotes: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Notes'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMasterPropertyVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMasterPropertyUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMasterPropertyCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyMASTERPROPERTYTOGROUP: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MASTERPROPERTYTOGROUP'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyMASTERPROPERTYTOTYPE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MASTERPROPERTYTOTYPE'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object PropertyGroup: TStringField
+      DisplayLabel = 'Group'
+      DisplayWidth = 25
+      FieldKind = fkLookup
+      FieldName = 'PropertyGroup'
+      Index = 11
+      KeyFields = 'MASTERPROPERTYTOGROUP'
+      LookupCache = False
+      LookupDataSet = SQLPropertyGroup
+      LookupKeyFields = 'PropertyGroupId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object PropertyType: TStringField
+      DisplayLabel = 'Type'
+      DisplayWidth = 25
+      FieldKind = fkLookup
+      FieldName = 'PropertyType'
+      Index = 12
+      KeyFields = 'MasterPropertyToType'
+      LookupCache = False
+      LookupDataSet = SQLPropertyType
+      LookupKeyFields = 'PropertyTypeId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+  end
+  object SQLMasterCategory: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MasterCategoryId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLMasterCategoryAfterDelete
+    AfterInsert = SQLMasterCategoryAfterInsert
+    AfterPost = SQLMasterCategoryAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   MasterCategoryId ,   Name ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from MasterCategory  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterCategory SET  MasterCategory.Name = :Name,  MasterCategory.`VERSION`= CURRENT_TIMESTAMP, MasterCategory.UPDATEDBY = :UpdatedBy, MasterCategory.UPDATEDON = Now() '
+      'WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MasterCategory (  MasterCategoryId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MasterCategoryId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MasterCategory WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
+    )
+    Params = <>
+    left = 920
+    top = 16
+    object SQLMasterCategoryMasterCategoryId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterCategoryId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterCategoryName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMasterCategoryVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterCategoryCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMasterCategoryUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMasterCategoryCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterCategoryUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLPropertyGroup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PropertyGroupId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLPropertyGroupAfterDelete
+    AfterInsert = SQLPropertyGroupAfterInsert
+    AfterPost = SQLPropertyGroupAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   PropertyGroupId ,   Name ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from PropertyGroup  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyGroup SET  PropertyGroup.Name = :Name,  PropertyGroup.`VERSION`= CURRENT_TIMESTAMP, PropertyGroup.UPDATEDBY = :UpdatedBy, PropertyGroup.UPDATEDON = Now() '
+      'WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
+    )
+    InsertSQL.Strings = (
+      'insert into PropertyGroup (  PropertyGroupId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :PropertyGroupId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM PropertyGroup WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
+    )
+    Params = <>
+    left = 1070
+    top = 16
+    object SQLPropertyGroupPropertyGroupId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'PropertyGroupId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyGroupName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLPropertyGroupVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyGroupCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLPropertyGroupUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLPropertyGroupCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyGroupUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLScreenArtifact: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ScreenArtifactId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ArtifactToAttribute'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ChildToArtifact'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FamilyToArtifact'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLScreenArtifactAfterDelete
+    AfterInsert = SQLScreenArtifactAfterInsert
+    AfterPost = SQLScreenArtifactAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ScreenArtifactId ,  ArtifactToAttribute, ChildToArtifact ,   FamilyToArtifact ,   Name ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ScreenArtifact   '
+      'WHERE  (ChildToArtifact = :ScreenChildId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifact SET  ScreenArtifact.ChildToArtifact = :ChildToArtifact, ScreenArtifact.ArtifactToAttribute = :ArtifactToAttribute, ScreenArtifact.FamilyToArtifact = :FamilyToArtifact,  ScreenArtifact.Name = :Name,  ScreenArtifact.`VERSION`= CURRENT_TIMESTAMP, ScreenArtifact.UPDATEDBY = :UpdatedBy, ScreenArtifact.UPDATEDON = Now()'
+      'WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenArtifact (  ScreenArtifactId, ArtifactToAttribute, ChildToArtifact,  FamilyToArtifact,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenArtifactId, :ArtifactToAttribute, :ChildToArtifact,  :FamilyToArtifact,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenArtifact WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenChildId'
+        ParamType = ptInput
+      end>
+    left = 616
+    top = 160
+    object SQLScreenArtifactScreenArtifactId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenArtifactId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactChildToArtifact: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ChildToArtifact'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenArtifactFamilyToArtifact: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FamilyToArtifact'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenArtifactName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLScreenArtifactVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLScreenArtifactUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenArtifactCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactArtifactToAttribute: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ArtifactToAttribute'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLScreenPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ScreenPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FamilyToScreenPropValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ChildToScreenPropValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLScreenPropertyValueAfterDelete
+    AfterInsert = SQLScreenPropertyValueAfterInsert
+    AfterPost = SQLScreenPropertyValueAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ScreenPropertyValueId ,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue ,   ChildToScreenPropValue ,   PropertyValue ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ScreenPropertyValue   '
+      'WHERE  FamilyToScreenPropValue = :ScreenFamilyId;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenPropertyValue SET  ScreenPropertyValue.FamilyToScreenPropValue = :FamilyToScreenPropValue,'
+      'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY,'
+      'ScreenPropertyValue.ChildToScreenPropValue = :ChildToScreenPropValue,  ScreenPropertyValue.PropertyValue = :PropertyValue,  ScreenPropertyValue.`VERSION`= CURRENT_TIMESTAMP, ScreenPropertyValue.UPDATEDBY = :UpdatedBy, ScreenPropertyValue.UPDATEDON = Now()'
+      'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenFamilyId'
+        ParamType = ptInput
+      end>
+    left = 472
+    top = 160
+    object SQLScreenPropertyValueScreenPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenPropertyValueFamilyToScreenPropValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FamilyToScreenPropValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueChildToScreenPropValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ChildToScreenPropValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValuePropertyValue: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLScreenPropertyValueVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLScreenPropertyValueUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenPropertyValueCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueSCREENPROPVALUETOPROPERTY: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPVALUETOPROPERTY'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+  end
+  object SQLArtifactPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ArtifactPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ARTIFACTPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ArtifactToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ScreenArtifactToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLArtifactPropertyValueAfterDelete
+    AfterInsert = SQLArtifactPropertyValueAfterInsert
+    AfterPost = SQLArtifactPropertyValueAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ArtifactPropertyValueId ,  ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue ,   ScreenArtifactToPropertyValue ,   PropertyValue ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ArtifactPropertyValue   '
+      'WHERE  (ArtifactToPropertyValue = :ScreenArtifactId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ArtifactPropertyValue SET  ArtifactPropertyValue.ArtifactToPropertyValue = :ArtifactToPropertyValue,'
+      'ARTIFACTPROPVALUETOPROPERTY = :ARTIFACTPROPVALUETOPROPERTY,'
+      ' ArtifactPropertyValue.ScreenArtifactToPropertyValue = :ScreenArtifactToPropertyValue,  ArtifactPropertyValue.PropertyValue = :PropertyValue,  ArtifactPropertyValue.`VERSION`= CURRENT_TIMESTAMP, ArtifactPropertyValue.UPDATEDBY = :UpdatedBy, ArtifactPropertyValue.UPDATEDON = Now()'
+      'WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ArtifactPropertyValue (  ArtifactPropertyValueId, ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ArtifactPropertyValueId, :ARTIFACTPROPVALUETOPROPERTY, :ArtifactToPropertyValue,  :ScreenArtifactToPropertyValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ArtifactPropertyValue WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenArtifactId'
+        ParamType = ptInput
+      end>
+    left = 280
+    top = 160
+    object SQLArtifactPropertyValueArtifactPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ArtifactPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLArtifactPropertyValueArtifactToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ArtifactToPropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLArtifactPropertyValueScreenArtifactToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenArtifactToPropertyValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLArtifactPropertyValuePropertyValue: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLArtifactPropertyValueVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLArtifactPropertyValueCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLArtifactPropertyValueUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLArtifactPropertyValueCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLArtifactPropertyValueUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLArtifactPropertyValueARTIFACTPROPVALUETOPROPERTY: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ARTIFACTPROPVALUETOPROPERTY'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object SQLScreenArtifactType: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ScreenArtifactTypeId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLScreenArtifactTypeAfterDelete
+    AfterInsert = SQLScreenArtifactTypeAfterInsert
+    AfterPost = SQLScreenArtifactTypeAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ScreenArtifactTypeId ,   Name ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ScreenArtifactType  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifactType SET  ScreenArtifactType.Name = :Name,  ScreenArtifactType.`VERSION`= CURRENT_TIMESTAMP, ScreenArtifactType.UPDATEDBY = :UpdatedBy, ScreenArtifactType.UPDATEDON = Now() '
+      'WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenArtifactType (  ScreenArtifactTypeId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenArtifactTypeId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenArtifactType WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
+    )
+    Params = <>
+    left = 170
+    top = 80
+    object SQLScreenArtifactTypeScreenArtifactTypeId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenArtifactTypeId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactTypeName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLScreenArtifactTypeVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactTypeCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLScreenArtifactTypeUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenArtifactTypeCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactTypeUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLPropertyType: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PropertyTypeId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'DisplayControl'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Notes'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLPropertyTypeAfterDelete
+    AfterInsert = SQLPropertyTypeAfterInsert
+    AfterPost = SQLPropertyTypeAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   PropertyTypeId ,   Name ,   DisplayControl ,   Notes ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from PropertyType  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyType SET  PropertyType.Name = :Name,  PropertyType.DisplayControl = :DisplayControl,  PropertyType.Notes = :Notes,  PropertyType.`VERSION`= CURRENT_TIMESTAMP, PropertyType.UPDATEDBY = :UpdatedBy, PropertyType.UPDATEDON = Now() '
+      'WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
+    )
+    InsertSQL.Strings = (
+      'insert into PropertyType (  PropertyTypeId,  Name,  DisplayControl,  Notes,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :PropertyTypeId,  :Name,  :DisplayControl,  :Notes,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM PropertyType WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
+    )
+    Params = <>
+    left = 320
+    top = 80
+    object SQLPropertyTypePropertyTypeId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'PropertyTypeId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyTypeName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLPropertyTypeDisplayControl: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DisplayControl'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLPropertyTypeNotes: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Notes'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 256
+    end
+    object SQLPropertyTypeVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyTypeCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLPropertyTypeUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLPropertyTypeCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyTypeUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLBuild: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BuildId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ModelToBuild'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'ProjectPath'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildAfterDelete
+    AfterInsert = SQLBuildAfterInsert
+    AfterPost = SQLBuildAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   BuildId ,   ModelToBuild ,   Name ,   ProjectPath ,'
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from Build   '
+      'WHERE  (ModelToBuild = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Build SET  Build.ModelToBuild = :ModelToBuild,  Build.Name = :Name,  Build.ProjectPath = :ProjectPath, Build.`VERSION`= CURRENT_TIMESTAMP, Build.UPDATEDBY = :UpdatedBy, Build.UPDATEDON = Now()'
+      'WHERE Build.BuildId = :BuildId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Build (  BuildId,  ModelToBuild,  Name,  ProjectPath,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :BuildId,  :ModelToBuild,  :Name,  :ProjectPath,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Build WHERE Build.BuildId = :BuildId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 470
+    top = 80
+    object SQLBuildBuildId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildModelToBuild: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelToBuild'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLBuildVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLBuildUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLBuildCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildProjectPath: TStringField
+      DisplayWidth = 125
+      FieldKind = fkData
+      FieldName = 'ProjectPath'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 256
+    end
+  end
+  object SQLScreenFamily: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ScreenFamilyId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ModelToScreenFamily'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'SCREENFAMILYTORELATION'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLScreenFamilyAfterDelete
+    AfterInsert = SQLScreenFamilyAfterInsert
+    AfterPost = SQLScreenFamilyAfterPost
+    AfterScroll = SQLScreenFamilyAfterScroll
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ScreenFamilyId ,   ModelToScreenFamily ,   Name , SCREENFAMILYTORELATION, '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ScreenFamily   '
+      'WHERE  (ModelToScreenFamily = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenFamily SET  ScreenFamily.ModelToScreenFamily = :ModelToScreenFamily,'
+      ' ScreenFamily.Name = :Name, ScreenFamily.SCREENFAMILYTORELATION = :SCREENFAMILYTORELATION,  ScreenFamily.`VERSION`= CURRENT_TIMESTAMP, ScreenFamily.UPDATEDBY = :UpdatedBy, ScreenFamily.UPDATEDON = Now()'
+      'WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenFamily (  ScreenFamilyId,  ModelToScreenFamily,  Name, SCREENFAMILYTORELATION,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenFamilyId,  :ModelToScreenFamily,  :Name,  :SCREENFAMILYTORELATION, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenFamily WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 620
+    top = 80
+    object SQLScreenFamilyScreenFamilyId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenFamilyId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyModelToScreenFamily: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelToScreenFamily'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenFamilyName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLScreenFamilyVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLScreenFamilyUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLScreenFamilyCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilySCREENFAMILYTORELATION: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENFAMILYTORELATION'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object RelationLookup: TStringField
+      DisplayLabel = 'Relation'
+      DisplayWidth = 30
+      FieldKind = fkLookup
+      FieldName = 'RelationLookup'
+      Index = 9
+      KeyFields = 'ScreenFamilyToRelation'
+      LookupCache = False
+      LookupDataSet = MySqlLookups.SQLRelationLookup
+      LookupKeyFields = 'RelationId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object SQLScreenChild: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ScreenChildId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENCHILDTOASSOCIATION'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ScreenFamilyToScreenChild'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ScreenChildToSelf'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLScreenChildAfterDelete
+    AfterInsert = SQLScreenChildAfterInsert
+    AfterPost = SQLScreenChildAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ScreenChildId , SCREENCHILDTOASSOCIATION,  ScreenFamilyToScreenChild ,   ScreenChildToSelf ,   Name ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ScreenChild   '
+      'WHERE  ScreenFamilyToScreenChild = :ScreenFamilyId ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenChild SET  ScreenChild.ScreenFamilyToScreenChild = :ScreenFamilyToScreenChild,'
+      'ScreenChild.SCREENCHILDTOASSOCIATION = :SCREENCHILDTOASSOCIATION,'
+      'ScreenChild.ScreenChildToSelf = :ScreenChildToSelf,  ScreenChild.Name = :Name,  ScreenChild.`VERSION`= CURRENT_TIMESTAMP, ScreenChild.UPDATEDBY = :UpdatedBy, ScreenChild.UPDATEDON = Now()'
+      'WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenChild (  ScreenChildId, SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenChildId, :SCREENCHILDTOASSOCIATION, :ScreenFamilyToScreenChild,  :ScreenChildToSelf,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenChild WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenFamilyId'
+        ParamType = ptInput
+      end>
+    left = 770
+    top = 80
+    object SQLScreenChildScreenChildId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenChildId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenChildScreenFamilyToScreenChild: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenFamilyToScreenChild'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenChildScreenChildToSelf: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenChildToSelf'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenChildName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLScreenChildVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenChildCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLScreenChildUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenChildCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenChildUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenChildSCREENCHILDTOASSOCIATION: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENCHILDTOASSOCIATION'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object SQLMasterPropertyValueList: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MasterPropertyValueListId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperyToValueList'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'Code'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'Display'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLMasterPropertyValueListAfterDelete
+    AfterInsert = SQLMasterPropertyValueListAfterInsert
+    AfterPost = SQLMasterPropertyValueListAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   MasterPropertyValueListId ,   MasterProperyToValueList ,   Name ,   Code ,   Display ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from MasterPropertyValueList   '
+      'WHERE  (MasterProperyToValueList = :MasterPropertyId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterPropertyValueList SET  MasterPropertyValueList.MasterProperyToValueList = :MasterProperyToValueList,  MasterPropertyValueList.Name = :Name,  MasterPropertyValueList.Code = :Code,  MasterPropertyValueList.Display = :Display,  MasterPropertyValueList.`VERSION`= CURRENT_TIMESTAMP, MasterPropertyValueList.UPDATEDBY = :UpdatedBy, MasterPropertyValueList.UPDATEDON = Now() '
+      'WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MasterPropertyValueList (  MasterPropertyValueListId,  MasterProperyToValueList,  Name,  Code,  Display,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MasterPropertyValueListId,  :MasterProperyToValueList,  :Name,  :Code,  :Display,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MasterPropertyValueList WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MasterPropertyId'
+        ParamType = ptInput
+      end>
+    left = 920
+    top = 80
+    object SQLMasterPropertyValueListMasterPropertyValueListId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterPropertyValueListId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyValueListMasterProperyToValueList: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperyToValueList'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLMasterPropertyValueListName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMasterPropertyValueListCode: TStringField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Code'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 10
+    end
+    object SQLMasterPropertyValueListDisplay: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Display'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMasterPropertyValueListVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyValueListCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMasterPropertyValueListUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMasterPropertyValueListCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyValueListUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLListHeader: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ListHeaderId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLListHeaderAfterDelete
+    AfterInsert = SQLListHeaderAfterInsert
+    AfterPost = SQLListHeaderAfterPost
+    AfterScroll = SQLListHeaderAfterScroll
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ListHeaderId ,   Name ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ListHeader  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListHeader SET  ListHeader.Name = :Name,  ListHeader.`VERSION`= CURRENT_TIMESTAMP, ListHeader.UPDATEDBY = :UpdatedBy, ListHeader.UPDATEDON = Now() '
+      'WHERE ListHeader.ListHeaderId = :ListHeaderId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ListHeader (  ListHeaderId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ListHeaderId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ListHeader WHERE ListHeader.ListHeaderId = :ListHeaderId;'
+    )
+    Params = <>
+    left = 1070
+    top = 80
+    object SQLListHeaderListHeaderId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ListHeaderId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListHeaderName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLListHeaderVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListHeaderCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLListHeaderUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLListHeaderCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListHeaderUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLListDetail: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ListDetailId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ListHeaderToDetail'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Code'
+        DataType = ftString
+        Precision = -1
+        Size = 5
+      end    
+      item
+        Name = 'Label'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLListDetailAfterDelete
+    AfterInsert = SQLListDetailAfterInsert
+    AfterPost = SQLListDetailAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ListDetailId ,   ListHeaderToDetail ,   Code ,   Label ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ListDetail   '
+      'WHERE  (ListHeaderToDetail = :ListHeaderId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListDetail SET  ListDetail.ListHeaderToDetail = :ListHeaderToDetail,  ListDetail.Code = :Code,  ListDetail.Label = :Label,  ListDetail.`VERSION`= CURRENT_TIMESTAMP, ListDetail.UPDATEDBY = :UpdatedBy, ListDetail.UPDATEDON = Now() '
+      'WHERE ListDetail.ListDetailId = :ListDetailId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ListDetail (  ListDetailId,  ListHeaderToDetail,  Code,  Label,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ListDetailId,  :ListHeaderToDetail,  :Code,  :Label,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ListDetail WHERE ListDetail.ListDetailId = :ListDetailId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ListHeaderId'
+        ParamType = ptInput
+      end>
+    left = 1220
+    top = 80
+    object SQLListDetailListDetailId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ListDetailId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListDetailListHeaderToDetail: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ListHeaderToDetail'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLListDetailCode: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Code'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 256
+    end
+    object SQLListDetailLabel: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Label'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLListDetailVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListDetailCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLListDetailUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLListDetailCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListDetailUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLEnvironment: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'EnvironmentId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MembershipServer'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'MembershipDatabase'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'DatabaseServer'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'DatabaseName'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLEnvironmentAfterDelete
+    AfterInsert = SQLEnvironmentAfterInsert
+    AfterPost = SQLEnvironmentAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   EnvironmentId ,   MembershipServer ,   MembershipDatabase ,   DatabaseServer ,   DatabaseName ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from Environment  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Environment SET  Environment.MembershipServer = :MembershipServer,  Environment.MembershipDatabase = :MembershipDatabase,  Environment.DatabaseServer = :DatabaseServer,  Environment.DatabaseName = :DatabaseName,  Environment.`VERSION`= CURRENT_TIMESTAMP, Environment.UPDATEDBY = :UpdatedBy, Environment.UPDATEDON = Now() '
+      'WHERE Environment.EnvironmentId = :EnvironmentId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Environment (  EnvironmentId,  MembershipServer,  MembershipDatabase,  DatabaseServer,  DatabaseName,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :EnvironmentId,  :MembershipServer,  :MembershipDatabase,  :DatabaseServer,  :DatabaseName,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Environment WHERE Environment.EnvironmentId = :EnvironmentId;'
+    )
+    Params = <>
+    left = 1370
+    top = 80
+    object SQLEnvironmentEnvironmentId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EnvironmentId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLEnvironmentMembershipServer: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'MembershipServer'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 256
+    end
+    object SQLEnvironmentMembershipDatabase: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'MembershipDatabase'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+    object SQLEnvironmentDatabaseServer: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'DatabaseServer'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+    object SQLEnvironmentDatabaseName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'DatabaseName'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+    object SQLEnvironmentVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLEnvironmentCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLEnvironmentUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLEnvironmentCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLEnvironmentUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLAttributePropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'AttributePropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'AttributeToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperty'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLAttributePropertyValueAfterDelete
+    AfterInsert = SQLAttributePropertyValueAfterInsert
+    AfterPost = SQLAttributePropertyValueAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   AttributePropertyValueId, AttributeToPropertyValue, MasterProperty, PropertyValue, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from AttributePropertyValue  WHERE  (AttributeToPropertyValue = :AttributeId  ) ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE  AttributePropertyValue SET AttributePropertyValue.AttributeToPropertyValue = :AttributeToPropertyValue ,AttributePropertyValue.MasterProperty = :MasterProperty ,AttributePropertyValue.PropertyValue = :PropertyValue ,'
+      'AttributePropertyValue.`VERSION`= CURRENT_TIMESTAMP, AttributePropertyValue.UPDATEDBY = :UpdatedBy, AttributePropertyValue.UPDATEDON = Now()'
+      'WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into AttributePropertyValue (  AttributePropertyValueId, AttributeToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES ( :AttributePropertyValueId, :AttributeToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM AttributePropertyValue WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'AttributeId'
+        ParamType = ptInput
+      end>
+    left = 112
+    top = 160
+    object SQLAttributePropertyValueAttributePropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AttributePropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAttributePropertyValuePropertyValue: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLAttributePropertyValueVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributePropertyValueCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLAttributePropertyValueUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLAttributePropertyValueCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributePropertyValueUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributePropertyValueAttributeToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AttributeToPropertyValue'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLAttributePropertyValueMasterProperty: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperty'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dsRelationPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLRelationPropertyValue
+    Enabled = False
+    left = 840
+    top = 432
+  end
+  object dsModel: TDataSource
+    DataSet = SQLModel
+    Enabled = False
+    left = 170
+    top = 272
+  end
+  object dsAssociation: TDataSource
+    AutoEdit = False
+    DataSet = SQLAssociation
+    Enabled = False
+    left = 320
+    top = 272
+  end
+  object dsRelation: TDataSource
+    DataSet = SQLRelation
+    Enabled = False
+    left = 470
+    top = 272
+  end
+  object dsAttribute: TDataSource
+    DataSet = SQLAttribute
+    Enabled = False
+    left = 620
+    top = 272
+  end
+  object dsMasterProperty: TDataSource
+    AutoEdit = False
+    DataSet = SQLMasterProperty
+    Enabled = False
+    left = 770
+    top = 272
+  end
+  object dsMasterCategory: TDataSource
+    AutoEdit = False
+    DataSet = SQLMasterCategory
+    Enabled = False
+    left = 920
+    top = 272
+  end
+  object dsPropertyGroup: TDataSource
+    AutoEdit = False
+    DataSet = SQLPropertyGroup
+    Enabled = False
+    left = 1070
+    top = 272
+  end
+  object dsScreenArtifact: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenArtifact
+    Enabled = False
+    left = 1220
+    top = 272
+  end
+  object dsScreenPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenPropertyValue
+    Enabled = False
+    left = 1370
+    top = 272
+  end
+  object dsArtifactPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLArtifactPropertyValue
+    Enabled = False
+    left = 48
+    top = 320
+  end
+  object dsScreenArtifactType: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenArtifactType
+    Enabled = False
+    left = 170
+    top = 336
+  end
+  object dsPropertyType: TDataSource
+    AutoEdit = False
+    DataSet = SQLPropertyType
+    Enabled = False
+    left = 320
+    top = 336
+  end
+  object dsBuild: TDataSource
+    DataSet = SQLBuild
+    Enabled = False
+    left = 470
+    top = 336
+  end
+  object dsScreenFamily: TDataSource
+    DataSet = SQLScreenFamily
+    Enabled = False
+    left = 620
+    top = 336
+  end
+  object dsScreenChild: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenChild
+    Enabled = False
+    left = 770
+    top = 336
+  end
+  object dsMasterPropertyValueList: TDataSource
+    AutoEdit = False
+    DataSet = SQLMasterPropertyValueList
+    Enabled = False
+    left = 920
+    top = 336
+  end
+  object dsListHeader: TDataSource
+    AutoEdit = False
+    DataSet = SQLListHeader
+    Enabled = False
+    left = 1070
+    top = 336
+  end
+  object dsListDetail: TDataSource
+    DataSet = SQLListDetail
+    left = 1220
+    top = 336
+  end
+  object dsEnvironment: TDataSource
+    AutoEdit = False
+    DataSet = SQLEnvironment
+    Enabled = False
+    left = 1370
+    top = 336
+  end
+  object dsAttributePropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLAttributePropertyValue
+    Enabled = False
+    left = 32
+    top = 408
+  end
+  object SQLScreenChildPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ScreenPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FamilyToScreenPropValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ChildToScreenPropValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLScreenPropertyValueAfterDelete
+    AfterInsert = SQLScreenPropertyValueAfterInsert
+    AfterPost = SQLScreenPropertyValueAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT   ScreenPropertyValueId ,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue ,   ChildToScreenPropValue ,   PropertyValue ,  '
+      'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
+      'from ScreenPropertyValue   '
+      'WHERE  ChildToScreenPropValue = :ScreenChildId;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenPropertyValue SET  ScreenPropertyValue.FamilyToScreenPropValue = :FamilyToScreenPropValue,'
+      'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY,'
+      'ScreenPropertyValue.ChildToScreenPropValue = :ChildToScreenPropValue,  ScreenPropertyValue.PropertyValue = :PropertyValue,  ScreenPropertyValue.`VERSION`= CURRENT_TIMESTAMP, ScreenPropertyValue.UPDATEDBY = :UpdatedBy, ScreenPropertyValue.UPDATEDON = Now()'
+      'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenChildId'
+        ParamType = ptInput
+      end>
+    left = 112
+    top = 224
+    object SQLScreenPropertyValueScreenPropertyValueId1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenPropertyValueFamilyToScreenPropValue1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FamilyToScreenPropValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueChildToScreenPropValue1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ChildToScreenPropValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValuePropertyValue1: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLScreenPropertyValueVERSION1: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueCREATEDBY1: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLScreenPropertyValueUPDATEDBY1: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenPropertyValueCREATEDON1: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueUPDATEDON1: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueSCREENPROPVALUETOPROPERTY1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPVALUETOPROPERTY'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+  end
+  object SQLMasterPropertyToCategory: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'select MASTERPROPERTYID, MASTERCATEGORYID from masterpropertytocategory where MASTERPROPERTYID = :MASTERPROPERTYID;'
+    )
+    InsertSQL.Strings = (
+      'insert into masterpropertytocategory (MASTERPROPERTYID, MASTERCATEGORYID)'
+      'values (:MASTERPROPERTYID, :MASTERCATEGORYID);'
+    )
+    DeleteSQL.Strings = (
+      'delete from masterpropertytocategory where'
+      'masterpropertytocategory.MASTERPROPERTYID = :MASTERPROPERTYID'
+      'and  masterpropertytocategory.MASTERCATEGORYID = :MASTERCATEGORYID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MASTERPROPERTYID'
+        ParamType = ptInput
+      end>
+    left = 760
+    top = 160
+  end
+  object SQLBuildTemplate: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDTEMPLATEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'SCRIPT'
+        DataType = ftMemo
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildTemplateAfterDelete
+    AfterInsert = SQLBuildTemplateAfterInsert
+    AfterPost = SQLBuildTemplateAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select BUILDTEMPLATEID, NAME, SCRIPT,   CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
+      ' FROM BUILDTEMPLATE;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE BUILDTEMPLATE'
+      'SET BUILDTEMPLATE.NAME = :NAME,'
+      'BUILDTEMPLATE.SCRIPT = :SCRIPT,'
+      'BUILDTEMPLATE.`VERSION`= CURRENT_TIMESTAMP, BUILDTEMPLATE.UPDATEDBY = :UpdatedBy, BUILDTEMPLATE.UPDATEDON = Now()'
+      'WHERE  BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO BUILDTEMPLATE (BUILDTEMPLATEID, NAME, SCRIPT, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (:BUILDTEMPLATEID, :NAME, :SCRIPT, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM BUILDTEMPLATE WHERE'
+      'BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
+    )
+    Params = <>
+    left = 952
+    top = 168
+    object SQLBuildTemplateBUILDTEMPLATEID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDTEMPLATEID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildTemplateNAME: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object SQLBuildTemplateSCRIPT: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCRIPT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      BlobType = ftBlob
+      Transliterate = False
+    end
+    object SQLBuildTemplateVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildTemplateCreatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'CreatedBy'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildTemplateUpdatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'UpdatedBy'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildTemplateCreatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CreatedOn'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildTemplateUpdatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UpdatedOn'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLBuildController: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'buildcontrollerid'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildControllerAfterDelete
+    AfterInsert = SQLBuildControllerAfterInsert
+    AfterPost = SQLBuildControllerAfterPost
+    AfterScroll = SQLBuildControllerAfterScroll
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'select buildcontrollerid, name,   CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
+      'from buildcontroller;'
+    )
+    UpdateSQL.Strings = (
+      'update buildcontroller'
+      'set name = :name,'
+      '   buildcontroller.`VERSION`= CURRENT_TIMESTAMP, buildcontroller.UPDATEDBY = :UpdatedBy, buildcontroller.UPDATEDON = Now()'
+      'where buildcontroller.buildcontrollerid = :buildcontrollerid;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildcontroller(buildcontrollerid, name, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'values (:buildcontrollerid, :name, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'delete from buildcontroller'
+      'where buildcontroller.buildcontrollerid =  :buildcontrollerid;'
+    )
+    Params = <>
+    left = 1088
+    top = 168
+    object SQLBuildControllerbuildcontrollerid: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'buildcontrollerid'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildControllername: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object SQLBuildControllerCreatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'CreatedBy'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildControllerUpdatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'UpdatedBy'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildControllerCreatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CreatedOn'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerUpdatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UpdatedOn'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerVersion: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Version'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLBuildScript: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDSCRIPTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BUILDSCRIPTTOBUILDCONTROLLER'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'script'
+        DataType = ftMemo
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildScriptAfterDelete
+    AfterInsert = SQLBuildScriptAfterInsert
+    AfterPost = SQLBuildScriptAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'select BUILDSCRIPTID, name, script, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
+      'from buildscript order by name;'
+    )
+    UpdateSQL.Strings = (
+      'update buildscript'
+      'set buildscript.name = :name,'
+      'buildscript.script = :script,'
+      'buildscript.`VERSION`= CURRENT_TIMESTAMP, buildscript.UPDATEDBY = :UpdatedBy, buildscript.UPDATEDON = Now()'
+      'where buildscript.buildscriptid = :buildscriptid;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildscript (BUILDSCRIPTID, name, script, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'values (:BUILDSCRIPTID, :name, :script,   CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'delete from buildscript where'
+      'buildscript.buildscriptid = :buildscriptid;'
+    )
+    Params = <>
+    left = 1192
+    top = 168
+    object SQLBuildScriptBUILDSCRIPTID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDSCRIPTID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildScriptname: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object SQLBuildScriptscript: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'script'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      BlobType = ftBlob
+      Transliterate = False
+    end
+    object SQLBuildScriptCreatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'CreatedBy'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildScriptUpdatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'UpdatedBy'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildScriptCreatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CreatedOn'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildScriptUpdatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UpdatedOn'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildScriptVersion: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Version'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object dsBuildController: TDataSource
+    DataSet = SQLBuildController
+    left = 184
+    top = 408
+  end
+  object dsBuildScript: TDataSource
+    DataSet = SQLBuildScript
+    left = 336
+    top = 416
+  end
+  object dsBuildTemplate: TDataSource
+    DataSet = SQLBuildTemplate
+    left = 481
+    top = 411
+  end
+  object SQLAssociationPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'AssociationPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'AssociationToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperty'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLAssociationPropertyValueAfterDelete
+    AfterInsert = SQLAssociationPropertyValueAfterInsert
+    AfterPost = SQLAssociationPropertyValueAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT  AssociationPropertyValueId, AssociationToPropertyValue, MasterProperty, PropertyValue, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from AssociationPropertyValue  WHERE  (AssociationToPropertyValue = :AssociationId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE AssociationPropertyValue SET ,AssociationPropertyValue.AssociationToPropertyValue = :AssociationToPropertyValue ,AssociationPropertyValue.MasterProperty = :MasterProperty ,AssociationPropertyValue.PropertyValue = :PropertyValue , '
+      'AssociationPropertyValue.`VERSION`= CURRENT_TIMESTAMP, AssociationPropertyValue.UPDATEDBY = :UpdatedBy, AssociationPropertyValue.UPDATEDON = Now() '
+      'WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into AssociationPropertyValue (  AssociationPropertyValueId, AssociationToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :AssociationPropertyValueId, :AssociationToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM AssociationPropertyValue WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'AssociationId'
+        ParamType = ptInput
+      end>
+    left = 472
+    top = 224
+    object SQLAssociationPropertyValueAssociationPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AssociationPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationPropertyValueAssociationToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AssociationToPropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAssociationPropertyValueMasterProperty: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperty'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAssociationPropertyValuePropertyValue: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object dsAssociationPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLAssociationPropertyValue
+    Enabled = False
+    left = 608
+    top = 408
+  end
+  object SQLBuildPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BuildPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BuildToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperty'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLBuildPropertyValueAfterDelete
+    AfterInsert = SQLBuildPropertyValueAfterInsert
+    AfterPost = SQLBuildPropertyValueAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT  BuildPropertyValueId, BuildToPropertyValue, MasterProperty, PropertyValue, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from BuildPropertyValue  WHERE  (BuildToPropertyValue = :BuildId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE BuildPropertyValue SET ,BuildPropertyValue.BuildToPropertyValue = :BuildToPropertyValue ,BuildPropertyValue.MasterProperty = :MasterProperty ,BuildPropertyValue.PropertyValue = :PropertyValue , '
+      'BuildPropertyValue.`VERSION`= CURRENT_TIMESTAMP, BuildPropertyValue.UPDATEDBY = :UpdatedBy, BuildPropertyValue.UPDATEDON = Now() '
+      'WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into BuildPropertyValue (  BuildPropertyValueId, BuildToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :BuildPropertyValueId, :BuildToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM BuildPropertyValue WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BuildId'
+        ParamType = ptInput
+      end>
+    left = 744
+    top = 224
+    object SQLBuildPropertyValueBuildPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildPropertyValueBuildToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildToPropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildPropertyValueMasterProperty: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperty'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildPropertyValuePropertyValue: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object dsBuildPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLBuildPropertyValue
+    Enabled = False
+    left = 608
+    top = 224
+  end
+  object SQLBuildControllerScript: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BuildControllerScriptId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BuildControllerId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BuildScriptId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Sequence'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildControllerScriptAfterDelete
+    AfterInsert = SQLBuildControllerScriptAfterInsert
+    AfterPost = SQLBuildControllerScriptAfterPost
+    AfterScroll = SQLBuildControllerScriptAfterScroll
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT  BuildControllerScriptId, BuildControllerId, BuildScriptId, Sequence, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from BuildControllerScript'
+      'where BuildControllerID = :BuildControllerID  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE BuildControllerScript SET BuildControllerScript.BuildControllerId = :BuildControllerId ,'
+      'BuildControllerScript.BuildScriptId = :BuildScriptId ,'
+      'BuildControllerScript.Sequence = :Sequence,'
+      'BuildControllerScript.`VERSION`= CURRENT_TIMESTAMP, BuildControllerScript.UPDATEDBY = :UpdatedBy,'
+      'BuildControllerScript.UPDATEDON = Now()'
+      'WHERE BuildControllerScript.BuildControllerScriptId = :BuildControllerScriptId;'
+    )
+    InsertSQL.Strings = (
+      'insert into BuildControllerScript (  BuildControllerScriptId, BuildControllerId, BuildScriptId, Sequence, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :BuildControllerScriptId, :BuildControllerId, :BuildScriptId, :Sequence, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM BuildControllerScript WHERE BuildControllerScript.BuildControllerScriptId = :BuildControllerScriptId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BuildControllerID'
+        ParamType = ptInput
+      end>
+    left = 1312
+    top = 168
+    object SQLBuildControllerScriptBuildControllerScriptId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildControllerScriptId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerScriptBuildControllerId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildControllerId'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerScriptBuildScriptId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildScriptId'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object BuildScriptLookup: TStringField
+      DisplayLabel = 'Build Script'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'BuildScriptLookup'
+      Index = 3
+      KeyFields = 'BuildScriptId'
+      LookupCache = False
+      LookupDataSet = MySqlLookups.SQLBuildScriptLookup
+      LookupKeyFields = 'BuildScriptID'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLBuildControllerScriptSequence: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Sequence'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerScriptCreatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'CreatedBy'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildControllerScriptUpdatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'UpdatedBy'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildControllerScriptCreatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CreatedOn'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerScriptUpdatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UpdatedOn'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerScriptVersion: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Version'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object dsBuildControllerScript: TDataSource
+    DataSet = SQLBuildControllerScript
+    left = 992
+    top = 432
+  end
+  object SQLBuildScriptParameter: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BuildScriptParameterId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BUILDCONTROLLERSCRIPTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'Value'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDate
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildScriptParameterAfterDelete
+    AfterInsert = SQLBuildScriptParameterAfterInsert
+    AfterPost = SQLBuildScriptParameterAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT  BuildScriptParameterId, BUILDCONTROLLERSCRIPTID, Name, Value, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
+      'from BuildScriptParameter where BuildScriptParameter.BUILDCONTROLLERSCRIPTID = :BUILDCONTROLLERSCRIPTID ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE BuildScriptParameter SET'
+      'BuildScriptParameter.BUILDCONTROLLERSCRIPTID = :BUILDCONTROLLERSCRIPTID, BuildScriptParameter.Name = :Name ,BuildScriptParameter.Value = :Value ,'
+      'BuildScriptParameter.`VERSION`= CURRENT_TIMESTAMP, BuildScriptParameter.UPDATEDBY = :UpdatedBy, BuildScriptParameter.UPDATEDON = Now() '
+      'WHERE BuildScriptParameter.BuildScriptParameterId = :BuildScriptParameterId;'
+    )
+    InsertSQL.Strings = (
+      'insert into BuildScriptParameter (  BuildScriptParameterId, BUILDCONTROLLERSCRIPTID,  Name, Value, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :BuildScriptParameterId, :BUILDCONTROLLERSCRIPTID, :Name, :Value, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM BuildScriptParameter WHERE BuildScriptParameter.BuildScriptParameterId = :BuildScriptParameterId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BUILDCONTROLLERSCRIPTID'
+        ParamType = ptInput
+      end>
+    left = 1440
+    top = 168
+    object SQLBuildScriptParameterBuildScriptParameterId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildScriptParameterId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildScriptParameterName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLBuildScriptParameterValue: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Value'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLBuildScriptParameterCreatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'CreatedBy'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildScriptParameterUpdatedBy: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'UpdatedBy'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 40
+    end
+    object SQLBuildScriptParameterCreatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CreatedOn'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildScriptParameterUpdatedOn: TDateField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UpdatedOn'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildScriptParameterVersion: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Version'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildScriptParameterBUILDCONTROLLERSCRIPTID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDCONTROLLERSCRIPTID'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+  end
+  object dsBuildScriptParameter: TDataSource
+    DataSet = SQLBuildScriptParameter
+    left = 1176
+    top = 440
+  end
+  object SQLMapping: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'MappingId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Category'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Notes'
+        DataType = ftMemo
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FromDescription'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'ToDescription'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'SystemCode'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLMappingAfterDelete
+    AfterInsert = SQLMappingAfterInsert
+    AfterPost = SQLMappingAfterPost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT  MappingId, Category, Notes, FromDescription, ToDescription, SystemCode, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from Mapping  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Mapping SET Mapping.Category = :Category ,Mapping.Notes = :Notes ,'
+      'Mapping.FromDescription = :FromDescription ,Mapping.ToDescription = :ToDescription ,'
+      'Mapping.SystemCode=:SystemCode,'
+      'Mapping.`VERSION`= CURRENT_TIMESTAMP, Mapping.UPDATEDBY = :UpdatedBy, Mapping.UPDATEDON = Now() '
+      'WHERE Mapping.MappingId = :MappingId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Mapping (  MappingId, Category, Notes, FromDescription, ToDescription, SystemCode, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MappingId, :Category, :Notes, :FromDescription, :ToDescription, :SystemCode, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Mapping WHERE Mapping.MappingId = :MappingId;'
+    )
+    Params = <>
+    left = 904
+    top = 224
+    object SQLMappingMappingId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MappingId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingFromDescription: TStringField
+      DisplayLabel = 'From'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'FromDescription'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLMappingToDescription: TStringField
+      DisplayLabel = 'To'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'ToDescription'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLMappingCategory: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Category'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingNotes: TMemoField
+      DisplayWidth = 35
+      FieldKind = fkData
+      FieldName = 'Notes'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      BlobType = ftBlob
+      Transliterate = False
+    end
+    object SQLMappingCreatedBy: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CreatedBy'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMappingUpdatedBy: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UpdatedBy'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMappingCreatedOn: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CreatedOn'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingUpdatedOn: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UpdatedOn'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingVersion: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Version'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingSystemCode: TStringField
+      DisplayLabel = 'System Code'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SystemCode'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object dsMapping: TDataSource
+    AutoEdit = False
+    DataSet = SQLMapping
+    Enabled = False
+    left = 1344
+    top = 440
+  end
+  object SQLMappingValue: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'MappingValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MappingToValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MapValueTargetLookup'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MapValueSourceLookup'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SourceValue'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'TargetValue'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'CreatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UpdatedBy'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CreatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UpdatedOn'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Version'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SourceListName'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'SourceLabel'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'SourceCode'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'TargetListName'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'TargetLabel'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'TargetCode'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end>
+    Active = True
+    AfterDelete = SQLMappingValueAfterDelete
+    AfterInsert = SQLMappingValueAfterInsert
+    AfterPost = SQLMappingValueAfterPost
+    BeforePost = SQLMappingValueBeforePost
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT  MappingValueId, MappingToValue,'
+      ' MapValueTargetLookup, MapValueSourceLookup, SourceValue,'
+      ' TargetValue,'
+      ' V.CreatedBy, V.UpdatedBy, V.CreatedOn, V.UpdatedOn,'
+      ' V.`Version`,'
+      ' H.Name as SourceListName,'
+      ' D.Label as SourceLabel,'
+      ' D.Code as SourceCode,'
+      ' HT.Name as TargetListName,'
+      ' DT.Label as TargetLabel,'
+      ' DT.Code as TargetCode'
+      ' FROM MappingValue V'
+      ' LEFT JOIN ListDetail D'
+      ' on V.MapValueSourceLookup = D.ListDetailID'
+      ' LEFT JOIN ListHeader H'
+      ' ON D.ListHeaderToDetail = H.ListHeaderID'
+      ' LEFT JOIN ListDetail DT'
+      ' ON V.MapValueTargetLookup = DT.ListDetailID'
+      ' LEFT JOIN ListHeader HT'
+      ' ON DT.ListHeaderToDetail = HT.ListHeaderID'
+      ' WHERE  (MappingToValue = :MappingId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MappingValue SET MappingValue.MappingToValue = :MappingToValue ,MappingValue.MapValueTargetLookup = :MapValueTargetLookup ,MappingValue.MapValueSourceLookup = :MapValueSourceLookup ,MappingValue.SourceValue = :SourceValue ,MappingValue.TargetValue = :TargetValue ,'
+      'MappingValue.`VERSION`= CURRENT_TIMESTAMP, MappingValue.UPDATEDBY = :UpdatedBy, MappingValue.UPDATEDON = Now() '
+      'WHERE MappingValue.MappingValueId = :MappingValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MappingValue (  MappingValueId, MappingToValue, MapValueTargetLookup, MapValueSourceLookup, SourceValue, TargetValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MappingValueId, :MappingToValue, :MapValueTargetLookup, :MapValueSourceLookup, :SourceValue, :TargetValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MappingValue WHERE MappingValue.MappingValueId = :MappingValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MappingId'
+        ParamType = ptInput
+      end>
+    left = 992
+    top = 224
+    object SQLMappingValueMappingValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MappingValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueMappingToValue: TLargeintField
+      DisplayLabel = 'To Value'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MappingToValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLMappingValueMapValueTargetLookup: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MapValueTargetLookup'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueMapValueSourceLookup: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MapValueSourceLookup'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueSourceValue: TStringField
+      DisplayLabel = 'From Value'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SourceValue'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 999
+    end
+    object SQLMappingValueSourceListName: TStringField
+      DisplayLabel = 'From List Name'
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'SourceListName'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMappingValueSourceLabel: TStringField
+      DisplayLabel = 'From Label'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'SourceLabel'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMappingValueSourceCode: TStringField
+      DisplayLabel = 'From Code'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'SourceCode'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+    object SQLMappingValueTargetValue: TStringField
+      DisplayLabel = 'To Value'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'TargetValue'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMappingValueTargetListName: TStringField
+      DisplayLabel = 'To List Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'TargetListName'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMappingValueTargetLabel: TStringField
+      DisplayLabel = 'To Label'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'TargetLabel'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMappingValueTargetCode: TStringField
+      DisplayLabel = 'To Code'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'TargetCode'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+    object SQLMappingValueCreatedBy: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CreatedBy'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMappingValueUpdatedBy: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UpdatedBy'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      Size = 30
+    end
+    object SQLMappingValueCreatedOn: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CreatedOn'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueUpdatedOn: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UpdatedOn'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueVersion: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Version'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object dsMappingValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLMappingValue
+    Enabled = False
+    left = 1424
+    top = 448
+  end
+end

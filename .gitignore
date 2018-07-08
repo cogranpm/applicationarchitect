@@ -1,0 +1,14 @@
+*.exe
+backup/
+lib/
+*.dll
+IDPLicense.txt
+*.FDB
+IPLicense.txt
+Images/
+Temp/
+*.log
+firebird.msg
+link.res
+ppas.bat
+*.lib

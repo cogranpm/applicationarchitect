@@ -1,0 +1,175 @@
+object frmDatabaseSettings: TfrmDatabaseSettings
+  Left = 617
+  Height = 376
+  Top = 157
+  Width = 399
+  Caption = 'Database Settings'
+  ClientHeight = 376
+  ClientWidth = 399
+  OnCreate = FormCreate
+  LCLVersion = '1.4.4.0'
+  object btnApply: TButton
+    Left = 224
+    Height = 25
+    Top = 344
+    Width = 75
+    Caption = 'OK'
+    ModalResult = 1
+    OnClick = btnApplyClick
+    OnContextPopup = btnApplyContextPopup
+    TabOrder = 0
+  end
+  object btnCancel: TButton
+    Left = 312
+    Height = 25
+    Top = 344
+    Width = 75
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 1
+  end
+  object GroupBox1: TGroupBox
+    Left = 16
+    Height = 105
+    Top = 8
+    Width = 353
+    Caption = 'DatabaseType'
+    ClientHeight = 85
+    ClientWidth = 349
+    TabOrder = 2
+    object rbFirebird: TRadioButton
+      Left = 24
+      Height = 19
+      Top = 8
+      Width = 48
+      Caption = 'Local'
+      OnChange = rbFirebirdChange
+      TabOrder = 0
+    end
+    object rbFirebirdServer: TRadioButton
+      Left = 24
+      Height = 19
+      Top = 24
+      Width = 95
+      Caption = 'Firebird Server'
+      OnChange = rbFirebirdServerChange
+      TabOrder = 1
+    end
+    object rbMysql: TRadioButton
+      Left = 24
+      Height = 19
+      Top = 40
+      Width = 53
+      Caption = 'MySql'
+      OnChange = rbMysqlChange
+      TabOrder = 2
+    end
+    object rbMsSql: TRadioButton
+      Left = 24
+      Height = 19
+      Top = 56
+      Width = 130
+      Caption = 'Microsoft SQL Server'
+      OnChange = rbMsSqlChange
+      TabOrder = 3
+    end
+  end
+  object grpServer: TGroupBox
+    Left = 16
+    Height = 120
+    Top = 120
+    Width = 352
+    Caption = 'Server Information'
+    ClientHeight = 100
+    ClientWidth = 348
+    TabOrder = 3
+    object Label1: TLabel
+      Left = 16
+      Height = 15
+      Top = 8
+      Width = 60
+      Caption = 'Host Name'
+      ParentColor = False
+      OnClick = Label1Click
+    end
+    object Label2: TLabel
+      Left = 16
+      Height = 15
+      Top = 40
+      Width = 83
+      Caption = 'Database Name'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 16
+      Height = 15
+      Top = 72
+      Width = 22
+      Caption = 'Port'
+      ParentColor = False
+    end
+    object txtHost: TEdit
+      Left = 120
+      Height = 23
+      Top = 8
+      Width = 208
+      TabOrder = 0
+    end
+    object txtName: TEdit
+      Left = 120
+      Height = 23
+      Top = 40
+      Width = 207
+      TabOrder = 1
+    end
+    object txtPort: TEdit
+      Left = 120
+      Height = 23
+      Top = 72
+      Width = 104
+      NumbersOnly = True
+      TabOrder = 2
+    end
+  end
+  object grpSecurity: TGroupBox
+    Left = 16
+    Height = 80
+    Top = 248
+    Width = 352
+    Caption = 'Security'
+    ClientHeight = 60
+    ClientWidth = 348
+    TabOrder = 4
+    object txtUser: TEdit
+      Left = 72
+      Height = 23
+      Top = 0
+      Width = 256
+      TabOrder = 0
+    end
+    object txtPassword: TEdit
+      Left = 72
+      Height = 23
+      Top = 32
+      Width = 255
+      TabOrder = 1
+    end
+    object Label4: TLabel
+      Left = 16
+      Height = 15
+      Top = 6
+      Width = 23
+      Caption = 'User'
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 16
+      Height = 15
+      Top = 32
+      Width = 50
+      Caption = 'Password'
+      ParentColor = False
+    end
+  end
+end

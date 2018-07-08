@@ -1,0 +1,87 @@
+object dmMYSQLImport: TdmMYSQLImport
+  OldCreateOrder = False
+  Height = 337
+  HorizontalOffset = 539
+  VerticalOffset = 250
+  Width = 517
+  object Connection: TMySQL55Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = Transaction
+    LogEvents = []
+    left = 56
+    top = 32
+  end
+  object SQLListTables: TSQLQuery
+    FieldDefs = <>
+    Database = Connection
+    Transaction = Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT distinct table_name from tables where'
+      'table_schema = :tableschema and table_type = ''BASE TABLE'' order by table_name;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'tableschema'
+        ParamType = ptInput
+      end>
+    left = 145
+    top = 32
+  end
+  object SQLListColumns: TSQLQuery
+    FieldDefs = <>
+    Database = Connection
+    Transaction = Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select column_name, column_default, is_nullable, data_type,'
+      'character_maximum_length, column_type, column_key'
+      'from columns where table_name = :tablename'
+      'and table_schema = :tableschema order by column_name;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'tablename'
+        ParamType = ptInput
+      end    
+      item
+        DataType = ftUnknown
+        Name = 'tableschema'
+        ParamType = ptInput
+      end>
+    left = 245
+    top = 32
+  end
+  object Transaction: TSQLTransaction
+    Active = False
+    Database = Connection
+    left = 56
+    top = 96
+  end
+  object SQLListForeignKey: TSQLQuery
+    FieldDefs = <>
+    Database = Connection
+    Transaction = Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT constraint_name, table_name, column_name,'
+      'referenced_table_name, referenced_column_name'
+      'FROM KEY_COLUMN_USAGE'
+      'WHERE'
+      'table_schema = :tableschema'
+      'and position_in_unique_constraint is not null;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'tableschema'
+        ParamType = ptInput
+      end>
+    left = 352
+    top = 32
+  end
+end

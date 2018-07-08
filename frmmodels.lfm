@@ -1,0 +1,1791 @@
+object frmModels: TfrmModels
+  Left = 0
+  Height = 784
+  Top = 0
+  Width = 1008
+  ClientHeight = 784
+  ClientWidth = 1008
+  TabOrder = 0
+  DesignLeft = 2215
+  DesignTop = 207
+  object pgeMain: TPageControl
+    Left = 0
+    Height = 784
+    Top = 0
+    Width = 1008
+    ActivePage = tabForms
+    Align = alClient
+    TabIndex = 2
+    TabOrder = 0
+    OnChange = pgeMainChange
+    object tabRelations: TTabSheet
+      Caption = '&Relations'
+      ClientHeight = 758
+      ClientWidth = 1000
+      object pnlRelationMain: TPanel
+        Left = 0
+        Height = 758
+        Top = 0
+        Width = 1000
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 758
+        ClientWidth = 1000
+        TabOrder = 0
+        object pnlRelation: TPanel
+          Left = 0
+          Height = 758
+          Top = 0
+          Width = 1000
+          Align = alClient
+          ClientHeight = 758
+          ClientWidth = 1000
+          TabOrder = 0
+          object pnlRelationListContainer: TPanel
+            Left = 1
+            Height = 736
+            Top = 21
+            Width = 303
+            Align = alLeft
+            BevelOuter = bvNone
+            ClientHeight = 736
+            ClientWidth = 303
+            TabOrder = 0
+            object pnlRelationList: TPanel
+              Left = 0
+              Height = 648
+              Top = 88
+              Width = 303
+              Align = alClient
+              BevelOuter = bvNone
+              ClientHeight = 648
+              ClientWidth = 303
+              TabOrder = 0
+              object pnlRelationListHeader: TPanel
+                Left = 0
+                Height = 20
+                Top = 0
+                Width = 303
+                Align = alTop
+                ClientHeight = 20
+                ClientWidth = 303
+                TabOrder = 0
+                object lblRelations: TLabel
+                  Left = 5
+                  Height = 13
+                  Top = 3
+                  Width = 53
+                  Caption = 'Relations'
+                  Font.Style = [fsBold]
+                  ParentColor = False
+                  ParentFont = False
+                end
+              end
+              object pnlRelationListBody: TPanel
+                Left = 0
+                Height = 628
+                Top = 20
+                Width = 303
+                Align = alClient
+                BevelOuter = bvNone
+                ClientHeight = 628
+                ClientWidth = 303
+                TabOrder = 1
+                object pnlRelationListGrid: TPanel
+                  Left = 10
+                  Height = 628
+                  Top = 0
+                  Width = 293
+                  Align = alClient
+                  BevelOuter = bvNone
+                  ClientHeight = 628
+                  ClientWidth = 293
+                  TabOrder = 0
+                  object dbGridRelation: TDBGrid
+                    Left = 0
+                    Height = 628
+                    Top = 0
+                    Width = 293
+                    Align = alClient
+                    Color = clWindow
+                    Columns = <                    
+                      item
+                        Title.Caption = 'Name'
+                        FieldName = 'name'
+                      end                    
+                      item
+                        ButtonStyle = cbsCheckboxColumn
+                        Title.Caption = 'Frozen'
+                        FieldName = 'frozen'
+                      end>
+                    DataSource = FirebirdQueryModule.dsRelation
+                    TabOrder = 0
+                  end
+                end
+                object sptRelation: TSplitter
+                  Left = 0
+                  Height = 628
+                  Top = 0
+                  Width = 10
+                end
+              end
+            end
+            object pnlRelationNav: TPanel
+              Left = 0
+              Height = 88
+              Top = 0
+              Width = 303
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 88
+              ClientWidth = 303
+              TabOrder = 1
+              object pnlRelationBody: TPanel
+                Left = 0
+                Height = 88
+                Top = 0
+                Width = 303
+                Align = alClient
+                BevelOuter = bvNone
+                ClientHeight = 88
+                ClientWidth = 303
+                TabOrder = 0
+                object dbNavRelation: TDBNavigator
+                  Left = 0
+                  Height = 25
+                  Top = 0
+                  Width = 241
+                  BevelOuter = bvNone
+                  ChildSizing.EnlargeHorizontal = crsScaleChilds
+                  ChildSizing.EnlargeVertical = crsScaleChilds
+                  ChildSizing.ShrinkHorizontal = crsScaleChilds
+                  ChildSizing.ShrinkVertical = crsScaleChilds
+                  ChildSizing.Layout = cclLeftToRightThenTopToBottom
+                  ChildSizing.ControlsPerLine = 100
+                  ClientHeight = 25
+                  ClientWidth = 241
+                  DataSource = FirebirdQueryModule.dsRelation
+                  OnClick = dbNavRelationClick
+                  Options = []
+                  TabOrder = 0
+                end
+                object lblRelationName: TLabel
+                  Left = 8
+                  Height = 13
+                  Top = 32
+                  Width = 27
+                  Caption = 'Name'
+                  ParentColor = False
+                end
+                object edtRelationName: TDBEdit
+                  Left = 48
+                  Height = 21
+                  Top = 32
+                  Width = 248
+                  DataField = 'name'
+                  DataSource = FirebirdQueryModule.dsRelation
+                  CharCase = ecNormal
+                  MaxLength = 0
+                  TabOrder = 1
+                end
+                object chkFrozen: TDBCheckBox
+                  Left = 48
+                  Height = 23
+                  Top = 56
+                  Width = 90
+                  Caption = 'Frozen'
+                  DataField = 'frozen'
+                  DataSource = FirebirdQueryModule.dsRelation
+                  TabOrder = 2
+                  ValueChecked = '1'
+                  ValueUnchecked = '0'
+                end
+              end
+            end
+          end
+          object pnlRelationProperty: TPanel
+            Left = 304
+            Height = 736
+            Top = 21
+            Width = 695
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 736
+            ClientWidth = 695
+            TabOrder = 1
+            object pgeRelationProperty: TPageControl
+              Left = 0
+              Height = 736
+              Top = 0
+              Width = 695
+              ActivePage = tabRelationProperty
+              Align = alClient
+              TabIndex = 0
+              TabOrder = 0
+              object tabRelationProperty: TTabSheet
+                Caption = 'Properties'
+                ClientHeight = 710
+                ClientWidth = 687
+                object pnlRelationPropertyHeader: TPanel
+                  Left = 0
+                  Height = 20
+                  Top = 0
+                  Width = 687
+                  Align = alTop
+                  ClientHeight = 20
+                  ClientWidth = 687
+                  TabOrder = 0
+                  object lblRelationPropertyHeader: TLabel
+                    Left = 5
+                    Height = 13
+                    Top = 3
+                    Width = 59
+                    Caption = 'Properties'
+                    Font.Style = [fsBold]
+                    ParentColor = False
+                    ParentFont = False
+                  end
+                end
+                object pnlRelationPropertyMain: TPanel
+                  Left = 0
+                  Height = 690
+                  Top = 20
+                  Width = 687
+                  Align = alClient
+                  ClientHeight = 690
+                  ClientWidth = 687
+                  TabOrder = 1
+                  object valListRelationProperty: TValueListEditor
+                    Left = 1
+                    Height = 688
+                    Top = 1
+                    Width = 685
+                    Align = alClient
+                    Color = clBtnFace
+                    FixedCols = 0
+                    RowCount = 1
+                    TabOrder = 0
+                    OnClick = valListRelationPropertyClick
+                    OnEditingDone = valListRelationPropertyEditingDone
+                    OnPickListSelect = valListRelationPropertyPickListSelect
+                    DisplayOptions = [doAutoColResize]
+                    Strings.Strings = (
+                      ''
+                    )
+                    ColWidths = (
+                      340
+                      341
+                    )
+                  end
+                end
+              end
+              object tabRelationAttributes: TTabSheet
+                Caption = 'Attributes'
+                ClientHeight = 710
+                ClientWidth = 687
+                object pnlAttribute: TPanel
+                  Left = 0
+                  Height = 710
+                  Top = 0
+                  Width = 687
+                  Align = alClient
+                  BevelOuter = bvNone
+                  ClientHeight = 710
+                  ClientWidth = 687
+                  TabOrder = 0
+                  object pnlAttributeBody: TPanel
+                    AnchorSideRight.Control = sptRelation
+                    Left = 0
+                    Height = 690
+                    Top = 20
+                    Width = 687
+                    Align = alClient
+                    BevelOuter = bvNone
+                    ClientHeight = 690
+                    ClientWidth = 687
+                    TabOrder = 0
+                    object pnlAttributeLeft: TPanel
+                      Left = 0
+                      Height = 690
+                      Top = 0
+                      Width = 500
+                      Align = alClient
+                      BevelOuter = bvNone
+                      ClientHeight = 690
+                      ClientWidth = 500
+                      TabOrder = 0
+                      object pnlAttributeNav: TPanel
+                        Left = 0
+                        Height = 128
+                        Top = 0
+                        Width = 500
+                        Align = alTop
+                        BevelOuter = bvNone
+                        ClientHeight = 128
+                        ClientWidth = 500
+                        TabOrder = 0
+                        object dbNavAttributes: TDBNavigator
+                          Left = 0
+                          Height = 25
+                          Top = 0
+                          Width = 241
+                          BevelOuter = bvNone
+                          ChildSizing.EnlargeHorizontal = crsScaleChilds
+                          ChildSizing.EnlargeVertical = crsScaleChilds
+                          ChildSizing.ShrinkHorizontal = crsScaleChilds
+                          ChildSizing.ShrinkVertical = crsScaleChilds
+                          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+                          ChildSizing.ControlsPerLine = 100
+                          ClientHeight = 25
+                          ClientWidth = 241
+                          DataSource = FirebirdQueryModule.dsAttribute
+                          OnClick = dbNavAttributesClick
+                          Options = []
+                          TabOrder = 0
+                        end
+                        object Label1: TLabel
+                          Left = 9
+                          Height = 13
+                          Top = 40
+                          Width = 27
+                          Caption = 'Name'
+                          ParentColor = False
+                        end
+                        object Label2: TLabel
+                          Left = 9
+                          Height = 13
+                          Top = 69
+                          Width = 24
+                          Caption = 'Type'
+                          ParentColor = False
+                        end
+                        object Label3: TLabel
+                          Left = 9
+                          Height = 13
+                          Top = 98
+                          Width = 33
+                          Caption = 'Length'
+                          ParentColor = False
+                        end
+                        object chkAttributeAllowNull: TDBCheckBox
+                          Left = 201
+                          Height = 23
+                          Top = 98
+                          Width = 90
+                          Caption = 'Allow Null'
+                          DataField = 'allownull'
+                          DataSource = FirebirdQueryModule.dsAttribute
+                          TabOrder = 4
+                          ValueChecked = '1'
+                          ValueUnchecked = '0'
+                        end
+                        object edtAttributeName: TDBEdit
+                          Left = 79
+                          Height = 21
+                          Top = 40
+                          Width = 266
+                          DataField = 'name'
+                          DataSource = FirebirdQueryModule.dsAttribute
+                          CharCase = ecNormal
+                          MaxLength = 0
+                          TabOrder = 1
+                        end
+                        object edtAttributeLength: TDBEdit
+                          Left = 79
+                          Height = 21
+                          Top = 98
+                          Width = 74
+                          DataField = 'attributelength'
+                          DataSource = FirebirdQueryModule.dsAttribute
+                          CharCase = ecNormal
+                          MaxLength = 0
+                          TabOrder = 3
+                        end
+                        object cboAttributeType: TDBLookupComboBox
+                          Left = 79
+                          Height = 21
+                          Top = 69
+                          Width = 268
+                          DataField = 'type'
+                          DataSource = FirebirdQueryModule.dsAttribute
+                          ListFieldIndex = 0
+                          LookupCache = False
+                          TabOrder = 2
+                        end
+                      end
+                      object pnlAttributeList: TPanel
+                        Left = 0
+                        Height = 562
+                        Top = 128
+                        Width = 500
+                        Align = alClient
+                        BevelOuter = bvNone
+                        ClientHeight = 562
+                        ClientWidth = 500
+                        TabOrder = 1
+                        object dbGridAttributes: TDBGrid
+                          Left = 0
+                          Height = 546
+                          Top = 16
+                          Width = 500
+                          Align = alClient
+                          Color = clWindow
+                          Columns = <                          
+                            item
+                              Title.Caption = 'AttributeId'
+                              Visible = False
+                              FieldName = 'AttributeId'
+                            end                          
+                            item
+                              Title.Caption = 'RelationAttribute'
+                              Visible = False
+                              FieldName = 'RelationAttribute'
+                            end                          
+                            item
+                              Title.Caption = 'Name'
+                              FieldName = 'name'
+                            end                          
+                            item
+                              Title.Caption = 'Type'
+                              FieldName = 'TypeLookup'
+                            end                          
+                            item
+                              Title.Caption = 'Length'
+                              FieldName = 'attributelength'
+                            end                          
+                            item
+                              ButtonStyle = cbsCheckboxColumn
+                              Title.Caption = 'Null'
+                              FieldName = 'allownull'
+                            end                          
+                            item
+                              Title.Caption = 'type'
+                              Visible = False
+                              FieldName = 'type'
+                            end>
+                          DataSource = FirebirdQueryModule.dsAttribute
+                          TabOrder = 0
+                        end
+                        object pnlAttributeBodyHeader: TPanel
+                          Left = 0
+                          Height = 16
+                          Top = 0
+                          Width = 500
+                          Align = alTop
+                          ClientHeight = 16
+                          ClientWidth = 500
+                          TabOrder = 1
+                          object lblAttributesList: TLabel
+                            Left = 8
+                            Height = 13
+                            Top = 0
+                            Width = 58
+                            Caption = 'Attributes'
+                            Font.Style = [fsBold]
+                            ParentColor = False
+                            ParentFont = False
+                          end
+                        end
+                      end
+                    end
+                    object pnlAttributeProperty: TPanel
+                      Left = 500
+                      Height = 690
+                      Top = 0
+                      Width = 187
+                      Align = alRight
+                      BevelOuter = bvNone
+                      ClientHeight = 690
+                      ClientWidth = 187
+                      TabOrder = 1
+                      object pnlAttributePropertyHeader: TPanel
+                        Left = 0
+                        Height = 20
+                        Top = 0
+                        Width = 187
+                        Align = alTop
+                        ClientHeight = 20
+                        ClientWidth = 187
+                        TabOrder = 0
+                        object Label6: TLabel
+                          Left = 5
+                          Height = 13
+                          Top = 3
+                          Width = 59
+                          Caption = 'Properties'
+                          Font.Style = [fsBold]
+                          ParentColor = False
+                          ParentFont = False
+                        end
+                      end
+                      object pnlAttributePropertyValueList: TPanel
+                        Left = 0
+                        Height = 670
+                        Top = 20
+                        Width = 187
+                        Align = alClient
+                        BevelOuter = bvNone
+                        ClientHeight = 670
+                        ClientWidth = 187
+                        TabOrder = 1
+                        object valListAttributeProperties: TValueListEditor
+                          Left = 0
+                          Height = 670
+                          Top = 0
+                          Width = 187
+                          Align = alClient
+                          Color = clBtnFace
+                          FixedCols = 0
+                          RowCount = 1
+                          TabOrder = 0
+                          OnEditingDone = valListAttributePropertiesEditingDone
+                          DisplayOptions = [doAutoColResize]
+                          Strings.Strings = (
+                            ''
+                          )
+                          ColWidths = (
+                            83
+                            84
+                          )
+                        end
+                      end
+                    end
+                  end
+                  object pnlAttributeTop: TPanel
+                    Left = 0
+                    Height = 20
+                    Top = 0
+                    Width = 687
+                    Align = alTop
+                    BevelOuter = bvNone
+                    ClientHeight = 20
+                    ClientWidth = 687
+                    TabOrder = 1
+                    object pnlAttributeHeader: TPanel
+                      Left = 0
+                      Height = 20
+                      Top = 0
+                      Width = 687
+                      Align = alTop
+                      ClientHeight = 20
+                      ClientWidth = 687
+                      TabOrder = 0
+                      object lblAttributeHeader: TLabel
+                        Left = 5
+                        Height = 13
+                        Top = 3
+                        Width = 52
+                        Caption = 'Attribute'
+                        Font.Style = [fsBold]
+                        ParentColor = False
+                        ParentFont = False
+                      end
+                    end
+                  end
+                end
+              end
+            end
+          end
+          object pnlRelationTop: TPanel
+            Left = 1
+            Height = 20
+            Top = 1
+            Width = 998
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 20
+            ClientWidth = 998
+            TabOrder = 2
+            object pnlRelationHeader: TPanel
+              Left = 0
+              Height = 20
+              Top = 0
+              Width = 998
+              Align = alTop
+              ClientHeight = 20
+              ClientWidth = 998
+              TabOrder = 0
+              object lblRelationsTop: TLabel
+                Left = 5
+                Height = 13
+                Top = 3
+                Width = 47
+                Caption = 'Relation'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+              end
+            end
+          end
+        end
+      end
+    end
+    object tabAssociations: TTabSheet
+      Caption = '&Associations'
+      ClientHeight = 758
+      ClientWidth = 1000
+      OnShow = tabAssociationsShow
+      object pnlAssociationHeaderNav: TPanel
+        Left = 0
+        Height = 731
+        Top = 27
+        Width = 688
+        Align = alClient
+        BevelOuter = bvNone
+        ClientHeight = 731
+        ClientWidth = 688
+        TabOrder = 1
+        object pnlAssociationBody: TPanel
+          Left = 0
+          Height = 555
+          Top = 176
+          Width = 688
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 555
+          ClientWidth = 688
+          TabOrder = 0
+          object pnlAssociationHeader: TPanel
+            Left = 0
+            Height = 32
+            Top = 0
+            Width = 688
+            Align = alTop
+            ClientHeight = 32
+            ClientWidth = 688
+            TabOrder = 0
+            object lblAssociation: TLabel
+              Left = 8
+              Height = 13
+              Top = 8
+              Width = 71
+              Caption = 'Associations'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+            end
+          end
+          object pnlAssociationGrid: TPanel
+            Left = 0
+            Height = 523
+            Top = 32
+            Width = 688
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 523
+            ClientWidth = 688
+            TabOrder = 1
+            object grdAssociation: TDBGrid
+              Left = 0
+              Height = 523
+              Top = 0
+              Width = 688
+              Align = alClient
+              Color = clWindow
+              Columns = <>
+              DataSource = FirebirdQueryModule.dsAssociation
+              TabOrder = 0
+            end
+          end
+        end
+        object pnlAssociationMainBody: TPanel
+          Left = 0
+          Height = 176
+          Top = 0
+          Width = 688
+          Align = alTop
+          ClientHeight = 176
+          ClientWidth = 688
+          TabOrder = 1
+          object lblAssociationName: TLabel
+            Left = 32
+            Height = 13
+            Top = 48
+            Width = 27
+            Caption = 'Name'
+            ParentColor = False
+          end
+          object lblAssociationOwner: TLabel
+            Left = 32
+            Height = 13
+            Top = 80
+            Width = 32
+            Caption = 'Owner'
+            ParentColor = False
+          end
+          object lblAssociationOwned: TLabel
+            Left = 32
+            Height = 13
+            Top = 112
+            Width = 34
+            Caption = 'Owned'
+            ParentColor = False
+          end
+          object lblAssociationType: TLabel
+            Left = 32
+            Height = 13
+            Top = 144
+            Width = 24
+            Caption = 'Type'
+            ParentColor = False
+          end
+          object edtAssociationName: TDBEdit
+            Left = 96
+            Height = 21
+            Top = 48
+            Width = 256
+            DataField = 'Name'
+            DataSource = FirebirdQueryModule.dsAssociation
+            CharCase = ecNormal
+            MaxLength = 0
+            TabOrder = 0
+          end
+          object lkpOwner: TDBLookupComboBox
+            Left = 96
+            Height = 21
+            Top = 80
+            Width = 256
+            DataField = 'OWNER'
+            DataSource = FirebirdQueryModule.dsAssociation
+            ListFieldIndex = 0
+            LookupCache = False
+            TabOrder = 1
+          end
+          object lkpOwned: TDBLookupComboBox
+            Left = 96
+            Height = 21
+            Top = 112
+            Width = 256
+            DataField = 'OWNED'
+            DataSource = FirebirdQueryModule.dsAssociation
+            ListFieldIndex = 0
+            LookupCache = False
+            TabOrder = 2
+          end
+          object lkpAssociationType: TDBLookupComboBox
+            Left = 96
+            Height = 21
+            Top = 144
+            Width = 256
+            DataField = 'type'
+            DataSource = FirebirdQueryModule.dsAssociation
+            ListFieldIndex = 0
+            LookupCache = False
+            OnChange = lkpAssociationTypeChange
+            TabOrder = 3
+          end
+          object dbNavAssociation: TDBNavigator
+            Left = 0
+            Height = 25
+            Top = 0
+            Width = 241
+            BevelOuter = bvNone
+            ChildSizing.EnlargeHorizontal = crsScaleChilds
+            ChildSizing.EnlargeVertical = crsScaleChilds
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 100
+            ClientHeight = 25
+            ClientWidth = 241
+            DataSource = FirebirdQueryModule.dsAssociation
+            OnClick = dbNavAssociationClick
+            Options = []
+            TabOrder = 4
+          end
+        end
+      end
+      object pnlAssociationMain: TPanel
+        AnchorSideTop.Control = sptAssociation
+        Left = 0
+        Height = 27
+        Top = 0
+        Width = 1000
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 27
+        ClientWidth = 1000
+        TabOrder = 0
+        object pnlAssociationMainTop: TPanel
+          Left = 0
+          Height = 32
+          Top = 0
+          Width = 1000
+          Align = alTop
+          ClientHeight = 32
+          ClientWidth = 1000
+          TabOrder = 0
+          object lblAssociationSingular: TLabel
+            Left = 8
+            Height = 13
+            Top = 8
+            Width = 65
+            Caption = 'Association'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+      end
+      object sptAssociation: TSplitter
+        AnchorSideLeft.Control = pnlAssociationProperties
+        Left = 688
+        Height = 731
+        Top = 27
+        Width = 8
+        Align = alRight
+        Anchors = [akRight]
+        ResizeAnchor = akRight
+      end
+      object pnlAssociationProperties: TPanel
+        Left = 696
+        Height = 731
+        Top = 27
+        Width = 304
+        Align = alRight
+        ClientHeight = 731
+        ClientWidth = 304
+        TabOrder = 3
+        object pnlAssociationPropertyHeader: TPanel
+          Left = 1
+          Height = 31
+          Top = 1
+          Width = 302
+          Align = alTop
+          ClientHeight = 31
+          ClientWidth = 302
+          TabOrder = 0
+          object Label7: TLabel
+            Left = 16
+            Height = 13
+            Top = 8
+            Width = 59
+            Caption = 'Properties'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object pnlAssociationPropertyValueList: TPanel
+          Left = 1
+          Height = 698
+          Top = 32
+          Width = 302
+          Align = alClient
+          ClientHeight = 698
+          ClientWidth = 302
+          TabOrder = 1
+          object valueListAssociationProperty: TValueListEditor
+            Left = 1
+            Height = 696
+            Top = 1
+            Width = 300
+            Align = alClient
+            Color = clBtnFace
+            FixedCols = 0
+            RowCount = 1
+            TabOrder = 0
+            OnEditingDone = valueListAssociationPropertyEditingDone
+            DisplayOptions = [doAutoColResize]
+            Strings.Strings = (
+              ''
+            )
+            ColWidths = (
+              140
+              140
+            )
+          end
+        end
+      end
+    end
+    object tabForms: TTabSheet
+      Caption = '&Forms'
+      ClientHeight = 758
+      ClientWidth = 1000
+      object pnlFormMain: TPanel
+        Left = 0
+        Height = 152
+        Top = 0
+        Width = 1000
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 152
+        ClientWidth = 1000
+        TabOrder = 0
+        object pnlFormHeader: TPanel
+          Left = 0
+          Height = 34
+          Top = 0
+          Width = 1000
+          Align = alTop
+          ClientHeight = 34
+          ClientWidth = 1000
+          TabOrder = 0
+          object lblFormHeader: TLabel
+            Left = 8
+            Height = 13
+            Top = 8
+            Width = 29
+            Caption = 'Form'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object pnlFormEdit: TPanel
+          Left = 0
+          Height = 118
+          Top = 34
+          Width = 1000
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 118
+          ClientWidth = 1000
+          TabOrder = 1
+          object dbNavForms: TDBNavigator
+            Left = -4
+            Height = 25
+            Top = 0
+            Width = 241
+            BevelOuter = bvNone
+            ChildSizing.EnlargeHorizontal = crsScaleChilds
+            ChildSizing.EnlargeVertical = crsScaleChilds
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 100
+            ClientHeight = 25
+            ClientWidth = 241
+            DataSource = FirebirdQueryModule.dsScreenFamily
+            OnClick = dbNavFormsClick
+            Options = []
+            TabOrder = 0
+          end
+          object Label4: TLabel
+            Left = 24
+            Height = 13
+            Top = 40
+            Width = 27
+            Caption = 'Name'
+            ParentColor = False
+          end
+          object Label5: TLabel
+            Left = 24
+            Height = 13
+            Top = 72
+            Width = 39
+            Caption = 'Relation'
+            ParentColor = False
+          end
+          object edtScreenFamilyName: TDBEdit
+            Left = 120
+            Height = 21
+            Top = 40
+            Width = 264
+            DataField = 'Name'
+            DataSource = FirebirdQueryModule.dsScreenFamily
+            CharCase = ecNormal
+            MaxLength = 0
+            TabOrder = 1
+          end
+          object cboScreenFamilyRelation: TDBLookupComboBox
+            Left = 120
+            Height = 21
+            Top = 72
+            Width = 264
+            DataField = 'SCREENFAMILYTORELATION'
+            DataSource = FirebirdQueryModule.dsScreenFamily
+            ListFieldIndex = 0
+            LookupCache = False
+            OnChange = cboScreenFamilyRelationChange
+            TabOrder = 2
+          end
+        end
+      end
+      object pnlFormAux: TPanel
+        Left = 0
+        Height = 606
+        Top = 152
+        Width = 1000
+        Align = alClient
+        ClientHeight = 606
+        ClientWidth = 1000
+        TabOrder = 1
+        object pnlFormList: TPanel
+          Left = 1
+          Height = 604
+          Top = 1
+          Width = 399
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 604
+          ClientWidth = 399
+          TabOrder = 0
+          object pnlFormsHeader: TPanel
+            Left = 0
+            Height = 34
+            Top = 0
+            Width = 399
+            Align = alTop
+            ClientHeight = 34
+            ClientWidth = 399
+            TabOrder = 0
+            object lblFormsHeader: TLabel
+              Left = 8
+              Height = 13
+              Top = 8
+              Width = 35
+              Caption = 'Forms'
+              Font.Style = [fsBold]
+              ParentColor = False
+              ParentFont = False
+            end
+          end
+          object grdScreenFamily: TDBGrid
+            Left = 0
+            Height = 570
+            Top = 34
+            Width = 399
+            Align = alClient
+            Color = clWindow
+            Columns = <>
+            DataSource = FirebirdQueryModule.dsScreenFamily
+            TabOrder = 1
+          end
+        end
+        object pnlFormEntities: TPanel
+          Left = 405
+          Height = 604
+          Top = 1
+          Width = 594
+          Align = alRight
+          BevelOuter = bvNone
+          ClientHeight = 604
+          ClientWidth = 594
+          TabOrder = 1
+          OnClick = pnlFormEntitiesClick
+          object pnlFormProperties: TPanel
+            Left = 362
+            Height = 604
+            Top = 0
+            Width = 232
+            Align = alRight
+            BevelOuter = bvNone
+            ClientHeight = 604
+            ClientWidth = 232
+            TabOrder = 0
+            object pnlFormPropertiesHeader: TPanel
+              Left = 0
+              Height = 34
+              Top = 0
+              Width = 232
+              Align = alTop
+              ClientHeight = 34
+              ClientWidth = 232
+              TabOrder = 0
+              object lblFormPropertiesHeader: TLabel
+                Left = 24
+                Height = 13
+                Top = 8
+                Width = 59
+                Caption = 'Properties'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+              end
+            end
+            object vlScreenProps: TValueListEditor
+              Left = 0
+              Height = 570
+              Top = 34
+              Width = 232
+              Align = alClient
+              Color = clBtnFace
+              FixedCols = 0
+              RowCount = 2
+              TabOrder = 1
+              OnEditingDone = vlScreenPropsEditingDone
+              DisplayOptions = [doColumnTitles, doAutoColResize]
+              Strings.Strings = (
+                ''
+              )
+              ColWidths = (
+                114
+                114
+              )
+            end
+          end
+          object pnlFormEntityList: TPanel
+            Left = 0
+            Height = 604
+            Top = 0
+            Width = 362
+            Align = alClient
+            BevelOuter = bvNone
+            ClientHeight = 604
+            ClientWidth = 362
+            TabOrder = 1
+            object pnlEntitiesHeader: TPanel
+              Left = 0
+              Height = 34
+              Top = 0
+              Width = 362
+              Align = alTop
+              ClientHeight = 34
+              ClientWidth = 362
+              TabOrder = 0
+              object lblFormEntity: TLabel
+                Left = 16
+                Height = 13
+                Top = 8
+                Width = 33
+                Caption = 'Entity'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+              end
+            end
+            object tvForms: TTreeView
+              Left = 0
+              Height = 570
+              Top = 34
+              Width = 362
+              Align = alClient
+              DefaultItemHeight = 16
+              Images = Images
+              ReadOnly = True
+              TabOrder = 1
+              OnChange = tvFormsChange
+              OnSelectionChanged = tvFormsSelectionChanged
+              Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+            end
+          end
+        end
+        object sptFormsOne: TSplitter
+          Left = 400
+          Height = 604
+          Top = 1
+          Width = 5
+          Align = alRight
+          ResizeAnchor = akRight
+        end
+      end
+    end
+    object tabBuilds: TTabSheet
+      Caption = '&Builds'
+      ClientHeight = 758
+      ClientWidth = 1000
+      object pnBuildTop: TPanel
+        AnchorSideTop.Control = sptBuild
+        Left = 0
+        Height = 27
+        Top = 0
+        Width = 1000
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 27
+        ClientWidth = 1000
+        TabOrder = 0
+        object lblBuild: TLabel
+          Left = 8
+          Height = 13
+          Top = 8
+          Width = 27
+          Caption = 'Build'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object sptBuild: TSplitter
+        Cursor = crVSplit
+        Left = 0
+        Height = 5
+        Top = 27
+        Width = 1000
+        Align = alTop
+        Beveled = True
+        ResizeAnchor = akTop
+      end
+      object pnlBuildMain: TPanel
+        Left = 0
+        Height = 726
+        Top = 32
+        Width = 794
+        Align = alLeft
+        ClientHeight = 726
+        ClientWidth = 794
+        TabOrder = 2
+        object pnlBuildEdit: TPanel
+          Left = 1
+          Height = 107
+          Top = 1
+          Width = 792
+          Align = alTop
+          BevelOuter = bvNone
+          ClientHeight = 107
+          ClientWidth = 792
+          TabOrder = 0
+          object txtBuildEditName: TDBEdit
+            Left = 128
+            Height = 21
+            Top = 43
+            Width = 224
+            DataField = 'Name'
+            DataSource = FirebirdQueryModule.dsBuild
+            CharCase = ecNormal
+            MaxLength = 0
+            TabOrder = 0
+          end
+          object txtBuildProjectPath: TDBEdit
+            Left = 128
+            Height = 21
+            Top = 72
+            Width = 224
+            DataField = 'PROJECTPATH'
+            CharCase = ecNormal
+            MaxLength = 0
+            TabOrder = 1
+          end
+          object lblBuildName: TLabel
+            Left = 32
+            Height = 13
+            Top = 47
+            Width = 33
+            Caption = 'Name*'
+            ParentColor = False
+          end
+          object lblBuildProjectPath: TLabel
+            Left = 32
+            Height = 13
+            Top = 76
+            Width = 65
+            Caption = 'Project Path*'
+            ParentColor = False
+          end
+          object btnBuildProjectPath: TButton
+            Left = 360
+            Height = 21
+            Top = 72
+            Width = 24
+            Caption = '...'
+            OnClick = btnBuildProjectPathClick
+            TabOrder = 2
+          end
+          object pnlBuildNav: TPanel
+            Left = 0
+            Height = 40
+            Top = 0
+            Width = 792
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 40
+            ClientWidth = 792
+            TabOrder = 3
+            object dbNavBuild: TDBNavigator
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 241
+              BevelOuter = bvNone
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.EnlargeVertical = crsScaleChilds
+              ChildSizing.ShrinkHorizontal = crsScaleChilds
+              ChildSizing.ShrinkVertical = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 100
+              ClientHeight = 25
+              ClientWidth = 241
+              DataSource = FirebirdQueryModule.dsBuild
+              OnClick = dbNavBuildClick
+              Options = []
+              TabOrder = 0
+            end
+            object cmdBuild: TButton
+              Left = 240
+              Height = 25
+              Top = 0
+              Width = 75
+              Caption = 'Build'
+              OnClick = cmdBuildClick
+              TabOrder = 1
+            end
+          end
+        end
+        object pnlBuildList: TPanel
+          Left = 1
+          Height = 617
+          Top = 108
+          Width = 792
+          Align = alClient
+          BevelOuter = bvNone
+          ClientHeight = 617
+          ClientWidth = 792
+          TabOrder = 1
+          object pnlBuildGrid: TPanel
+            Left = 0
+            Height = 617
+            Top = 0
+            Width = 792
+            Align = alClient
+            ClientHeight = 617
+            ClientWidth = 792
+            TabOrder = 0
+            object dbGridBuild: TDBGrid
+              Left = 1
+              Height = 584
+              Top = 32
+              Width = 790
+              Align = alClient
+              Color = clWindow
+              Columns = <>
+              DataSource = FirebirdQueryModule.dsBuild
+              TabOrder = 0
+            end
+            object pnlBuildListHeader: TPanel
+              Left = 1
+              Height = 31
+              Top = 1
+              Width = 790
+              Align = alTop
+              ClientHeight = 31
+              ClientWidth = 790
+              TabOrder = 1
+              object lblBuilds: TLabel
+                Left = 8
+                Height = 13
+                Top = 6
+                Width = 33
+                Caption = 'Builds'
+                Font.Style = [fsBold]
+                ParentColor = False
+                ParentFont = False
+              end
+            end
+          end
+        end
+      end
+      object pnlBuildProperties: TPanel
+        Left = 794
+        Height = 726
+        Top = 32
+        Width = 206
+        Align = alClient
+        ClientHeight = 726
+        ClientWidth = 206
+        TabOrder = 3
+        object pnlBuildPropertyHeader: TPanel
+          Left = 1
+          Height = 31
+          Top = 1
+          Width = 204
+          Align = alTop
+          ClientHeight = 31
+          ClientWidth = 204
+          TabOrder = 0
+          object Label8: TLabel
+            Left = 16
+            Height = 13
+            Top = 8
+            Width = 59
+            Caption = 'Properties'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object pnlBuildPropertyValueList: TPanel
+          Left = 1
+          Height = 693
+          Top = 32
+          Width = 204
+          Align = alClient
+          ClientHeight = 693
+          ClientWidth = 204
+          TabOrder = 1
+          object ValueListBuildProperty: TValueListEditor
+            Left = 1
+            Height = 691
+            Top = 1
+            Width = 202
+            Align = alClient
+            Color = clBtnFace
+            FixedCols = 0
+            RowCount = 1
+            TabOrder = 0
+            OnEditingDone = ValueListBuildPropertyEditingDone
+            DisplayOptions = [doAutoColResize]
+            Strings.Strings = (
+              ''
+            )
+            ColWidths = (
+              91
+              91
+            )
+          end
+        end
+      end
+    end
+  end
+  object dlgSelectDirectory: TSelectDirectoryDialog
+    left = 760
+  end
+  object Images: TImageList
+    left = 720
+    Bitmap = {
+      4C690B000000100000001000000000000000000000000000000000000000F4F4
+      F430F6F6F6EFF6F6F6EFF4F4F430000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000F4F4F430F6F6
+      F6EF6DAAD6FF6DAAD6FFF6F6F6EFF4F4F4300000000000000000000000000000
+      00000000000000000000000000000000000000000000F4F4F430F6F6F6EF6DAA
+      D6FF1A7DC2FF1A7DC2FF6DAAD6FFF6F6F6EFF4F4F43000000000000000000000
+      000000000000000000000000000000000000F4F4F430F6F6F6EF6DAAD6FF1A7D
+      C2FF1A7DC2FF1A7DC2FF1A7DC2FF6DAAD6FFF6F6F6EFF4F4F43000000000F4F4
+      F430F4F4F4300000000000000000F4F4F430F6F6F6EF6DAAD6FF1A7DC2FF1A7D
+      C2FF1A7DC2FF1A7DC2FF1A7DC2FF6DAAD6FFF6F6F6EFF4F4F430F4F4F430F6F6
+      F6EFF6F6F6EFF4F4F43000000000F6F6F6EF6DAAD6FF1A7DC2FF1A7DC2FF1A7D
+      C2FF1A7DC2FF1A7DC2FF6DAAD6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF6DAA
+      D6FF6DAAD6FFF6F6F6EFF4F4F430F6F6F6EF6DAAD6FF1A7DC2FF1A7DC2FF1A7D
+      C2FF1A7DC2FF1A7DC2FF1A7DC2FF1A7DC2FF1A7DC2FF1A7DC2FF1A7DC2FF1A7D
+      C2FF1A7DC2FF6DAAD6FFF6F6F6EFF4F4F430F6F6F6EF6DAAD6FF1A7DC2FF1A7D
+      C2FF6DAAD6FFF6F6F6FFF6F6F6FF1A7DC2FFF6F6F6FF6DAAD6FF1A7DC2FF1A7D
+      C2FF1A7DC2FF6DAAD6FFF6F6F6EF00000000F4F4F430F6F6F6EF6DAAD6FF6DAA
+      D6FFF6F6F6EFF4F4F430F6F6F6FF1A7DC2FFF6F6F6FF6DAAD6FF1A7DC2FF1A7D
+      C2FF6DAAD6FFF6F6F6EFF4F4F4300000000000000000F4F4F430F6F6F6EFF6F6
+      F6EFF4F4F43000000000F6F6F6FF1A7DC2FFF6F6F6FFF6F6F6FF6DAAD6FF6DAA
+      D6FFF6F6F6FFF7F7F76000000000000000000000000000000000F4F4F430F4F4
+      F4300000000000000000F6F6F6FF1A7DC2FFF6F6F6FFF6F6F6FFF6F6F6FF6DAA
+      D6FF6DAAD6FFF6F6F6EFF4F4F430000000000000000000000000000000000000
+      00000000000000000000F6F6F6FF1A7DC2FF1A7DC2FF1A7DC2FF1A7DC2FF1A7D
+      C2FF1A7DC2FF6DAAD6FFF6F6F6EF000000000000000000000000000000000000
+      00000000000000000000F6F6F6FFF6F6F6FFF6F6F6FF6DAAD6FF1A7DC2FF1A7D
+      C2FF1A7DC2FF6DAAD6FFF6F6F6EF000000000000000000000000000000000000
+      0000000000000000000000000000F4F4F430F6F6F6EF6DAAD6FF1A7DC2FF1A7D
+      C2FF6DAAD6FFF6F6F6EFF4F4F430000000000000000000000000000000000000
+      000000000000000000000000000000000000F4F4F430F6F6F6EF6DAAD6FF6DAA
+      D6FFF6F6F6EFF4F4F43000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000F4F4F430F6F6F6EFF6F6
+      F6EFF4F4F4300000000000000000000000000000000000000000000000000000
+      00000000000000000000F7F7F760F6F6F6FFF6F6F6FFF7F7F760000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F7F7F760F6F6F6FFB3B3B3FF595959FF595959FFB3B3B3FFF6F6F6FFF7F7
+      F760000000000000000000000000000000000000000000000000F7F7F760F6F6
+      F6FFB3B3B3FF595959FF848383FFDBD9DAFFDBD9DAFF848383FF595959FFB3B3
+      B3FFF6F6F6FFF7F7F7600000000000000000F7F7F760F6F6F6FFB3B3B3FF5959
+      59FF848383FFDBD9DAFFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFDBD9DAFF8483
+      83FF595959FFB3B3B3FFF3F3F3DFF3F3F3DFB3B3B3FF595959FF848383FFDBD9
+      DAFFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFDBD9DAFF8483
+      83FF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF848383FFDBD9
+      DAFFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFDBD9DAFF848383FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF848383FFDBD9DAFFDBD9DAFF848383FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FF595959FFB3B3B3FFF6F6F6FFF6F6F6FFB3B3B3FF595959FF424242FF4242
+      42FF424242FF424242FF424242FF424242FF424242FF424242FF595959FFB3B3
+      B3FFF6F6F6FFF5F5F59FF7F7F720F7F7F720F5F5F59FF6F6F6FFB3B3B3FF5959
+      59FF424242FF424242FF424242FF424242FF595959FFB3B3B3FFF6F6F6FFF5F5
+      F59FF7F7F72000000000000000000000000000000000F7F7F720F5F5F59FF6F6
+      F6FFB3B3B3FF595959FF595959FFB3B3B3FFF6F6F6FFF5F5F59FF7F7F7200000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F720F5F5F59FF6F6F6FFF6F6F6FFF5F5F59FF7F7F72000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000F7F7F720F7F7F720000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F6F6F6FF424242FF424242FF424242FF424242FF424242FFF6F6F6FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F6F6F6FF424242FF424242FF424242FF424242FF424242FFF6F6F6FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F6F6F6FF424242FF424242FF424242FF424242FF424242FFF6F6F6FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F6F6F6FFF6F6F6FFF6F6F6FF424242FFF6F6F6FFF6F6F6FFF6F6F6FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000F6F6F6FF424242FFF6F6F6FF00000000000000000000
+      00000000000000000000000000000000000000000000F6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FF424242FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FF00000000000000000000000000000000F6F6F6FF424242FF4242
+      42FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF424242FF4242
+      42FFF6F6F6FF00000000000000000000000000000000F6F6F6FF424242FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF4242
+      42FFF6F6F6FF0000000000000000F6F6F6FFF6F6F6FFF6F6F6FF424242FFF6F6
+      F6FFF6F6F6FFF6F6F6FF0000000000000000F6F6F6FFF6F6F6FFF6F6F6FF4242
+      42FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FFF6F6F6FF0000000000000000F6F6F6FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FFF6F6F6FF0000000000000000F6F6F6FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FFF6F6F6FF0000000000000000F6F6F6FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FF0000000000000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000F7F7F720F6F6F6AFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6AFF7F7F7200000000000000000F7F7F740F5F5F580F5F5F580F7F7
+      F7400000000000000000F7F7F720F6F6F6EF919191FF424242FF424242FF4242
+      42FF919191FFF6F6F6EFF7F7F720F7F7F760E0E0E0FF9C9C9CFF9C9C9CFFE0E0
+      E0FFF7F7F76000000000F6F6F6AF919191FF424242FF424242FF424242FF4242
+      42FF424242FF919191FFF6F6F6AFF6F6F6EF595959FF424242FF424242FF5959
+      59FFF6F6F6FFF6F6F6FFF6F6F6FF424242FF424242FFD0CFCFFFF1EFF0FFD0CF
+      CFFF424242FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FF424242FF424242FF424242FF424242FFF1EFF0FFF1EFF0FFF1EF
+      F0FF424242FF424242FFF6F6F6FFF6F6F6EF595959FF424242FF424242FF5959
+      59FFF6F6F6FFF6F6F6FFF6F6F6FF424242FF424242FFD0CFCFFFF1EFF0FFD0CF
+      CFFF424242FF424242FFF6F6F6FFF7F7F760E0E0E0FF9C9C9CFF9C9C9CFFE0E0
+      E0FFF7F7F76000000000F6F6F6AF919191FF424242FF424242FF424242FF4242
+      42FF424242FF919191FFF6F6F6AF00000000F7F7F740F5F5F580F5F5F580F7F7
+      F7400000000000000000F7F7F720F6F6F6EF919191FF424242FF424242FF4242
+      42FF919191FFF6F6F6EFF7F7F720000000000000000000000000000000000000
+      0000000000000000000000000000F7F7F720F6F6F6AFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6AFF7F7F72000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000F7F7F720F5F5
+      F5BFF6F6F6FFF5F5F5BFF7F7F720000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000F5F5F580F0E9EDFFBD85
+      A4FF902D65FFBD85A4FFF0E9EDFFF5F5F5800000000000000000000000000000
+      0000000000000000000000000000F7F7F740F6F6F6CFD6B7C9FF9D4677FFB476
+      99FFE5D7DFFFB47699FF9D4677FFD6B7C9FFF6F6F6CFF7F7F740000000000000
+      0000000000000000000000000000F6F6F6FFB06C92FF9C4576FFD9BFCDFFF1EF
+      F0FFF1EFF0FFF1EFF0FFD9BFCDFF9C4576FFB06C92FFF6F6F6FF000000000000
+      0000000000000000000000000000F6F6F6FF902D65FFA85E88FFD9BFCDFFF1EF
+      F0FFF1EFF0FFF1EFF0FFD9BFCDFFA85E88FF902D65FFF6F6F6FF000000000000
+      0000000000000000000000000000F6F6F6FF902D65FFEBE3E7FFC18EABFFB476
+      99FFE5D7DFFFB47699FFC18EABFFEBE3E7FF902D65FFF6F6F6FF000000000000
+      0000000000000000000000000000F6F6F6FF902D65FFF1EFF0FFF1EFF0FFDFCB
+      D6FF902D65FFDFCBD6FFF1EFF0FFF1EFF0FF902D65FFF6F6F6FF000000000000
+      0000000000000000000000000000F6F6F6FF902D65FFF1EFF0FFF1EFF0FFF1EF
+      F0FF902D65FFF1EFF0FFF1EFF0FFF1EFF0FF902D65FFF6F6F6FF000000000000
+      0000000000000000000000000000F6F6F6FFB06C92FF9C4576FFD9BFCDFFF1EF
+      F0FF902D65FFF1EFF0FFD9BFCDFF9C4576FFB06C92FFF6F6F6FF000000000000
+      0000000000000000000000000000F7F7F740F6F6F6CFD6B7C9FF9D4677FFB476
+      99FF902D65FFB47699FF9D4677FFD6B7C9FFF6F6F6CFF7F7F740000000000000
+      00000000000000000000000000000000000000000000F5F5F580F0E9EDFFBD85
+      A4FF902D65FFBD85A4FFF0E9EDFFF5F5F5800000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000F7F7F720F5F5
+      F5BFF6F6F6FFF5F5F5BFF7F7F720000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F740F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF0000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F740F6F6F6FF424242FF424242FF424242FF424242FF424242FFF6F6F6FF0000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F740F6F6F6FF424242FF424242FF424242FF424242FF424242FFF6F6F6FF0000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F740F6F6F6FF424242FF424242FF424242FF424242FF424242FFF6F6F6FF0000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F740F6F6F6FFF6F6F6FFF6F6F6FF424242FFF6F6F6FFF6F6F6FFF6F6F6FF0000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F720F6F6F6EF919191FF424242FF424242FF424242FF919191FFF6F6F6EFF7F7
+      F7200000000000000000000000000000000000000000F7F7F740F7F7F740F5F5
+      F5BF919191FF797878FFE6E4E5FFF1EFF0FFE6E4E5FF6E6D6EFF919191FFF5F5
+      F5BFF7F7F740F7F7F740000000000000000000000000F6F6F6FFF6F6F6FFF6F6
+      F6FF424242FFE6E4E5FFF1EFF0FFF1EFF0FFF1EFF0FFE6E4E5FF424242FFF6F6
+      F6FFF6F6F6FFF6F6F6FF000000000000000000000000F6F6F6FF424242FF4242
+      42FF424242FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FF585858FF4242
+      42FF424242FFF6F6F6FF000000000000000000000000F6F6F6FF424242FFF6F6
+      F6FF424242FFE6E4E5FFF1EFF0FFF1EFF0FFF1EFF0FFE6E4E5FF424242FFF6F6
+      F6FF424242FFF6F6F6FF0000000000000000F7F7F740F6F6F6FF424242FFF6F6
+      F6FF919191FF6E6D6EFFE6E4E5FFF1EFF0FFE6E4E5FF6E6D6EFF919191FFF6F6
+      F6FF424242FFF6F6F6FFF7F7F74000000000F6F6F6FFF6F6F6FF424242FFF6F6
+      F6FFF6F6F6FF919191FF424242FF424242FF424242FF919191FFF6F6F6FFF6F6
+      F6FF424242FFF6F6F6FFF6F6F6FF00000000F6F6F6FF424242FF424242FF4242
+      42FF424242FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000F6F6F6FF424242FF424242FF4242
+      42FF424242FFF6F6F6FFF7F7F740F7F7F740F7F7F740F6F6F6FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000F6F6F6FF424242FF424242FF4242
+      42FF424242FFF6F6F6FF000000000000000000000000F6F6F6FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FF000000000000000000000000F6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FFF6F6F6FFF6F6F6FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FFF6F6F6FFF6F6F6FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FFF6F6F6FFF6F6F6FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FFF6F6F6FFF6F6F6FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FF902D65FF902D65FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FF902D65FF902D65FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FF902D65FF902D65FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FF902D65FF902D65FF902D65FF902D
+      65FF902D65FF902D65FF902D65FF902D65FF902D65FF902D65FFF6F6F6FF0000
+      0000000000000000000000000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000F6F6F6FFF6F6
+      F6FFF6F6F6FF0000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F6F6F6FFF6F6F6FFF6F6F6FF1A7D
+      C2FFF6F6F6FFF6F6F6FFF6F6F6FF000000000000000000000000000000000000
+      000000000000000000000000000000000000F6F6F6FF1A7DC2FFF6F6F6FF1A7D
+      C2FFF6F6F6FF1A7DC2FFF6F6F6FF000000000000000000000000000000000000
+      0000000000000000000000000000F6F6F6FFF6F6F6FFBFD8E9FF1A7DC2FF1A7D
+      C2FF1A7DC2FFBFD8E9FFF6F6F6FFF6F6F6FF0000000000000000000000000000
+      0000000000000000000000000000F6F6F6FF1A7DC2FF1A7DC2FF1A7DC2FFF6F6
+      F6FF1A7DC2FF1A7DC2FF1A7DC2FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF1A7DC2FF1A7D
+      C2FF1A7DC2FFF6F6F6FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000F6F6F6FF1A7DC2FFF6F6F6FF1A7D
+      C2FFF6F6F6FF1A7DC2FFF6F6F6FF424242FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000F6F6F6FFF6F6F6FFF6F6F6FF1A7D
+      C2FFF6F6F6FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF000000000000000000000000F6F6F6FFF6F6
+      F6FFF6F6F6FFF1EFF0FFF1EFF0FF424242FFF1EFF0FFF1EFF0FF424242FFF1EF
+      F0FFF1EFF0FF424242FFF6F6F6FF00000000000000000000000000000000F6F6
+      F6FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000000000000000000000000000F6F6
+      F6FF424242FFF1EFF0FFF1EFF0FF424242FFF1EFF0FFF1EFF0FF424242FFF1EF
+      F0FFF1EFF0FF424242FFF6F6F6FF00000000000000000000000000000000F6F6
+      F6FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000000000000000000000000000F6F6
+      F6FF424242FFF1EFF0FFF1EFF0FF424242FFF1EFF0FFF1EFF0FF424242FFF1EF
+      F0FFF1EFF0FF424242FFF6F6F6FF00000000000000000000000000000000F6F6
+      F6FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FF424242FF424242FFF6F6F6FF00000000000000000000000000000000F6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF00000000000000000000
+      0000000000000000000000000000F6F6F6FF348A38FF348A38FF348A38FF348A
+      38FF348A38FF348A38FF348A38FF348A38FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FF348A38FFF1EFF0FFF1EFF0FFF1EF
+      F0FFF1EFF0FFF1EFF0FFF1EFF0FF348A38FFF6F6F6FFF6F6F6FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FF348A38FF348A38FF348A38FF348A
+      38FF348A38FF348A38FF348A38FF348A38FFF6F6F6FFF6F6F6FF424242FF4242
+      42FF424242FF424242FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FF0000000000000000F6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FF00000000000000000000000000000000F6F6F6FF424242FF4242
+      42FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FFF6F6F6FF00000000000000000000000000000000F6F6F6FF424242FF4242
+      42FF424242FF424242FF424242FF424242FF424242FF424242FF424242FF4242
+      42FFF6F6F6FF00000000000000000000000000000000F6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FF0000000000000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FF000000000000000000000000F6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF424242FFF6F6
+      F6FF000000000000000000000000F6F6F6FF424242FF424242FF424242FF4242
+      42FF424242FFF6F6F6FFF6F6F6FF424242FF424242FF424242FF424242FFF6F6
+      F6FF000000000000000000000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F6F6F630F6F6F6EFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6EFF6F6F630000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000F6F6F630F6F6F6EFAD72
+      2EFF9C5300FFBE905CFFF6F6F6EFF6F6F6300000000000000000000000000000
+      000000000000000000000000000000000000F6F6F68FF6F6F6FFF6F6F6FFF0EC
+      E7FFAD722EFF9C5300FFBE905CFFF6F6F6EFF6F6F63000000000000000000000
+      0000000000000000000000000000F6F6F68FDAC3A9FFA25D0FFF9C5300FF9C53
+      00FF9C5300FF9C5300FF9C5300FFCFAF8AFFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFA25D0FFFBE905CFFEBE2D7FFF6F6
+      F6FFBE905CFF9C5300FFAD722EFFF6F6F6FF7AB6DCFF7AB6DCFF7AB6DCFF7AB6
+      DCFF7AB6DCFF7AB6DCFFF6F6F6FFF6F6F6FF9C5300FFE0CDB9FFF6F6F6FFBE90
+      5CFF9C5300FFBE905CFFF6F6F6FFF6F6F6FFF1EFF0FFF1EFF0FFF1EFF0FFF1EF
+      F0FFF1EFF0FF7AB6DCFFF6F6F6FFF6F6F6FFA25D0FFFBE905CFFEBE2D7FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EF
+      F0FFF1EFF0FF7AB6DCFFF6F6F6FFF6F6F68FE0CDB9FFA25D0FFF9C5300FFF6F6
+      F6FFF6F6F6FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EF
+      F0FFF1EFF0FF7AB6DCFFF6F6F6FF00000000F6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EF
+      F0FFF1EFF0FF7AB6DCFFF6F6F6FFF6F6F6FFF6F6F6FF81BADDFFF1EFF0FFF1EF
+      F0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EFF0FFF1EF
+      F0FFF1EFF0FF7AB6DCFFF6F6F6FFF6F6F6FF82BADEFF7AB6DCFF7AB6DCFF7AB6
+      DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF81BADDFFE2E8EEFFF1EF
+      F0FFF1EFF0FF7AB6DCFFF6F6F6FFF6F6F69FA9CEE6FF7AB6DCFF7AB6DCFF7AB6
+      DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF9FC8E2FFF1EF
+      F0FFF1EFF0FF7AB6DCFFF6F6F6FFF6F6F640DFEAF1FF7AB6DCFF7AB6DCFF7AB6
+      DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFFD3E1
+      EBFFF1EFF0FF7AB6DCFFF6F6F6FF00000000F6F6F6DF91C2E1FF7AB6DCFF7AB6
+      DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF89BD
+      DFFFF1EFF0FF7AB6DCFFF6F6F6FF00000000F6F6F670C8DEECFF7AB6DCFF7AB6
+      DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6DCFF7AB6
+      DCFFB6D3E6FF7AB6DCFFF6F6F6FF00000000F6F6F610F6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6
+      F6FFF6F6F6FFF6F6F6FFF6F6F6FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F7F7F740F5F5F5BFF6F6F6FFF6F6F6FFF6F6F6FFF5F5F5BFF4F4F4300000
+      000000000000000000000000000000000000000000000000000000000000F7F7
+      F760EBEBEBFF868686FF424242FF424242FF4D4D4DFFEBEBEBFFF6F6F6FFF7F7
+      F740000000000000000000000000000000000000000000000000EFEFEF10E7E7
+      E7EF646464FF424242FF424242FF4D4D4DFFD4D4D4FFF6F6F6FFF6F6F6FFF6F6
+      F6EFEFEFEF100000000000000000000000000000000000000000F5F5F570A7A7
+      A7FF424242FF424242FF4D4D4DFFD4D4D4FFF6F6F6FFF6F6F6FFB3B3B3FFC9C9
+      C9FFF7F7F7600000000000000000000000000000000000000000F6F6F6AF7A7A
+      7AFF424242FF424242FF4D4D4DFFD4D4D4FFF6F6F6FFB3B3B3FF424242FF9C9C
+      9CFFF5F5F5800000000000000000000000000000000000000000F6F6F6AF7A7A
+      7AFF424242FF424242FF424242FF4D4D4DFF9C9C9CFF424242FF424242FF9C9C
+      9CFFF5F5F5800000000000000000000000000000000000000000F6F6F6AF9191
+      91FF424242FF424242FF424242FF424242FF424242FF424242FF424242FFBEBE
+      BEFFF7F7F76000000000000000000000000000000000F5F5F59FB3B3B3FF4242
+      42FF424242FF424242FF424242FF424242FF424242FF424242FF646464FFF6F6
+      F6EFEFEFEF10000000000000000000000000F5F5F59FB3B3B3FF424242FF4242
+      42FF424242FF4D4D4DFF424242FF424242FF424242FF868686FFE7E7E7EFF4F4
+      F430000000000000000000000000F5F5F59FB3B3B3FF424242FF424242FF4242
+      42FF4D4D4DFFD4D4D4FFF6F6F6FFF6F6F6FFF6F6F6FFF6F6F6AFF4F4F4300000
+      0000000000000000000000000000EBEBEBFF4D4D4DFF424242FF424242FF4D4D
+      4DFFD4D4D4FFF5F5F59F00000000000000000000000000000000000000000000
+      0000000000000000000000000000E0E0E0FF424242FF424242FF4D4D4DFFD4D4
+      D4FFF5F5F59F0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000F5F5F59FC9C9C9FF9C9C9CFFD4D4D4FFF5F5
+      F59F000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F760F5F5F580F7F7F7600000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000
+    }
+  end
+end

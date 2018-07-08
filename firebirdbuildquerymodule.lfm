@@ -1,0 +1,229 @@
+object FirebirdBuildQuery: TFirebirdBuildQuery
+  OldCreateOrder = False
+  Height = 327
+  HorizontalOffset = 581
+  VerticalOffset = 432
+  Width = 603
+  object SQLLoadModel: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select ModelId, Name from model where ModelId = :ModelId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 48
+    top = 24
+  end
+  object SQLLoadBuild: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT BUILDID,'
+      '    MODELTOBUILD,'
+      '    NAME,'
+      '    PROJECTPATH'
+      'FROM build where BuildId = :BuildId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BuildId'
+        ParamType = ptInput
+      end>
+    left = 152
+    top = 24
+  end
+  object SQLParentAssociation: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select a.name, a.type, p.name as ParentName, c.Name as ChildName, a.owner, a.owned from association a'
+      'inner join relation p'
+      'on a.owner = p.relationid'
+      'inner join relation c'
+      'on a.owned = c.relationid'
+      'where a.owned = :ownedid;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ownedid'
+        ParamType = ptInput
+      end>
+    left = 448
+    top = 24
+  end
+  object SQLChildAssociation: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select a.name, a.type, p.name as ParentName, c.Name as ChildName, a.owner, a.owned from association a inner join relation p'
+      'on a.owner = p.relationid inner join relation c'
+      'on a.owned = c.relationid'
+      'where a.owner = :ownerid ;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ownerid'
+        ParamType = ptInput
+      end>
+    left = 312
+    top = 32
+  end
+  object SQLLoadRelation: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select relation.RelationId, relation.ModelRelation,'
+      'relation.Name, relation.LastModified, relation.LastBuilt,'
+      'relation.Frozen'
+      ' from relation'
+      '  where relation.relationId=:relationid;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'relationid'
+        ParamType = ptInput
+      end>
+    left = 48
+    top = 112
+  end
+  object SQLRelationsByModel: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT  RelationId,  ModelRelation,  frozen,  lastbuilt,  lastmodified,  name  from Relation  WHERE  (ModelRelation = :ModelId  );'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 168
+    top = 112
+  end
+  object SQLGetBuildTemplateByName: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'Select BuildTemplateID, Name, Script'
+      'from BuildTemplate where Name = :Name;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'Name'
+        ParamType = ptInput
+      end>
+    left = 336
+    top = 112
+  end
+  object SQLGetBuildScriptsForController: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT bs.BuildScriptID, bs.Name, bs.Script, cs.BUILDCONTROLLERSCRIPTID FROM'
+      'BuildControllerScript cs inner join'
+      'BuildScript bs on cs.BuildScriptId = bs.BuildScriptID'
+      ' where cs.BuildControllerID = :BuildControllerID order by cs.sequence;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BuildControllerID'
+        ParamType = ptInput
+      end>
+    left = 88
+    top = 224
+  end
+  object SQLGetBuildScriptByID: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT BuildScriptID, Name, Script FROM'
+      'BuildScript where BuildScriptID = :BuildScriptID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BuildScriptID'
+        ParamType = ptInput
+      end>
+    left = 256
+    top = 224
+  end
+  object SQLLoadAttribute: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT  AttributeId,  RelationAttribute,  allownull,  attributelength,  name,  type  from Attribute  WHERE  (RelationAttribute = :RelationId  )   ;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RelationId'
+        ParamType = ptInput
+      end>
+    left = 46
+    top = 168
+  end
+  object SQLGetBuildScriptParameters: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'VALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select NAME, "VALUE" from buildscriptparameter'
+      'where BUILDCONTROLLERSCRIPTID = :BUILDCONTROLLERSCRIPTID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BUILDCONTROLLERSCRIPTID'
+        ParamType = ptInput
+      end>
+    left = 88
+    top = 280
+  end
+end

@@ -1,0 +1,581 @@
+object FirebirdLookups: TFirebirdLookups
+  OldCreateOrder = False
+  Height = 462
+  HorizontalOffset = 791
+  VerticalOffset = 178
+  Width = 984
+  object SQLAttributeTypes: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'CODE'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'LABEL'
+        DataType = ftString
+        Precision = -1
+        Size = 160
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select cast(code as integer) as code, label from listdetail d inner join listheader h on h.listheaderid = d.listheadertodetail'
+      'where h.name = ''DataTypes'''
+    )
+    Params = <>
+    left = 40
+    top = 24
+    object SQLAttributeTypesCODE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CODE'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLAttributeTypesLABEL: TStringField
+      DisplayWidth = 160
+      FieldKind = fkData
+      FieldName = 'LABEL'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 160
+    end
+  end
+  object SQLAssociationTypes: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select cast(code as integer) as code, label as label from listdetail d inner join listheader h on h.listheaderid = d.listheadertodetail'
+      'where h.name = ''AssociationTypes'''
+    )
+    Params = <>
+    left = 152
+    top = 24
+  end
+  object SQLRelationLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'RELATIONID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select RelationId, Name'
+      'from Relation where ModelRelation = :ModelId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 264
+    top = 24
+  end
+  object dsAssociationTypes: TDataSource
+    DataSet = SQLAssociationTypes
+    left = 152
+    top = 88
+  end
+  object dsRelationsLookup: TDataSource
+    DataSet = SQLRelationLookup
+    left = 264
+    top = 88
+  end
+  object dsAttributeTypes: TDataSource
+    DataSet = SQLAttributeTypes
+    left = 40
+    top = 96
+  end
+  object SQLGetAssociationsByOwner: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select distinct a.AssociationId, a.Owned, a.Owner, a.Type, a.Name,'
+      'rOwned.Name as OwnedName, rOwner.Name as OwnerName from Association a inner join'
+      'Relation rOwned on a.Owned = rOwned.RelationId'
+      'inner join Relation rOwner on a.Owner = rOwner.RelationId'
+      'where a.Owner = :RelationId and a.Type in (0, 1, 2)'
+      '/* eliminate self joins */'
+      'and a.Owned <> a.Owner'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RelationId'
+        ParamType = ptInput
+      end>
+    left = 415
+    top = 24
+  end
+  object SQLMasterProperties: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MASTERPROPERTYID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'DEFAULTVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'NOTES'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'CATEGORYNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'PROPERTYTYPENAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'DISPLAYCONTROL'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYTYPENOTES'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'GROUPNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select m.masterpropertyid, m.name, m.defaultvalue, m.notes, ac.name as categoryname,'
+      'pt.name as propertyTypeName, pt.displaycontrol, pt.notes as propertyTypeNotes,  g.name as groupName'
+      'from masterproperty m'
+      'inner join masterpropertytocategory c on m.masterpropertyid = c.masterpropertyid'
+      'inner join mastercategory ac on c.mastercategoryid = ac.mastercategoryid'
+      'inner join propertytype pt on pt.propertytypeid = m.masterpropertytotype'
+      'inner join propertygroup g on g.propertygroupid = m.masterpropertytogroup'
+      'where ac.name = :category order by m.name'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'category'
+        ParamType = ptInput
+      end>
+    left = 576
+    top = 24
+  end
+  object SQLGetUnsavedArtifactsByScreenFamily: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select   a.attributeId,  ScreenFamilyId, a.Name, CURRENT_TIMESTAMP as "Version"'
+      'from screenfamily f'
+      'inner join relation r on r.RELATIONID = f.SCREENFAMILYTORELATION'
+      'inner join attribute a on r.RELATIONID = a.RELATIONATTRIBUTE'
+      ' where f.SCREENFAMILYID = :ScreenFamilyId'
+      'and a.ATTRIBUTEID not in ('
+      'select s.ARTIFACTTOATTRIBUTE from screenartifact s where s.FAMILYTOARTIFACT = :ScreenFamilyId'
+      ')'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenFamilyId'
+        ParamType = ptInput
+      end>
+    left = 816
+    top = 24
+  end
+  object SQLGetUnsavedArtifactsByScreenChild: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select  a.attributeId,  ScreenChildId, a.Name, CURRENT_TIMESTAMP as "Version"'
+      'from screenchild c'
+      'inner join association r on r.ASSOCIATIONID = c.SCREENCHILDTOASSOCIATION'
+      'inner join attribute a on r.OWNED = a.RELATIONATTRIBUTE'
+      ' where c.ScreenChildId = :ScreenChildId'
+      'and a.ATTRIBUTEID not in ('
+      'select s.ARTIFACTTOATTRIBUTE from screenartifact s where s.CHILDTOARTIFACT = :ScreenChildId'
+      ');'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenChildId'
+        ParamType = ptInput
+      end>
+    left = 816
+    top = 96
+  end
+  object SQLMasterCategoryLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MasterCategoryId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select MasterCategoryId, Name from MasterCategory order by Name'
+    )
+    Params = <>
+    left = 573
+    top = 104
+  end
+  object SQLPropertyTypeLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PROPERTYTYPEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT PROPERTYTYPEID, NAME FROM PROPERTYTYPE;'
+    )
+    Params = <>
+    left = 576
+    top = 177
+  end
+  object SQLPropertyGroupLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PROPERTYGROUPID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select PROPERTYGROUPID, NAME FROM PROPERTYGROUP ORDER BY NAME;'
+    )
+    Params = <>
+    left = 576
+    top = 257
+  end
+  object SQLGetCategoryByMasterPropertyID: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select MASTERCATEGORYID from masterpropertytocategory where MASTERPROPERTYID = :MASTERPROPERTYID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MASTERPROPERTYID'
+        ParamType = ptInput
+      end>
+    left = 624
+    top = 336
+  end
+  object dsMasterCategoryLookup: TDataSource
+    DataSet = SQLMasterCategoryLookup
+    left = 416
+    top = 104
+  end
+  object dsPropertyTypeLookup: TDataSource
+    DataSet = SQLPropertyTypeLookup
+    left = 424
+    top = 184
+  end
+  object dsPropertyGroupLookup: TDataSource
+    DataSet = SQLPropertyGroupLookup
+    left = 424
+    top = 264
+  end
+  object dsGetCategoryByMasterPropertyID: TDataSource
+    DataSet = SQLGetCategoryByMasterPropertyID
+    left = 424
+    top = 336
+  end
+  object SQLBuildByModelLookup: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select BuildId, Name from Build where ModelToBuild = :ModelID order by name;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelID'
+        ParamType = ptInput
+      end>
+    left = 824
+    top = 257
+  end
+  object SQLModelLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MODELID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select ModelId, Name from Model order by Name;'
+    )
+    Params = <>
+    left = 824
+    top = 185
+    object SQLModelLookupMODELID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MODELID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLModelLookupNAME: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+  end
+  object SQLBuildScriptLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDSCRIPTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select BuildScriptID, Name from BuildScript order by Name;'
+    )
+    Params = <>
+    left = 56
+    top = 173
+  end
+  object dsBuildScriptLookup: TDataSource
+    AutoEdit = False
+    DataSet = SQLBuildScriptLookup
+    Enabled = False
+    left = 56
+    top = 240
+  end
+  object SQLListHeaderLookup: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select ListHeaderID, Name from ListHeader'
+      'order by Name;'
+    )
+    Params = <>
+    left = 56
+    top = 320
+  end
+  object SQLListDetailLookup: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select ListDetailID, Code, Label'
+      'from listdetail'
+      'where ListHeaderToDetail = :ListHeaderID'
+      'order by Label;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ListHeaderID'
+        ParamType = ptInput
+      end>
+    left = 168
+    top = 320
+  end
+  object dsListHeaderLookup: TDataSource
+    DataSet = SQLListHeaderLookup
+    left = 56
+    top = 376
+  end
+  object dsListDetailLookup: TDataSource
+    DataSet = SQLListDetailLookup
+    left = 168
+    top = 376
+  end
+  object SQLListDetailByID: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select D.ListDetailID, D.Code, D.Label, D.ListHeaderToDetail,'
+      'H.Name'
+      'FROM ListDetail D'
+      'INNER JOIN ListHeader H'
+      'ON D.ListHeaderToDetail = H.ListHeaderID'
+      'WHERE D.ListDetailID = :ListDetailID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ListDetailID'
+        ParamType = ptInput
+      end>
+    left = 272
+    top = 320
+  end
+  object SQLGetImportSystemCode: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select V.TargetValue from MappingValue V'
+      'INNER JOIN Mapping M on V.MappingToValue = M.MappingID'
+      'WHERE M.SystemCode = ''DBENUMSYSCODE''  AND SourceValue = :SourceValue;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'SourceValue'
+        ParamType = ptInput
+      end>
+    left = 832
+    top = 328
+  end
+  object SQLGetMappingValueBySystemCode: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select'
+      'V.MapValueTargetLookup,'
+      'V.MapValueSourceLookup,'
+      'V.SourceValue,'
+      'V.TargetValue,'
+      'DS.Code as SourceLookupCode,'
+      'DS.Label as SourceLookupLabel,'
+      'DT.Code as TargetLookupCode,'
+      'DT.Label as TargetLookupLabel'
+      'from'
+      'MappingValue V'
+      'INNER JOIN Mapping M'
+      'ON M.MappingID = V.MappingToValue'
+      'LEFT JOIN ListDetail DS'
+      'ON DS.ListDetailID = V.MapValueSourceLookup'
+      'LEFT JOIN ListDetail DT'
+      'ON DT.ListDetailID = V.MapValueTargetLookup'
+      'WHERE M.SystemCode = :SystemCode;'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'SystemCode'
+        ParamType = ptInput
+      end>
+    left = 832
+    top = 400
+  end
+end

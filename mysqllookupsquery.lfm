@@ -1,0 +1,1099 @@
+object MySqlLookups: TMySqlLookups
+  OldCreateOrder = False
+  Height = 507
+  HorizontalOffset = 848
+  VerticalOffset = 470
+  Width = 993
+  object SQLAttributeTypes: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'code'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'label'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select cast(code as unsigned) as code, label as label from listdetail d inner join listheader h on h.listheaderid = d.listheadertodetail'
+      'where h.name = ''DataTypes'''
+    )
+    Params = <>
+    left = 56
+    top = 24
+  end
+  object SQLAssociationTypes: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'code'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'label'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select cast(code as unsigned) as code, left(label, 50) as label from listdetail d inner join listheader h on h.listheaderid = d.listheadertodetail'
+      'where h.name = ''AssociationTypes'''
+    )
+    Params = <>
+    left = 168
+    top = 24
+  end
+  object SQLRelationLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'RelationId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select RelationId, Name from Relation where ModelRelation = :ModelId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 280
+    top = 24
+  end
+  object dsAssociationTypes: TDataSource
+    DataSet = SQLAssociationTypes
+    left = 168
+    top = 96
+  end
+  object dsRelationsLookup: TDataSource
+    DataSet = SQLRelationLookup
+    left = 280
+    top = 90
+  end
+  object dsAttributeTypes: TDataSource
+    DataSet = SQLAttributeTypes
+    left = 56
+    top = 96
+  end
+  object SQLGetAssociationsByOwner: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select distinct a.AssociationId, a.Owned, a.Owner, a.Type, a.Name,'
+      'rOwned.Name as OwnedName, rOwner.Name as OwnerName from Association a inner join'
+      'Relation rOwned on a.Owned = rOwned.RelationId'
+      'inner join Relation rOwner on a.Owner = rOwner.RelationId'
+      'where a.Owner = :RelationId and a.Type in (0, 1, 2)'
+      '/* eliminate self joins */'
+      'and a.Owned <> a.Owner'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RelationId'
+        ParamType = ptInput
+      end>
+    left = 432
+    top = 24
+  end
+  object SQLMasterProperties: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'masterpropertyid'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'defaultvalue'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'notes'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'categoryname'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'propertyTypeName'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'displaycontrol'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'propertyTypeNotes'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'groupName'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select m.masterpropertyid, m.name, m.defaultvalue, m.notes, ac.name as categoryname,'
+      'pt.name as propertyTypeName, pt.displaycontrol, pt.notes as propertyTypeNotes,  g.name as groupName'
+      'from masterproperty m'
+      'inner join masterpropertytocategory c on m.masterpropertyid = c.masterpropertyid'
+      'inner join mastercategory ac on c.mastercategoryid = ac.mastercategoryid'
+      'inner join propertytype pt on pt.propertytypeid = m.masterpropertytotype'
+      'inner join propertygroup g on g.propertygroupid = m.masterpropertytogroup'
+      'where ac.name = :category order by m.name'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'category'
+        ParamType = ptInput
+      end>
+    left = 568
+    top = 24
+  end
+  object SQLScreenFamilyPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'SCREENPROPERTYVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FAMILYTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CHILDTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CREATEDBY'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UPDATEDBY'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CREATEDON'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UPDATEDON'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    SQL.Strings = (
+      'SELECT SCREENPROPERTYVALUEID,'
+      '    SCREENPROPVALUETOPROPERTY,'
+      '    FAMILYTOSCREENPROPVALUE,'
+      '    CHILDTOSCREENPROPVALUE,'
+      '    PROPERTYVALUE,'
+      '    VERSION,'
+      '    CREATEDBY,'
+      '    UPDATEDBY,'
+      '    CREATEDON,'
+      '    UPDATEDON'
+      'FROM screenpropertyvalue'
+      'where FAMILYTOSCREENPROPVALUE = :ScreenfamilyId;'
+    )
+    UpdateSQL.Strings = (
+      'CALL pScreenPropertyValueUpdate (:SCREENPROPERTYVALUEID, :SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :UPDATEDBY)'
+    )
+    InsertSQL.Strings = (
+      'call pScreenPropertyValueInsert (:SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :CREATEDBY)'
+    )
+    DeleteSQL.Strings = (
+      'call pScreenPropertyValueDelete (:ScreenPropertyValueId)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenFamilyId'
+        ParamType = ptInput
+      end>
+    left = 720
+    top = 24
+    object SQLScreenFamilyPropertyValueSCREENPROPERTYVALUEID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPERTYVALUEID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyPropertyValueSCREENPROPVALUETOPROPERTY: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPVALUETOPROPERTY'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyPropertyValueFAMILYTOSCREENPROPVALUE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FAMILYTOSCREENPROPVALUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyPropertyValueCHILDTOSCREENPROPVALUE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CHILDTOSCREENPROPVALUE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyPropertyValuePROPERTYVALUE: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PROPERTYVALUE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLScreenFamilyPropertyValueVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenFamilyPropertyValueCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenFamilyPropertyValueUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenFamilyPropertyValueCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenFamilyPropertyValueUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLScreenChildPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'SCREENPROPERTYVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FAMILYTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CHILDTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CREATEDBY'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UPDATEDBY'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CREATEDON'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UPDATEDON'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    SQL.Strings = (
+      'SELECT SCREENPROPERTYVALUEID,'
+      '    SCREENPROPVALUETOPROPERTY,'
+      '    FAMILYTOSCREENPROPVALUE,'
+      '    CHILDTOSCREENPROPVALUE,'
+      '    PROPERTYVALUE,'
+      '    VERSION,'
+      '    CREATEDBY,'
+      '    UPDATEDBY,'
+      '    CREATEDON,'
+      '    UPDATEDON'
+      'FROM screenpropertyvalue'
+      'where CHILDTOSCREENPROPVALUE = :ScreenChildId;'
+    )
+    UpdateSQL.Strings = (
+      'CALL pScreenPropertyValueUpdate (:SCREENPROPERTYVALUEID, :SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :UPDATEDBY)'
+    )
+    InsertSQL.Strings = (
+      'call pScreenPropertyValueInsert (:SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :CREATEDBY)'
+    )
+    DeleteSQL.Strings = (
+      'call pScreenPropertyValueDelete (:ScreenPropertyValueId)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenChildId'
+        ParamType = ptInput
+      end>
+    left = 720
+    top = 112
+    object SQLScreenChildPropertyValueSCREENPROPERTYVALUEID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPERTYVALUEID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenChildPropertyValueSCREENPROPVALUETOPROPERTY: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPVALUETOPROPERTY'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenChildPropertyValueFAMILYTOSCREENPROPVALUE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FAMILYTOSCREENPROPVALUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenChildPropertyValueCHILDTOSCREENPROPVALUE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CHILDTOSCREENPROPVALUE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenChildPropertyValuePROPERTYVALUE: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PROPERTYVALUE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLScreenChildPropertyValueVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenChildPropertyValueCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenChildPropertyValueUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenChildPropertyValueCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenChildPropertyValueUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLScreenArtifactPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ARTIFACTPROPERTYVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ARTIFACTPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ARTIFACTTOPROPERTYVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CREATEDBY'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'UPDATEDBY'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'CREATEDON'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UPDATEDON'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    SQL.Strings = (
+      'select ARTIFACTPROPERTYVALUEID,'
+      'ARTIFACTPROPVALUETOPROPERTY,'
+      'ARTIFACTTOPROPERTYVALUE,'
+      'PROPERTYVALUE,'
+      'VERSION,'
+      'CREATEDBY,'
+      'UPDATEDBY,'
+      'CREATEDON,'
+      'UPDATEDON'
+      ' from artifactpropertyvalue'
+      'where ARTIFACTTOPROPERTYVALUE = :ScreenArtifactId'
+    )
+    UpdateSQL.Strings = (
+      'call pArtifactPropertyValueUpdate (:ARTIFACTPROPERTYVALUEID, :ARTIFACTPROPVALUETOPROPERTY, :ARTIFACTTOPROPERTYVALUE, :PROPERTYVALUE, :UPDATEDBY)'
+    )
+    InsertSQL.Strings = (
+      'call pArtifactPropertyValueInsert(:ARTIFACTPROPVALUETOPROPERTY, :ARTIFACTTOPROPERTYVALUE, :PROPERTYVALUE, :CREATEDBY)'
+    )
+    DeleteSQL.Strings = (
+      'call pArtifactPropertyValueDelete (:ArtifactPropertyValueId)'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenArtifactId'
+        ParamType = ptInput
+      end>
+    left = 720
+    top = 168
+    object SQLScreenArtifactPropertyValueARTIFACTPROPERTYVALUEID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ARTIFACTPROPERTYVALUEID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenArtifactPropertyValueARTIFACTPROPVALUETOPROPERTY: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ARTIFACTPROPVALUETOPROPERTY'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenArtifactPropertyValueARTIFACTTOPROPERTYVALUE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ARTIFACTTOPROPERTYVALUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenArtifactPropertyValuePROPERTYVALUE: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PROPERTYVALUE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLScreenArtifactPropertyValueVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenArtifactPropertyValueCREATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'CREATEDBY'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenArtifactPropertyValueUPDATEDBY: TStringField
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'UPDATEDBY'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLScreenArtifactPropertyValueCREATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'CREATEDON'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenArtifactPropertyValueUPDATEDON: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'UPDATEDON'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLMasterCategoryLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MasterCategoryId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'select MasterCategoryId, Name from MasterCategory order by Name'
+    )
+    Params = <>
+    left = 197
+    top = 183
+  end
+  object SQLPropertyTypeLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PROPERTYTYPEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'SELECT PROPERTYTYPEID, NAME FROM PROPERTYTYPE;'
+    )
+    Params = <>
+    left = 200
+    top = 256
+  end
+  object SQLPropertyGroupLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PROPERTYGROUPID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'select PROPERTYGROUPID, NAME FROM PROPERTYGROUP ORDER BY NAME;'
+    )
+    Params = <>
+    left = 200
+    top = 336
+  end
+  object SQLGetCategoryByMasterPropertyID: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    SQL.Strings = (
+      'select MASTERCATEGORYID from masterpropertytocategory where MASTERPROPERTYID = :MASTERPROPERTYID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MASTERPROPERTYID'
+        ParamType = ptInput
+      end>
+    left = 312
+    top = 424
+  end
+  object dsMasterCategoryLookup: TDataSource
+    DataSet = SQLMasterCategoryLookup
+    left = 56
+    top = 183
+  end
+  object dsPropertyTypeLookup: TDataSource
+    DataSet = SQLPropertyTypeLookup
+    left = 56
+    top = 256
+  end
+  object dsPropertyGroupLookup: TDataSource
+    DataSet = SQLPropertyGroupLookup
+    left = 64
+    top = 336
+  end
+  object dsGetMasterCategoryByMasterPropertyID: TDataSource
+    DataSet = SQLGetCategoryByMasterPropertyID
+    left = 64
+    top = 424
+  end
+  object SQLModelLookup: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select ModelId, Name from Model order by Name;'
+    )
+    Params = <>
+    left = 720
+    top = 224
+  end
+  object SQLBuildByModelLookup: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select BuildId, Name from Build where ModelToBuild = :ModelID order by name;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelID'
+        ParamType = ptInput
+      end>
+    left = 720
+    top = 288
+  end
+  object SQLBuildScriptLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BuildScriptID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = FirebirdDataModule.SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'select BuildScriptID, Name from BuildScript order by Name;'
+    )
+    Params = <>
+    left = 432
+    top = 96
+  end
+  object dsBuildScriptLookup: TDataSource
+    AutoEdit = False
+    DataSet = SQLBuildScriptLookup
+    Enabled = False
+    left = 432
+    top = 160
+  end
+  object SQLListHeaderLookup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ListHeaderID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select ListHeaderID, Name from ListHeader'
+      'order by Name;'
+    )
+    Params = <>
+    left = 376
+    top = 264
+    object SQLListHeaderLookupListHeaderID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ListHeaderID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLListHeaderLookupName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+  end
+  object SQLListDetailLookup: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select ListDetailID, Code, Label'
+      'FROM ListDetail'
+      'where ListHeaderToDetail = :ListHeaderID'
+      'order by Label;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ListHeaderID'
+        ParamType = ptInput
+      end>
+    left = 488
+    top = 264
+  end
+  object dsListDetailLookup: TDataSource
+    DataSet = SQLListDetailLookup
+    left = 488
+    top = 320
+  end
+  object dsListHeaderLookup: TDataSource
+    AutoEdit = False
+    DataSet = SQLListHeaderLookup
+    left = 376
+    top = 320
+  end
+  object SQLListDetailByID: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select D.ListDetailID, D.Code, D.Label, D.ListHeaderToDetail,'
+      'H.Name'
+      'FROM ListDetail D'
+      'INNER JOIN ListHeader H'
+      'ON D.ListHeaderToDetail = H.ListHeaderID'
+      'WHERE D.ListDetailID = :ListDetailID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ListDetailID'
+        ParamType = ptInput
+      end>
+    left = 608
+    top = 264
+  end
+  object SQLGetImportSystemCode: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select V.TargetValue from MappingValue V'
+      'INNER JOIN Mapping M on V.MappingToValue = M.MappingID'
+      'WHERE M.SystemCode = ''DBENUMSYSCODE''  AND SourceValue = :SourceValue;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'SourceValue'
+        ParamType = ptInput
+      end>
+    left = 720
+    top = 352
+  end
+  object SQLGetMappingValueBySystemCode: TSQLQuery
+    FieldDefs = <>
+    Database = MySQLDataModule.Connection
+    Transaction = MySQLDataModule.Transaction
+    ReadOnly = True
+    SQL.Strings = (
+      'select'
+      'V.MapValueTargetLookup,'
+      'V.MapValueSourceLookup,'
+      'V.SourceValue,'
+      'V.TargetValue,'
+      'DS.Code as SourceLookupCode,'
+      'DS.Label as SourceLookupLabel,'
+      'DT.Code as TargetLookupCode,'
+      'DT.Label as TargetLookupLabel'
+      'from'
+      'MappingValue V'
+      'INNER JOIN Mapping M'
+      'ON M.MappingID = V.MappingToValue'
+      'LEFT JOIN ListDetail DS'
+      'ON DS.ListDetailID = V.MapValueSourceLookup'
+      'LEFT JOIN ListDetail DT'
+      'ON DT.ListDetailID = V.MapValueTargetLookup'
+      'WHERE M.SystemCode = :SystemCode;'
+      ''
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'SystemCode'
+        ParamType = ptInput
+      end>
+    left = 720
+    top = 412
+  end
+end

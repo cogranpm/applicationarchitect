@@ -1,0 +1,81 @@
+object SettingsDB: TSettingsDB
+  OldCreateOrder = False
+  Height = 367
+  HorizontalOffset = 590
+  VerticalOffset = 138
+  Width = 469
+  object Connection: TIBConnection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = Transaction
+    UserName = 'SYSDBA'
+    LogEvents = []
+    left = 48
+    top = 16
+  end
+  object Transaction: TSQLTransaction
+    Active = False
+    Database = Connection
+    left = 136
+    top = 16
+  end
+  object SQLCreateSchema: TSQLScript
+    DataBase = Connection
+    Transaction = Transaction
+    Directives.Strings = (
+      'SET TERM'
+      'COMMIT'
+      '#IFDEF'
+      '#IFNDEF'
+      '#ELSE'
+      '#ENDIF'
+      '#DEFINE'
+      '#UNDEF'
+      '#UNDEFINE'
+    )
+    Script.Strings = (
+      ''
+      'CREATE TABLE "CONNECTION"'
+      '('
+      '"CONNECTIONID" BIGINT NOT NULL,'
+      '"NAME" VARCHAR(255)  NOT NULL,'
+      '"HOSTNAME" VARCHAR(256) NULL,'
+      '"DATABASENAME" VARCHAR(256) NOT NULL,'
+      '"DATABASETYPE" INTEGER NOT NULL,'
+      '"ISSYSTEM" INTEGER NOT NULL,'
+      '"DATECREATED" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,'
+      '"DATELASTCONNECTED" TIMESTAMP NULL,'
+      'VERSION TIMESTAMP,'
+      'CONSTRAINT CONNECTION_PK PRIMARY KEY (CONNECTIONID)'
+      ');'
+      'COMMIT;'
+      ''
+      'CREATE GENERATOR GEN_CONNECTION;'
+      'COMMIT;'
+      ''
+      'CREATE TABLE "VERSION"'
+      '('
+      '"VERSIONID" BIGINT NOT NULL,'
+      '"MAJOR" INTEGER  NOT NULL,'
+      '"MINOR" INTEGER  NOT NULL,'
+      '"RELEASE" INTEGER  NOT NULL,'
+      'CONSTRAINT VERSION_PK PRIMARY KEY (VERSIONID)'
+      ');'
+      'COMMIT;'
+      ''
+      'CREATE GENERATOR GEN_VERSION;'
+      'COMMIT;'
+      ''
+      ''
+    )
+    Terminator = ';'
+    CommentsinSQL = True
+    UseSetTerm = False
+    UseCommit = False
+    UseDefines = False
+    left = 48
+    top = 88
+  end
+end

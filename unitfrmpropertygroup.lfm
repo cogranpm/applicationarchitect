@@ -1,0 +1,60 @@
+object frmPropertyGroup: TfrmPropertyGroup
+  Left = 0
+  Height = 451
+  Top = 0
+  Width = 654
+  ClientHeight = 451
+  ClientWidth = 654
+  TabOrder = 0
+  DesignLeft = 433
+  DesignTop = 134
+  object Panel1: TPanel
+    Left = 0
+    Height = 24
+    Top = 0
+    Width = 654
+    Align = alTop
+    ClientHeight = 24
+    ClientWidth = 654
+    TabOrder = 0
+    object DBNavigator1: TDBNavigator
+      Left = 0
+      Height = 25
+      Top = 0
+      Width = 241
+      BevelOuter = bvNone
+      ChildSizing.EnlargeHorizontal = crsScaleChilds
+      ChildSizing.EnlargeVertical = crsScaleChilds
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 100
+      ClientHeight = 25
+      ClientWidth = 241
+      DataSource = FirebirdQueryModule.dsPropertyGroup
+      Options = []
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 427
+    Top = 24
+    Width = 654
+    Align = alClient
+    ClientHeight = 427
+    ClientWidth = 654
+    TabOrder = 1
+    object DBGrid1: TDBGrid
+      Left = 1
+      Height = 425
+      Top = 1
+      Width = 652
+      Align = alClient
+      Color = clWindow
+      Columns = <>
+      DataSource = FirebirdQueryModule.dsPropertyGroup
+      TabOrder = 0
+    end
+  end
+end

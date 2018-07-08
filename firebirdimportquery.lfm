@@ -1,0 +1,184 @@
+object FirebirdImportQuery: TFirebirdImportQuery
+  OldCreateOrder = False
+  Height = 381
+  HorizontalOffset = 1127
+  VerticalOffset = 287
+  Width = 462
+  object SQLConnection: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ConnectionId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ServerName'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'Port'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'UserName'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'Password'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'DateOfLastConnection'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'DatabaseName'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'DatabaseType'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ConnectionType'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLConnectionAfterDelete
+    AfterInsert = SQLConnectionAfterInsert
+    AfterPost = SQLConnectionAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ConnectionId,  ServerName,  Port,  UserName,  Password,  DateOfLastConnection,  DatabaseName,  DatabaseType,  ConnectionType  from Connection   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Connection SET  ServerName = :ServerName  ,Port = :Port  ,UserName = :UserName  ,Password = :Password  ,DateOfLastConnection = :DateOfLastConnection  ,DatabaseName = :DatabaseName  ,DatabaseType = :DatabaseType  ,ConnectionType = :ConnectionType   '
+      'WHERE Connection.ConnectionId = :ConnectionId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Connection (  ConnectionId,  ServerName,  Port,  UserName,  Password,  DateOfLastConnection,  DatabaseName,  DatabaseType,  ConnectionType  )'
+      'VALUES (  :ConnectionId,  :ServerName,  :Port,  :UserName,  :Password,  :DateOfLastConnection,  :DatabaseName,  :DatabaseType,  :ConnectionType );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Connection WHERE Connection.ConnectionId = :ConnectionId;'
+    )
+    Params = <>
+    left = 48
+    top = 8
+    object SQLConnectionConnectionId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ConnectionId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLConnectionServerName: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'ServerName'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLConnectionPort: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Port'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLConnectionUserName: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'UserName'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLConnectionPassword: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'Password'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLConnectionDateOfLastConnection: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DateOfLastConnection'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLConnectionDatabaseName: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'DatabaseName'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLConnectionDatabaseType: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DatabaseType'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLConnectionConnectionType: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ConnectionType'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dsConnection: TDataSource
+    AutoEdit = False
+    DataSet = SQLConnection
+    Enabled = False
+    left = 48
+    top = 72
+  end
+end

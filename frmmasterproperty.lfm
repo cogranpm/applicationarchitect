@@ -1,0 +1,241 @@
+object frmMasterProperty: TfrmMasterProperty
+  Left = 0
+  Height = 693
+  Top = 0
+  Width = 991
+  ClientHeight = 693
+  ClientWidth = 991
+  TabOrder = 0
+  DesignLeft = 712
+  DesignTop = 196
+  object pnlMain: TPanel
+    Left = 0
+    Height = 693
+    Top = 0
+    Width = 991
+    Align = alClient
+    ClientHeight = 693
+    ClientWidth = 991
+    TabOrder = 0
+    object pnlTop: TPanel
+      Left = 1
+      Height = 250
+      Top = 1
+      Width = 989
+      Align = alTop
+      Caption = 'pnlTop'
+      ClientHeight = 250
+      ClientWidth = 989
+      TabOrder = 0
+      object dbNavMasterProperty: TDBNavigator
+        Left = -1
+        Height = 25
+        Top = -1
+        Width = 241
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 25
+        ClientWidth = 241
+        DataSource = FirebirdQueryModule.dsMasterProperty
+        Options = []
+        TabOrder = 0
+      end
+      object dbgMasterProperty: TDBGrid
+        Left = 1
+        Height = 225
+        Top = 24
+        Width = 987
+        Align = alBottom
+        Color = clWindow
+        Columns = <>
+        DataSource = FirebirdQueryModule.dsMasterProperty
+        TabOrder = 1
+      end
+    end
+    object pnlBottom: TPanel
+      Left = 1
+      Height = 441
+      Top = 251
+      Width = 989
+      Align = alClient
+      ClientHeight = 441
+      ClientWidth = 989
+      TabOrder = 1
+      OnClick = pnlBottomClick
+      object lblName: TLabel
+        Left = 37
+        Height = 15
+        Top = 27
+        Width = 37
+        Caption = 'Name*'
+        ParentColor = False
+      end
+      object lblDefaultValue: TLabel
+        Left = 37
+        Height = 15
+        Top = 61
+        Width = 70
+        Caption = 'Default Value'
+        ParentColor = False
+      end
+      object lblNotes: TLabel
+        Left = 37
+        Height = 15
+        Top = 96
+        Width = 31
+        Caption = 'Notes'
+        ParentColor = False
+      end
+      object txtNotes: TDBMemo
+        Left = 136
+        Height = 90
+        Top = 96
+        Width = 306
+        DataField = 'NOTES'
+        DataSource = FirebirdQueryModule.dsMasterProperty
+        TabOrder = 2
+      end
+      object txtDefaultValue: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 61
+        Width = 306
+        DataField = 'DEFAULTVALUE'
+        DataSource = FirebirdQueryModule.dsMasterProperty
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object txtName: TDBEdit
+        Left = 136
+        Height = 23
+        Top = 27
+        Width = 306
+        DataField = 'NAME'
+        DataSource = FirebirdQueryModule.dsMasterProperty
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object cboGroupLookup: TDBLookupComboBox
+        Left = 136
+        Height = 23
+        Top = 200
+        Width = 100
+        DataField = 'MASTERPROPERTYTOGROUP'
+        DataSource = FirebirdQueryModule.dsMasterProperty
+        KeyField = 'PROPERTYGROUPID'
+        ListField = 'NAME'
+        ListFieldIndex = 0
+        ListSource = dsGroupLookup
+        LookupCache = False
+        TabOrder = 3
+      end
+      object lblGroup: TLabel
+        Left = 40
+        Height = 15
+        Top = 200
+        Width = 38
+        Caption = 'Group*'
+        ParentColor = False
+      end
+      object cboPropertyTypeLookup: TDBLookupComboBox
+        Left = 136
+        Height = 23
+        Top = 240
+        Width = 100
+        DataField = 'MASTERPROPERTYTOTYPE'
+        DataSource = FirebirdQueryModule.dsMasterProperty
+        KeyField = 'PROPERTYTYPEID'
+        ListField = 'NAME'
+        ListFieldIndex = 0
+        ListSource = dsTypeLookup
+        LookupCache = False
+        TabOrder = 4
+      end
+      object lblType: TLabel
+        Left = 37
+        Height = 15
+        Top = 240
+        Width = 31
+        Caption = 'Type*'
+        ParentColor = False
+      end
+      object GroupBox1: TGroupBox
+        Left = 248
+        Height = 128
+        Top = 192
+        Width = 201
+        Caption = 'Categories'
+        ClientHeight = 108
+        ClientWidth = 197
+        TabOrder = 5
+        object chkCategoriesList: TCheckListBox
+          Left = 8
+          Height = 96
+          Top = 8
+          Width = 184
+          ItemHeight = 0
+          OnClickCheck = chkCategoriesListClickCheck
+          TabOrder = 0
+        end
+      end
+      object grpValueList: TGroupBox
+        Left = 456
+        Height = 288
+        Top = 16
+        Width = 520
+        Caption = 'Value List'
+        ClientHeight = 268
+        ClientWidth = 516
+        TabOrder = 6
+        OnClick = grpValueListClick
+        object dbGridMasterPropertyValueList: TDBGrid
+          Left = 16
+          Height = 224
+          Top = 32
+          Width = 480
+          Color = clWindow
+          Columns = <>
+          DataSource = FirebirdQueryModule.dsMasterPropertyValueList
+          TabOrder = 0
+        end
+        object dbNavMasterPropertyValueList: TDBNavigator
+          Left = 16
+          Height = 25
+          Top = 8
+          Width = 241
+          BevelOuter = bvNone
+          ChildSizing.EnlargeHorizontal = crsScaleChilds
+          ChildSizing.EnlargeVertical = crsScaleChilds
+          ChildSizing.ShrinkHorizontal = crsScaleChilds
+          ChildSizing.ShrinkVertical = crsScaleChilds
+          ChildSizing.Layout = cclLeftToRightThenTopToBottom
+          ChildSizing.ControlsPerLine = 100
+          ClientHeight = 25
+          ClientWidth = 241
+          DataSource = FirebirdQueryModule.dsMasterPropertyValueList
+          Options = []
+          TabOrder = 1
+        end
+      end
+    end
+  end
+  object dsGroupLookup: TDataSource
+    left = 176
+    top = 592
+  end
+  object dsTypeLookup: TDataSource
+    left = 293
+    top = 592
+  end
+  object dsMasterCategoryLookup: TDataSource
+    left = 424
+    top = 592
+  end
+end

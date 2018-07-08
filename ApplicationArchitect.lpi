@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="ApplicationArchitect"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <Icon Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <StringTable ProductVersion=""/>
+    </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="6">
+      <Item1>
+        <PackageName Value="PascalScriptLCL"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="SynEdit"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="PascalScriptFCL"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="FCL"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="SQLDBLaz"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="LCL"/>
+      </Item6>
+    </RequiredPackages>
+    <Units Count="47">
+      <Unit0>
+        <Filename Value="ApplicationArchitect.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="frmmainunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FrmMainUnit"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="mainmoduleunit.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="appinterfacesunit.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="firebirddatamodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FirebirdDataModule"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="firebirdDataModule"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="firebirddataprovider.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FirebirdDataProvider"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="unitdatabasesettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDatabaseSettings"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitDatabaseSettings"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="navigationnodeunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NavigationNodeUnit"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="FirebirdQueryModule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FirebirdQueryModule"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="mysqldatamodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MySQLDataModule"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="MySQLDataModule"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="mysqlquerymodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MySQLQueryModule"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="MySQLQueryModule"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="mysqldataprovider.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MySQLDataProvider"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="SynMustache.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="SynCommons.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="SynLZ.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="entityformatterunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EntityFormatterUnit"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="buildcontrollerloadunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="BuildControllerLoadUnit"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="buildentitydtounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="BuildEntityDTOUnit"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="mysqlbuildquerymodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MySqlBuildQuery"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="MySqlBuildQueryModule"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="firebirdbuildquerymodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FirebirdBuildQuery"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="FirebirdBuildQueryModule"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="frmmodels.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmModels"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="frmModels"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="mysqllookupsquery.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MySqlLookups"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="firebirdlookupsquery.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FirebirdLookups"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="associationtree.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="AssociationTree"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="screenfamilyviewmodel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ScreenFamilyViewModel"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="unitfrmpropertytype.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPropertyType"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="unitFrmPropertyType"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="unitfrmlistheader.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmListHeader"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="unitfrmListHeader"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="unitfrmpropertygroup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPropertyGroup"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="unitFrmPropertyGroup"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="unitfrmmastercategory.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMasterCategory"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="unitFrmMasterCategory"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="frmmasterproperty.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMasterProperty"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="frmMasterProperty"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="masterpropertyviewmodel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MasterPropertyViewModel"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="frmscripting.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmScripting"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="frmScripting"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="buildhelper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="BuildHelper"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="jsonobjectwrapper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="jsonObjectWrapper"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="buildlookup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBuildLookup"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="BuildLookup"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="F:\Tools\PascalScript\pascalscript-lazarus\pascalscript-master\Source\PascalScriptLCL.lpk"/>
+        <IsPartOfProject Value="True"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="masterpropertyhelper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MasterPropertyHelper"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="settingsdbmodule.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SettingsDB"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="SettingsDBModule"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="dmmysqlimport.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dmMYSQLImport"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="dmMySQLImport"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="mysqlimportprovider.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="MYSQLImportProvider"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="frmmodelimporter.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmModelImporter"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmModelImporter"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="mysqlimportquery.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MYSQLImportQuery"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="firebirdimportquery.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FirebirdImportQuery"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="FirebirdImportQuery"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="framappings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fraMappings"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="fraMappings"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="frmlookupdetaillookup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmLookupDetailLookup"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="frmLookupDetailLookup"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="framelookupdetaillookup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fraLookupDetailLookup"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="FrameLookupDetailLookup"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="commondataprovider.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CommonDataProvider"/>
+      </Unit46>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="ApplicationArchitect"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

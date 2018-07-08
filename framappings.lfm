@@ -1,0 +1,647 @@
+object fraMappings: TfraMappings
+  Left = 0
+  Height = 679
+  Top = 0
+  Width = 969
+  ClientHeight = 679
+  ClientWidth = 969
+  TabOrder = 0
+  DesignLeft = 360
+  DesignTop = 108
+  object pnlMapping: TPanel
+    Left = 0
+    Height = 679
+    Top = 0
+    Width = 969
+    Align = alClient
+    ClientHeight = 679
+    ClientWidth = 969
+    TabOrder = 0
+    object pnlList: TPanel
+      Left = 1
+      Height = 526
+      Top = 152
+      Width = 368
+      Align = alLeft
+      Caption = 'pnlList'
+      ClientHeight = 526
+      ClientWidth = 368
+      TabOrder = 0
+      object pnlMappingGrid: TPanel
+        Left = 1
+        Height = 524
+        Top = 1
+        Width = 366
+        Align = alClient
+        ClientHeight = 524
+        ClientWidth = 366
+        TabOrder = 0
+        object dbGridMapping: TDBGrid
+          Left = 1
+          Height = 522
+          Top = 1
+          Width = 364
+          Align = alClient
+          Color = clWindow
+          Columns = <>
+          TabOrder = 0
+        end
+      end
+    end
+    object pnlMappingMain: TPanel
+      Left = 1
+      Height = 151
+      Top = 1
+      Width = 967
+      Align = alTop
+      ClientHeight = 151
+      ClientWidth = 967
+      TabOrder = 1
+      object Label1: TLabel
+        Left = 32
+        Height = 13
+        Top = 72
+        Width = 24
+        Caption = 'From'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 32
+        Height = 13
+        Top = 96
+        Width = 12
+        Caption = 'To'
+        ParentColor = False
+      end
+      object Label3: TLabel
+        Left = 416
+        Height = 13
+        Top = 48
+        Width = 28
+        Caption = 'Notes'
+        ParentColor = False
+      end
+      object dbMemoNotes: TDBMemo
+        Left = 456
+        Height = 80
+        Top = 48
+        Width = 488
+        DataField = 'Notes'
+        DataSource = FirebirdQueryModule.dsMapping
+        TabOrder = 0
+      end
+      object dbEditToDescription: TDBEdit
+        Left = 104
+        Height = 21
+        Top = 96
+        Width = 263
+        DataField = 'ToDescription'
+        DataSource = FirebirdQueryModule.dsMapping
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object dbEditFromDescription: TDBEdit
+        Left = 104
+        Height = 21
+        Top = 72
+        Width = 263
+        DataField = 'FromDescription'
+        DataSource = FirebirdQueryModule.dsMapping
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 2
+      end
+      object dbNavMapping: TDBNavigator
+        Left = 1
+        Height = 25
+        Top = 32
+        Width = 251
+        BevelOuter = bvNone
+        ChildSizing.EnlargeHorizontal = crsScaleChilds
+        ChildSizing.EnlargeVertical = crsScaleChilds
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 100
+        ClientHeight = 25
+        ClientWidth = 251
+        Options = []
+        TabOrder = 3
+      end
+      object pnlMappingHeader: TPanel
+        Left = 1
+        Height = 31
+        Top = 1
+        Width = 965
+        Align = alTop
+        ClientHeight = 31
+        ClientWidth = 965
+        TabOrder = 4
+        object Label4: TLabel
+          Left = 8
+          Height = 13
+          Top = 8
+          Width = 48
+          Caption = 'Mapping'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object Label10: TLabel
+        Left = 32
+        Height = 13
+        Top = 120
+        Width = 63
+        Caption = 'System Code'
+        ParentColor = False
+      end
+      object dbEditSystemCode: TDBEdit
+        Left = 104
+        Height = 21
+        Top = 120
+        Width = 264
+        DataField = 'SYSTEMCODE'
+        DataSource = FirebirdQueryModule.dsMapping
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 5
+      end
+    end
+    object pnlMappingValue: TPanel
+      Left = 369
+      Height = 526
+      Top = 152
+      Width = 599
+      Align = alClient
+      ClientHeight = 526
+      ClientWidth = 599
+      TabOrder = 2
+      OnClick = pnlMappingValueClick
+      object pnlValueHeader: TPanel
+        Left = 1
+        Height = 31
+        Top = 1
+        Width = 597
+        Align = alTop
+        ClientHeight = 31
+        ClientWidth = 597
+        TabOrder = 0
+        object Label5: TLabel
+          Left = 16
+          Height = 13
+          Top = 8
+          Width = 37
+          Caption = 'Values'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object pnlValueMain: TPanel
+        Left = 1
+        Height = 493
+        Top = 32
+        Width = 597
+        Align = alClient
+        Caption = 'pnlValueMain'
+        ClientHeight = 493
+        ClientWidth = 597
+        TabOrder = 1
+        object pnlValueList: TPanel
+          Left = 1
+          Height = 491
+          Top = 1
+          Width = 595
+          Align = alClient
+          Caption = 'pnlValueList'
+          ClientHeight = 491
+          ClientWidth = 595
+          TabOrder = 0
+          object pnlValueEdit: TPanel
+            Left = 1
+            Height = 223
+            Top = 1
+            Width = 593
+            Align = alTop
+            ClientHeight = 223
+            ClientWidth = 593
+            TabOrder = 0
+            object dbNavMappingValue: TDBNavigator
+              Left = 0
+              Height = 25
+              Top = 0
+              Width = 241
+              BevelOuter = bvNone
+              ChildSizing.EnlargeHorizontal = crsScaleChilds
+              ChildSizing.EnlargeVertical = crsScaleChilds
+              ChildSizing.ShrinkHorizontal = crsScaleChilds
+              ChildSizing.ShrinkVertical = crsScaleChilds
+              ChildSizing.Layout = cclLeftToRightThenTopToBottom
+              ChildSizing.ControlsPerLine = 100
+              ClientHeight = 25
+              ClientWidth = 241
+              DataSource = FirebirdQueryModule.dsMappingValue
+              Options = []
+              TabOrder = 0
+            end
+            object grpSource: TGroupBox
+              Left = 16
+              Height = 176
+              Top = 32
+              Width = 248
+              Caption = 'Map From Value'
+              ClientHeight = 158
+              ClientWidth = 244
+              TabOrder = 1
+              object Label6: TLabel
+                Left = 8
+                Height = 13
+                Top = 8
+                Width = 26
+                Caption = 'Value'
+                ParentColor = False
+              end
+              object dbEditSourceValue: TDBEdit
+                Left = 48
+                Height = 21
+                Top = 8
+                Width = 152
+                DataField = 'SourceValue'
+                DataSource = FirebirdQueryModule.dsMappingValue
+                CharCase = ecNormal
+                MaxLength = 0
+                TabOrder = 0
+              end
+              object Label11: TLabel
+                Left = 8
+                Height = 13
+                Top = 32
+                Width = 15
+                Caption = 'OR'
+                ParentColor = False
+              end
+              object grpSourceLookup: TGroupBox
+                Left = 8
+                Height = 97
+                Top = 48
+                Width = 217
+                Caption = 'List Value'
+                ClientHeight = 79
+                ClientWidth = 213
+                TabOrder = 1
+                object txtLookupSourceName: TEdit
+                  Left = 48
+                  Height = 19
+                  Top = 8
+                  Width = 104
+                  Color = clBtnFace
+                  Font.Height = -9
+                  ParentFont = False
+                  ReadOnly = True
+                  TabOrder = 0
+                  Text = 'txtLookupSourceName'
+                end
+                object Label14: TLabel
+                  Left = 16
+                  Height = 13
+                  Top = 8
+                  Width = 20
+                  Caption = 'List:'
+                  ParentColor = False
+                end
+                object btnSourceLookup: TBitBtn
+                  Left = 160
+                  Height = 22
+                  Top = 8
+                  Width = 24
+                  Glyph.Data = {
+                    36040000424D3604000000000000360000002800000010000000100000000100
+                    2000000000000004000064000000640000000000000000000000000000000000
+                    000000000000F4F4F430F4F4F430000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000F4F4F430F6F6F6EFF6F6F6EFF4F4F4300000000000000000000000000000
+                    000000000000000000000000000000000000000000000000000000000000F4F4
+                    F430E7E7E7EF646464FF868686FFF6F6F6EFF4F4F43000000000000000000000
+                    0000000000000000000000000000000000000000000000000000F4F4F430F6F6
+                    F6EF646464FF424242FF424242FF868686FFF6F6F6EFF4F4F430000000000000
+                    0000000000000000000000000000000000000000000000000000F4F4F430F6F6
+                    F6EF646464FF424242FF424242FF424242FF868686FFF6F6F6EFF4F4F4300000
+                    000000000000000000000000000000000000000000000000000000000000F4F4
+                    F430E7E7E7EF646464FF424242FF424242FF424242FF868686FFF6F6F6FFF6F6
+                    F6FFF6F6F6FFF6F6F6FFF6F6F6CFF5F5F5500000000000000000000000000000
+                    0000F4F4F430E7E7E7EF646464FF424242FF424242FF424242FF646464FF4242
+                    42FF424242FF424242FF7A7A7AFFE0E0E0FFF5F5F58000000000000000000000
+                    000000000000F4F4F430E7E7E7EF646464FF424242FF424242FF424242FF4242
+                    42FF424242FF424242FF424242FF4D4D4DFFE0E0E0FFF5F5F550000000000000
+                    00000000000000000000F4F4F430EBEBEBFF595959FF424242FF797878FFE6E4
+                    E5FFF1EFF0FFE6E4E5FF6E6D6EFF424242FF7A7A7AFFF6F6F6CF000000000000
+                    0000000000000000000000000000F6F6F6FF424242FF424242FFE6E4E5FFF1EF
+                    F0FFF1EFF0FFF1EFF0FFE6E4E5FF424242FF424242FFF6F6F6FF000000000000
+                    0000000000000000000000000000F6F6F6FF424242FF424242FFF1EFF0FFF1EF
+                    F0FFF1EFF0FFF1EFF0FFF1EFF0FF424242FF424242FFF6F6F6FF000000000000
+                    0000000000000000000000000000F6F6F6FF424242FF424242FFE6E4E5FFF1EF
+                    F0FFF1EFF0FFF1EFF0FFE6E4E5FF424242FF424242FFF6F6F6FF000000000000
+                    0000000000000000000000000000F6F6F6CF7A7A7AFF424242FF797878FFE6E4
+                    E5FFF1EFF0FFE6E4E5FF6E6D6EFF424242FF7A7A7AFFF6F6F6CF000000000000
+                    0000000000000000000000000000F5F5F550E0E0E0FF4D4D4DFF424242FF4242
+                    42FF424242FF424242FF424242FF4D4D4DFFE0E0E0FFF5F5F550000000000000
+                    000000000000000000000000000000000000F5F5F580E0E0E0FF7A7A7AFF4242
+                    42FF424242FF424242FF7A7A7AFFE0E0E0FFF5F5F58000000000000000000000
+                    00000000000000000000000000000000000000000000F5F5F550F6F6F6CFF6F6
+                    F6FFF6F6F6FFF6F6F6FFF6F6F6CFF5F5F5500000000000000000
+                  }
+                  OnClick = btnSourceLookupClick
+                  TabOrder = 1
+                end
+                object lblLookupSourceCodeCaption: TLabel
+                  Left = 16
+                  Height = 13
+                  Top = 32
+                  Width = 29
+                  Caption = 'Code:'
+                  ParentColor = False
+                end
+                object Label13: TLabel
+                  Left = 16
+                  Height = 13
+                  Top = 56
+                  Width = 29
+                  Caption = 'Label:'
+                  ParentColor = False
+                end
+                object txtLookupSourceCode: TEdit
+                  Left = 48
+                  Height = 19
+                  Top = 32
+                  Width = 104
+                  Color = clBtnFace
+                  Font.Height = -9
+                  ParentFont = False
+                  ReadOnly = True
+                  TabOrder = 2
+                  Text = 'txtLookupSourceCode'
+                end
+                object txtLookupSourceLabel: TEdit
+                  Left = 48
+                  Height = 19
+                  Top = 56
+                  Width = 104
+                  Color = clBtnFace
+                  Font.Height = -9
+                  ParentFont = False
+                  ReadOnly = True
+                  TabOrder = 3
+                  Text = 'txtLookupSourceLabel'
+                end
+              end
+            end
+            object dbEditSourceLookup: TDBEdit
+              Left = 264
+              Height = 21
+              Top = 4
+              Width = 56
+              DataField = 'MapValueSourceLookup'
+              DataSource = FirebirdQueryModule.dsMappingValue
+              CharCase = ecNormal
+              MaxLength = 0
+              TabOrder = 2
+              Visible = False
+            end
+            object grpTargetValue: TGroupBox
+              Left = 272
+              Height = 176
+              Top = 32
+              Width = 256
+              Caption = 'Map To Value'
+              ClientHeight = 158
+              ClientWidth = 252
+              TabOrder = 3
+              object Label7: TLabel
+                Left = 8
+                Height = 13
+                Top = 8
+                Width = 26
+                Caption = 'Value'
+                ParentColor = False
+              end
+              object dbEditTargetValue: TDBEdit
+                Left = 56
+                Height = 21
+                Top = 8
+                Width = 176
+                DataField = 'TargetValue'
+                DataSource = FirebirdQueryModule.dsMappingValue
+                CharCase = ecNormal
+                MaxLength = 0
+                TabOrder = 0
+              end
+              object Label12: TLabel
+                Left = 8
+                Height = 13
+                Top = 32
+                Width = 15
+                Caption = 'OR'
+                ParentColor = False
+              end
+              object grpTargetLookup: TGroupBox
+                Left = 8
+                Height = 104
+                Top = 48
+                Width = 241
+                Caption = 'List Value'
+                ClientHeight = 86
+                ClientWidth = 237
+                TabOrder = 1
+                object Label15: TLabel
+                  Left = 16
+                  Height = 13
+                  Top = 11
+                  Width = 20
+                  Caption = 'List:'
+                  ParentColor = False
+                end
+                object txtLookupTargetName: TEdit
+                  Left = 48
+                  Height = 19
+                  Top = 11
+                  Width = 104
+                  Color = clBtnFace
+                  Font.Height = -9
+                  ParentFont = False
+                  ReadOnly = True
+                  TabOrder = 0
+                  Text = 'txtLookupTargetName'
+                end
+                object lblLookupSourceCodeCaption1: TLabel
+                  Left = 16
+                  Height = 13
+                  Top = 35
+                  Width = 29
+                  Caption = 'Code:'
+                  ParentColor = False
+                end
+                object txtLookupTargetCode: TEdit
+                  Left = 48
+                  Height = 19
+                  Top = 35
+                  Width = 104
+                  Color = clBtnFace
+                  Font.Height = -9
+                  ParentFont = False
+                  ReadOnly = True
+                  TabOrder = 1
+                  Text = 'txtLookupTargetCode'
+                end
+                object Label16: TLabel
+                  Left = 16
+                  Height = 13
+                  Top = 59
+                  Width = 29
+                  Caption = 'Label:'
+                  ParentColor = False
+                end
+                object txtLookupTargetLabel: TEdit
+                  Left = 48
+                  Height = 19
+                  Top = 55
+                  Width = 104
+                  Color = clBtnFace
+                  Font.Height = -9
+                  ParentFont = False
+                  ReadOnly = True
+                  TabOrder = 2
+                  Text = 'txtLookupTargetLabel'
+                end
+                object btnTargetLookup: TBitBtn
+                  Left = 160
+                  Height = 22
+                  Top = 11
+                  Width = 24
+                  Glyph.Data = {
+                    36040000424D3604000000000000360000002800000010000000100000000100
+                    2000000000000004000064000000640000000000000000000000000000000000
+                    000000000000F4F4F430F4F4F430000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000F4F4F430F6F6F6EFF6F6F6EFF4F4F4300000000000000000000000000000
+                    000000000000000000000000000000000000000000000000000000000000F4F4
+                    F430E7E7E7EF646464FF868686FFF6F6F6EFF4F4F43000000000000000000000
+                    0000000000000000000000000000000000000000000000000000F4F4F430F6F6
+                    F6EF646464FF424242FF424242FF868686FFF6F6F6EFF4F4F430000000000000
+                    0000000000000000000000000000000000000000000000000000F4F4F430F6F6
+                    F6EF646464FF424242FF424242FF424242FF868686FFF6F6F6EFF4F4F4300000
+                    000000000000000000000000000000000000000000000000000000000000F4F4
+                    F430E7E7E7EF646464FF424242FF424242FF424242FF868686FFF6F6F6FFF6F6
+                    F6FFF6F6F6FFF6F6F6FFF6F6F6CFF5F5F5500000000000000000000000000000
+                    0000F4F4F430E7E7E7EF646464FF424242FF424242FF424242FF646464FF4242
+                    42FF424242FF424242FF7A7A7AFFE0E0E0FFF5F5F58000000000000000000000
+                    000000000000F4F4F430E7E7E7EF646464FF424242FF424242FF424242FF4242
+                    42FF424242FF424242FF424242FF4D4D4DFFE0E0E0FFF5F5F550000000000000
+                    00000000000000000000F4F4F430EBEBEBFF595959FF424242FF797878FFE6E4
+                    E5FFF1EFF0FFE6E4E5FF6E6D6EFF424242FF7A7A7AFFF6F6F6CF000000000000
+                    0000000000000000000000000000F6F6F6FF424242FF424242FFE6E4E5FFF1EF
+                    F0FFF1EFF0FFF1EFF0FFE6E4E5FF424242FF424242FFF6F6F6FF000000000000
+                    0000000000000000000000000000F6F6F6FF424242FF424242FFF1EFF0FFF1EF
+                    F0FFF1EFF0FFF1EFF0FFF1EFF0FF424242FF424242FFF6F6F6FF000000000000
+                    0000000000000000000000000000F6F6F6FF424242FF424242FFE6E4E5FFF1EF
+                    F0FFF1EFF0FFF1EFF0FFE6E4E5FF424242FF424242FFF6F6F6FF000000000000
+                    0000000000000000000000000000F6F6F6CF7A7A7AFF424242FF797878FFE6E4
+                    E5FFF1EFF0FFE6E4E5FF6E6D6EFF424242FF7A7A7AFFF6F6F6CF000000000000
+                    0000000000000000000000000000F5F5F550E0E0E0FF4D4D4DFF424242FF4242
+                    42FF424242FF424242FF424242FF4D4D4DFFE0E0E0FFF5F5F550000000000000
+                    000000000000000000000000000000000000F5F5F580E0E0E0FF7A7A7AFF4242
+                    42FF424242FF424242FF7A7A7AFFE0E0E0FFF5F5F58000000000000000000000
+                    00000000000000000000000000000000000000000000F5F5F550F6F6F6CFF6F6
+                    F6FFF6F6F6FFF6F6F6FFF6F6F6CFF5F5F5500000000000000000
+                  }
+                  OnClick = btnTargetLookupClick
+                  TabOrder = 3
+                end
+              end
+            end
+            object dbEditTargetLookup: TDBEdit
+              Left = 336
+              Height = 21
+              Top = 4
+              Width = 80
+              DataField = 'MapValueTargetLookup'
+              DataSource = FirebirdQueryModule.dsMappingValue
+              CharCase = ecNormal
+              MaxLength = 0
+              TabOrder = 4
+              Visible = False
+            end
+          end
+          object dbGridMappingValue: TDBGrid
+            Left = 1
+            Height = 26
+            Top = 464
+            Width = 593
+            Align = alBottom
+            Color = clWindow
+            Columns = <>
+            DataSource = FirebirdQueryModule.dsMappingValue
+            ReadOnly = True
+            TabOrder = 1
+            Visible = False
+          end
+          object lstMappingValues: TListView
+            Left = 1
+            Height = 240
+            Top = 224
+            Width = 593
+            Align = alClient
+            Columns = <            
+              item
+                AutoSize = True
+                Caption = 'From Value'
+                Width = 589
+              end            
+              item
+                AutoSize = True
+                Caption = 'From List'
+                Width = 55
+              end            
+              item
+                AutoSize = True
+                Caption = 'From Code'
+                Width = 64
+              end            
+              item
+                AutoSize = True
+                Caption = 'From Display'
+                Width = 73
+              end            
+              item
+                AutoSize = True
+                Caption = 'To Value'
+                Width = 53
+              end            
+              item
+                AutoSize = True
+                Caption = 'To List'
+                Width = 43
+              end            
+              item
+                AutoSize = True
+                Caption = 'To Code'
+                Width = 52
+              end            
+              item
+                AutoSize = True
+                Caption = 'To Display'
+                Width = 61
+              end>
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 2
+            ViewStyle = vsReport
+            OnClick = lstMappingValuesClick
+            OnSelectItem = lstMappingValuesSelectItem
+          end
+        end
+      end
+    end
+  end
+end

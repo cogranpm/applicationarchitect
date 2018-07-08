@@ -1,0 +1,306 @@
+object frmModelImporter: TfrmModelImporter
+  Left = 591
+  Height = 585
+  Top = 149
+  Width = 761
+  Caption = 'Model Import'
+  ClientHeight = 585
+  ClientWidth = 761
+  LCLVersion = '1.4.4.0'
+  object pnlBackground: TPanel
+    Left = 0
+    Height = 585
+    Top = 0
+    Width = 761
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 585
+    ClientWidth = 761
+    TabOrder = 0
+    object pnlStatus: TPanel
+      Left = 0
+      Height = 56
+      Top = 0
+      Width = 761
+      Align = alTop
+      ClientHeight = 56
+      ClientWidth = 761
+      TabOrder = 0
+      object Label1: TLabel
+        Left = 8
+        Height = 13
+        Top = 8
+        Width = 58
+        Caption = 'Connection:'
+        ParentColor = False
+      end
+      object lblConnectionDisplay: TLabel
+        Left = 80
+        Height = 13
+        Top = 8
+        Width = 98
+        Caption = 'lblConnectionDisplay'
+        ParentColor = False
+      end
+    end
+    object pnlTablesView: TPanel
+      Left = 0
+      Height = 479
+      Top = 56
+      Width = 234
+      Align = alLeft
+      ClientHeight = 479
+      ClientWidth = 234
+      TabOrder = 1
+      object pnlTableViewHeader: TPanel
+        Left = 1
+        Height = 31
+        Top = 1
+        Width = 232
+        Align = alTop
+        ClientHeight = 31
+        ClientWidth = 232
+        TabOrder = 0
+        object chkSelectAll: TCheckBox
+          Left = 8
+          Height = 17
+          Top = 8
+          Width = 31
+          Caption = 'All'
+          OnChange = chkSelectAllChange
+          TabOrder = 0
+        end
+      end
+      object pnlTableViewBody: TPanel
+        Left = 1
+        Height = 446
+        Top = 32
+        Width = 232
+        Align = alClient
+        ClientHeight = 446
+        ClientWidth = 232
+        TabOrder = 1
+        object lvTables: TListView
+          Left = 1
+          Height = 444
+          Top = 1
+          Width = 230
+          Align = alClient
+          Checkboxes = True
+          Columns = <          
+            item
+              AutoSize = True
+              Caption = 'Table'
+              Width = 226
+            end>
+          ReadOnly = True
+          TabOrder = 0
+          ViewStyle = vsReport
+          OnClick = lvTablesClick
+        end
+      end
+    end
+    object pnlColumnsMain: TPanel
+      Left = 234
+      Height = 479
+      Top = 56
+      Width = 527
+      Align = alClient
+      ClientHeight = 479
+      ClientWidth = 527
+      TabOrder = 2
+      object pnlColumnsHeader: TPanel
+        Left = 1
+        Height = 191
+        Top = 1
+        Width = 525
+        Align = alTop
+        ClientHeight = 191
+        ClientWidth = 525
+        TabOrder = 0
+        object GroupBox1: TGroupBox
+          Left = 16
+          Height = 168
+          Top = 8
+          Width = 504
+          Caption = 'Import Options'
+          ClientHeight = 150
+          ClientWidth = 500
+          TabOrder = 0
+          object txtTablePrefix: TEdit
+            Left = 152
+            Height = 21
+            Hint = 'Enter the prefix to remove, if the table name contains this prefix it will be removed from the resulting imported model.'
+            Top = 104
+            Width = 176
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+          end
+          object GroupBox2: TGroupBox
+            Left = 15
+            Height = 90
+            Top = 6
+            Width = 325
+            Caption = 'Import into Model'
+            ClientHeight = 72
+            ClientWidth = 321
+            TabOrder = 1
+            object rdExistingModel: TRadioButton
+              Left = 16
+              Height = 17
+              Top = 44
+              Width = 57
+              Caption = 'Existing'
+              OnChange = rdExistingModelChange
+              TabOrder = 0
+            end
+            object rdNewModel: TRadioButton
+              Left = 16
+              Height = 17
+              Top = 10
+              Width = 41
+              Caption = 'New'
+              Checked = True
+              OnChange = rdNewModelChange
+              TabOrder = 3
+              TabStop = True
+            end
+            object Label2: TLabel
+              Left = 87
+              Height = 13
+              Top = 8
+              Width = 31
+              Caption = 'Name:'
+              FocusControl = txtModelName
+              ParentColor = False
+            end
+            object txtModelName: TEdit
+              Left = 126
+              Height = 21
+              Top = 6
+              Width = 162
+              TabOrder = 1
+            end
+            object Label3: TLabel
+              Left = 88
+              Height = 13
+              Top = 44
+              Width = 32
+              Caption = 'Model:'
+              FocusControl = cboModelLookup
+              ParentColor = False
+            end
+            object cboModelLookup: TComboBox
+              Left = 127
+              Height = 21
+              Top = 40
+              Width = 161
+              Enabled = False
+              ItemHeight = 13
+              TabOrder = 2
+              Text = 'cboModelLookup'
+            end
+          end
+          object chkTablePrefix: TCheckBox
+            Left = 16
+            Height = 17
+            Top = 108
+            Width = 119
+            Caption = 'Remove Table Prefix'
+            OnChange = chkTablePrefixChange
+            TabOrder = 2
+          end
+          object chkExcludePrimary: TCheckBox
+            Left = 16
+            Height = 17
+            Top = 128
+            Width = 122
+            Caption = 'Exclude Primary Keys'
+            Checked = True
+            ParentShowHint = False
+            ShowHint = True
+            State = cbChecked
+            TabOrder = 3
+          end
+          object btnImport: TButton
+            Left = 416
+            Height = 25
+            Top = 120
+            Width = 75
+            Caption = 'Import'
+            OnClick = btnImportClick
+            TabOrder = 4
+          end
+        end
+      end
+      object pnlColumnsBody: TPanel
+        Left = 1
+        Height = 286
+        Top = 192
+        Width = 525
+        Align = alClient
+        ClientHeight = 286
+        ClientWidth = 525
+        TabOrder = 1
+        object lvColumns: TListView
+          Left = 1
+          Height = 284
+          Top = 1
+          Width = 523
+          Align = alClient
+          Columns = <          
+            item
+              AutoSize = True
+              Caption = 'Name'
+              Width = 519
+            end          
+            item
+              AutoSize = True
+              Caption = 'Type'
+              Width = 36
+            end          
+            item
+              AutoSize = True
+              Caption = 'Nullable'
+              Width = 49
+            end          
+            item
+              AutoSize = True
+              Caption = 'Length'
+              Width = 45
+            end          
+            item
+              AutoSize = True
+              Caption = 'Primary Key'
+              Width = 69
+            end>
+          TabOrder = 0
+          ViewStyle = vsReport
+        end
+      end
+    end
+    object pnlActions: TPanel
+      Left = 0
+      Height = 50
+      Top = 535
+      Width = 761
+      Align = alBottom
+      ClientHeight = 50
+      ClientWidth = 761
+      TabOrder = 3
+      object btnClose: TButton
+        Left = 664
+        Height = 25
+        Top = 14
+        Width = 75
+        Anchors = [akRight, akBottom]
+        Cancel = True
+        Caption = 'Close'
+        OnClick = btnCloseClick
+        TabOrder = 0
+      end
+    end
+  end
+end

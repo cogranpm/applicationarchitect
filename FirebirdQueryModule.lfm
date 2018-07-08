@@ -1,0 +1,3633 @@
+object FirebirdQueryModule: TFirebirdQueryModule
+  OldCreateOrder = False
+  Height = 419
+  HorizontalOffset = 289
+  VerticalOffset = 318
+  Width = 1521
+  object SQLArtifactPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ARTIFACTPROPERTYVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ARTIFACTPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ARTIFACTTOPROPERTYVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENARTIFACTTOPROPERTYVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLArtifactPropertyValueAfterDelete
+    AfterInsert = SQLArtifactPropertyValueAfterInsert
+    AfterPost = SQLArtifactPropertyValueAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ArtifactPropertyValueId,  ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue  from ArtifactPropertyValue  WHERE  (ArtifactToPropertyValue = :ScreenArtifactId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ArtifactPropertyValue SET  ArtifactToPropertyValue = :ArtifactToPropertyValue,'
+      'ARTIFACTPROPVALUETOPROPERTY = :ARTIFACTPROPVALUETOPROPERTY,'
+      ' ScreenArtifactToPropertyValue = :ScreenArtifactToPropertyValue,  PropertyValue = :PropertyValue'
+      'WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ArtifactPropertyValue (  ArtifactPropertyValueId,  ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue  )'
+      'VALUES (  :ArtifactPropertyValueId, :ARTIFACTPROPVALUETOPROPERTY, :ArtifactToPropertyValue,  :ScreenArtifactToPropertyValue,  :PropertyValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ArtifactPropertyValue WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenArtifactId'
+        ParamType = ptInput
+      end>
+    left = 40
+    top = 24
+    object SQLArtifactPropertyValueArtifactPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ArtifactPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLArtifactPropertyValueArtifactToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ArtifactToPropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLArtifactPropertyValueScreenArtifactToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenArtifactToPropertyValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLArtifactPropertyValuePropertyValue: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 2000
+    end
+    object SQLArtifactPropertyValueARTIFACTPROPVALUETOPROPERTY: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ARTIFACTPROPVALUETOPROPERTY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+  end
+  object SQLAssociation: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ASSOCIATIONID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MODELASSOCIATION'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'TYPE'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'OWNER'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'OWNED'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLAssociationAfterDelete
+    AfterInsert = SQLAssociationAfterInsert
+    AfterPost = SQLAssociationAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  AssociationId,  ModelAssociation,  Name,  type, owner, owned  from Association  WHERE  (ModelAssociation = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Association SET  ModelAssociation = :ModelAssociation,  Name = :Name,  type = :type, Owner = :Owner, Owned = :Owned'
+      'WHERE Association.AssociationId = :AssociationId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Association (  AssociationId,  ModelAssociation,  Name,  type, Owner, Owned  )'
+      'VALUES (  :AssociationId,  :ModelAssociation,  :Name,  :type, :Owner, :Owned );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Association WHERE Association.AssociationId = :AssociationId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 104
+    object SQLAssociationAssociationId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AssociationId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationModelAssociation: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelAssociation'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAssociationName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object AssociationTypeLookup: TStringField
+      DisplayLabel = 'Type'
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'AssociationTypeLookup'
+      Index = 3
+      KeyFields = 'TYPE'
+      LookupCache = False
+      LookupDataSet = FirebirdLookups.SQLAssociationTypes
+      LookupKeyFields = 'CODE'
+      LookupResultField = 'LABEL'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 160
+    end
+    object SQLAssociationtype: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'type'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object AssociationOwnerLookup: TStringField
+      DisplayLabel = 'Owner'
+      DisplayWidth = 25
+      FieldKind = fkLookup
+      FieldName = 'AssociationOwnerLookup'
+      Index = 5
+      KeyFields = 'OWNER'
+      LookupCache = False
+      LookupDataSet = FirebirdLookups.SQLRelationLookup
+      LookupKeyFields = 'RELATIONID'
+      LookupResultField = 'NAME'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 160
+    end
+    object SQLAssociationOWNER: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'OWNER'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object AssociationOwnedLookup: TStringField
+      DisplayLabel = 'Owned'
+      DisplayWidth = 25
+      FieldKind = fkLookup
+      FieldName = 'AssociationOwnedLookup'
+      Index = 7
+      KeyFields = 'OWNED'
+      LookupCache = False
+      LookupDataSet = FirebirdLookups.SQLRelationLookup
+      LookupKeyFields = 'RELATIONID'
+      LookupResultField = 'NAME'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 160
+    end
+    object SQLAssociationOWNED: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'OWNED'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLAttribute: TSQLQuery
+    FieldDefs = <>
+    AfterDelete = SQLAttributeAfterDelete
+    AfterInsert = SQLAttributeAfterInsert
+    AfterPost = SQLAttributeAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  AttributeId,  RelationAttribute,  allownull,  attributelength,  name,  type  from Attribute  WHERE  (RelationAttribute = :RelationId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Attribute SET  RelationAttribute = :RelationAttribute,  allownull = :allownull,  attributelength = :attributelength,  name = :name,  type = :type  '
+      'WHERE Attribute.AttributeId = :AttributeId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Attribute (  AttributeId,  RelationAttribute,  allownull,  attributelength,  name,  type  )'
+      'VALUES (  :AttributeId,  :RelationAttribute,  :allownull,  :attributelength,  :name,  :type );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Attribute WHERE Attribute.AttributeId = :AttributeId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RelationId'
+        ParamType = ptInput
+      end>
+    left = 320
+    top = 16
+    object SQLAttributeAttributeId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AttributeId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAttributeRelationAttribute: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RelationAttribute'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAttributename: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object TypeLookup: TStringField
+      DisplayLabel = 'Type'
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'TypeLookup'
+      Index = 3
+      KeyFields = 'Type'
+      LookupCache = False
+      LookupDataSet = FirebirdLookups.SQLAttributeTypes
+      LookupKeyFields = 'CODE'
+      LookupResultField = 'LABEL'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 160
+    end
+    object SQLAttributeattributelength: TIntegerField
+      DisplayLabel = 'Length'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'attributelength'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLAttributeallownull: TBooleanField
+      DisplayLabel = 'Null'
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'allownull'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object SQLAttributetype: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'type'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLAttributePropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'AttributePropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLAttributePropertyValueAfterDelete
+    AfterInsert = SQLAttributePropertyValueAfterInsert
+    AfterPost = SQLAttributePropertyValueAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  AttributePropertyValueId,  AttributeToPropertyValue,  MasterProperty,  PropertyValue  from AttributePropertyValue  WHERE  (AttributeToPropertyValue = :AttributeId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE AttributePropertyValue SET  AttributeToPropertyValue = :AttributeToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue'
+      'WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into AttributePropertyValue (  AttributePropertyValueId,  AttributeToPropertyValue,  MasterProperty,  PropertyValue  )'
+      'VALUES (  :AttributePropertyValueId,  :AttributeToPropertyValue,  :MasterProperty,  :PropertyValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM AttributePropertyValue WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'AttributeId'
+        ParamType = ptInput
+      end>
+    left = 470
+    top = 16
+  end
+  object SQLBuild: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BuildId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ModelToBuild'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'databaseName'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'databaseserver'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'ebjname'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'host'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'hostplatform'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'libpath'
+        DataType = ftString
+        Precision = -1
+        Size = 260
+      end    
+      item
+        Name = 'MembershipDatabase'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'membershipserver'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'packagecom'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'packagedot'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'persistencename'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'port'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ProjectPath'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'servertype'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'serviceHost'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'servicePort'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'templatepath'
+        DataType = ftString
+        Precision = -1
+        Size = 260
+      end    
+      item
+        Name = 'toolspath'
+        DataType = ftString
+        Precision = -1
+        Size = 260
+      end    
+      item
+        Name = 'warname'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLBuildAfterDelete
+    AfterInsert = SQLBuildAfterInsert
+    AfterPost = SQLBuildAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  BuildId,  ModelToBuild,  Name,  ProjectPath  from Build  WHERE  (ModelToBuild = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Build SET  ModelToBuild = :ModelToBuild,  Name = :Name,  ProjectPath = :ProjectPath'
+      'WHERE Build.BuildId = :BuildId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Build (  BuildId,  ModelToBuild,  Name,  ProjectPath  )'
+      'VALUES (  :BuildId,  :ModelToBuild,  :Name,  :ProjectPath);'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Build WHERE Build.BuildId = :BuildId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 620
+    top = 16
+    object SQLBuildBuildId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildModelToBuild: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelToBuild'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildName: TStringField
+      DisplayWidth = 35
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLBuildProjectPath: TStringField
+      DisplayWidth = 125
+      FieldKind = fkData
+      FieldName = 'ProjectPath'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+  end
+  object SQLEnvironment: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'EnvironmentId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'DatabaseName'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'DatabaseServer'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'MembershipDatabase'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'MembershipServer'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end>
+    AfterDelete = SQLEnvironmentAfterDelete
+    AfterInsert = SQLEnvironmentAfterInsert
+    AfterPost = SQLEnvironmentAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  EnvironmentId,  DatabaseName,  DatabaseServer,  MembershipDatabase,  MembershipServer  from Environment  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Environment SET  DatabaseName = :DatabaseName,  DatabaseServer = :DatabaseServer,  MembershipDatabase = :MembershipDatabase,  MembershipServer = :MembershipServer  '
+      'WHERE Environment.EnvironmentId = :EnvironmentId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Environment (  EnvironmentId,  DatabaseName,  DatabaseServer,  MembershipDatabase,  MembershipServer  )'
+      'VALUES (  :EnvironmentId,  :DatabaseName,  :DatabaseServer,  :MembershipDatabase,  :MembershipServer );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Environment WHERE Environment.EnvironmentId = :EnvironmentId;'
+    )
+    Params = <>
+    left = 770
+    top = 16
+    object SQLEnvironmentEnvironmentId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'EnvironmentId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLEnvironmentDatabaseName: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'DatabaseName'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLEnvironmentDatabaseServer: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'DatabaseServer'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLEnvironmentMembershipDatabase: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'MembershipDatabase'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLEnvironmentMembershipServer: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'MembershipServer'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object SQLListDetail: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ListDetailId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ListHeaderToDetail'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Code'
+        DataType = ftString
+        Precision = -1
+        Size = 5
+      end    
+      item
+        Name = 'Label'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLListDetailAfterDelete
+    AfterInsert = SQLListDetailAfterInsert
+    AfterPost = SQLListDetailAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ListDetailId,  ListHeaderToDetail,  Code,  Label  from ListDetail  WHERE  (ListHeaderToDetail = :ListHeaderId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListDetail SET  ListHeaderToDetail = :ListHeaderToDetail,  Code = :Code,  Label = :Label  '
+      'WHERE ListDetail.ListDetailId = :ListDetailId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ListDetail (  ListDetailId,  ListHeaderToDetail,  Code,  Label  )'
+      'VALUES (  :ListDetailId,  :ListHeaderToDetail,  :Code,  :Label );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ListDetail WHERE ListDetail.ListDetailId = :ListDetailId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ListHeaderId'
+        ParamType = ptInput
+      end>
+    left = 920
+    top = 16
+    object SQLListDetailListDetailId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ListDetailId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListDetailListHeaderToDetail: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ListHeaderToDetail'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLListDetailCode: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Code'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 256
+    end
+    object SQLListDetailLabel: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Label'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+  end
+  object SQLListHeader: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ListHeaderId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLListHeaderAfterDelete
+    AfterInsert = SQLListHeaderAfterInsert
+    AfterPost = SQLListHeaderAfterPost
+    AfterScroll = SQLListHeaderAfterScroll
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ListHeaderId,  Name  from ListHeader  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListHeader SET  Name = :Name  '
+      'WHERE ListHeader.ListHeaderId = :ListHeaderId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ListHeader (  ListHeaderId,  Name  )'
+      'VALUES (  :ListHeaderId,  :Name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ListHeader WHERE ListHeader.ListHeaderId = :ListHeaderId;'
+    )
+    Params = <>
+    left = 1070
+    top = 16
+    object SQLListHeaderListHeaderId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ListHeaderId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLListHeaderName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLMasterCategory: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MasterCategoryId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLMasterCategoryAfterDelete
+    AfterInsert = SQLMasterCategoryAfterInsert
+    AfterPost = SQLMasterCategoryAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  MasterCategoryId,  Name  from MasterCategory  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterCategory SET  Name = :Name  '
+      'WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MasterCategory (  MasterCategoryId,  Name  )'
+      'VALUES (  :MasterCategoryId,  :Name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MasterCategory WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
+    )
+    Params = <>
+    left = 1220
+    top = 16
+    object SQLMasterCategoryMasterCategoryId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterCategoryId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterCategoryName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLMasterProperty: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MASTERPROPERTYID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'DEFAULTVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'NOTES'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'MASTERPROPERTYTOGROUP'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MASTERPROPERTYTOTYPE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLMasterPropertyAfterDelete
+    AfterInsert = SQLMasterPropertyAfterInsert
+    AfterPost = SQLMasterPropertyAfterPost
+    AfterScroll = SQLMasterPropertyAfterScroll
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  MasterPropertyId,  DefaultValue,'
+      'Name,  Notes, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE'
+      '  from MasterProperty  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterProperty SET  DefaultValue = :DefaultValue,  Name = :Name,  Notes = :Notes,'
+      'MASTERPROPERTYTOTYPE = :MASTERPROPERTYTOTYPE, MASTERPROPERTYTOGROUP = :MASTERPROPERTYTOGROUP'
+      'WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MasterProperty (  MasterPropertyId,  DefaultValue,  Name,  Notes, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE  )'
+      'VALUES (  :MasterPropertyId,  :DefaultValue,  :Name,  :Notes, :MASTERPROPERTYTOGROUP, :MASTERPROPERTYTOTYPE );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MasterProperty WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
+    )
+    Params = <>
+    left = 1370
+    top = 16
+    object SQLMasterPropertyMasterPropertyId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterPropertyId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLMasterPropertyDefaultValue: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'DefaultValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLMasterPropertyNotes: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Notes'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLMasterPropertyMASTERPROPERTYTOGROUP: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MASTERPROPERTYTOGROUP'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyMASTERPROPERTYTOTYPE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MASTERPROPERTYTOTYPE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object PropertyGroup: TStringField
+      DisplayLabel = 'Group'
+      DisplayWidth = 25
+      FieldKind = fkLookup
+      FieldName = 'PropertyGroup'
+      Index = 6
+      KeyFields = 'MASTERPROPERTYTOGROUP'
+      LookupCache = False
+      LookupDataSet = SQLPropertyGroup
+      LookupKeyFields = 'PropertyGroupId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object PropertyType: TStringField
+      DisplayLabel = 'Type'
+      DisplayWidth = 25
+      FieldKind = fkLookup
+      FieldName = 'PropertyType'
+      Index = 7
+      KeyFields = 'MasterPropertyToType'
+      LookupCache = False
+      LookupDataSet = SQLPropertyType
+      LookupKeyFields = 'PropertyTypeId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+  end
+  object SQLMasterPropertyValueList: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MasterPropertyValueListId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperyToValueList'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Code'
+        DataType = ftString
+        Precision = -1
+        Size = 10
+      end    
+      item
+        Name = 'Display'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLMasterPropertyValueListAfterDelete
+    AfterInsert = SQLMasterPropertyValueListAfterInsert
+    AfterPost = SQLMasterPropertyValueListAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  MasterPropertyValueListId,  MasterProperyToValueList,  Code,  Display,  Name  from MasterPropertyValueList  WHERE  (MasterProperyToValueList = :MasterPropertyId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterPropertyValueList SET  MasterProperyToValueList = :MasterProperyToValueList,  Code = :Code,  Display = :Display,  Name = :Name  '
+      'WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MasterPropertyValueList (  MasterPropertyValueListId,  MasterProperyToValueList,  Code,  Display,  Name  )'
+      'VALUES (  :MasterPropertyValueListId,  :MasterProperyToValueList,  :Code,  :Display,  :Name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MasterPropertyValueList WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MasterPropertyId'
+        ParamType = ptInput
+      end>
+    left = 48
+    top = 80
+    object SQLMasterPropertyValueListMasterPropertyValueListId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterPropertyValueListId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMasterPropertyValueListMasterProperyToValueList: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperyToValueList'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLMasterPropertyValueListName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMasterPropertyValueListCode: TStringField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Code'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLMasterPropertyValueListDisplay: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Display'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+  end
+  object SQLModel: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MODELID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 160
+      end>
+    AfterDelete = SQLModelAfterDelete
+    AfterInsert = SQLModelAfterInsert
+    AfterPost = SQLModelAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ModelId,  name  from Model  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Model SET  name = :name  '
+      'WHERE Model.ModelId = :ModelId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Model (  ModelId,  name  )'
+      'VALUES (  :ModelId,  :name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Model WHERE Model.ModelId = :ModelId;'
+    )
+    Params = <>
+    left = 170
+    top = 80
+    object SQLModelModelId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLModelname: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+  end
+  object SQLPropertyGroup: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PROPERTYGROUPID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLPropertyGroupAfterDelete
+    AfterInsert = SQLPropertyGroupAfterInsert
+    AfterPost = SQLPropertyGroupAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  PropertyGroupId,  Name  from PropertyGroup  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyGroup SET  Name = :Name  '
+      'WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
+    )
+    InsertSQL.Strings = (
+      'insert into PropertyGroup (  PropertyGroupId,  Name  )'
+      'VALUES (  :PropertyGroupId,  :Name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM PropertyGroup WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
+    )
+    Params = <>
+    left = 320
+    top = 80
+    object SQLPropertyGroupPropertyGroupId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'PropertyGroupId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyGroupName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLPropertyType: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'PROPERTYTYPEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'DISPLAYCONTROL'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'NOTES'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end>
+    AfterDelete = SQLPropertyTypeAfterDelete
+    AfterInsert = SQLPropertyTypeAfterInsert
+    AfterPost = SQLPropertyTypeAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  PropertyTypeId,  DisplayControl,  Name,  Notes  from PropertyType  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyType SET  DisplayControl = :DisplayControl,  Name = :Name,  Notes = :Notes  '
+      'WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
+    )
+    InsertSQL.Strings = (
+      'insert into PropertyType (  PropertyTypeId,  DisplayControl,  Name,  Notes  )'
+      'VALUES (  :PropertyTypeId,  :DisplayControl,  :Name,  :Notes );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM PropertyType WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
+    )
+    Params = <>
+    left = 470
+    top = 80
+    object SQLPropertyTypePropertyTypeId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'PropertyTypeId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLPropertyTypeName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLPropertyTypeDisplayControl: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'DisplayControl'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLPropertyTypeNotes: TStringField
+      DisplayWidth = 45
+      FieldKind = fkData
+      FieldName = 'Notes'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object SQLRelation: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'RELATIONID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MODELRELATION'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FROZEN'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'LASTBUILT'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'LASTMODIFIED'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLRelationAfterDelete
+    AfterInsert = SQLRelationAfterInsert
+    AfterPost = SQLRelationAfterPost
+    BeforePost = SQLRelationBeforePost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  RelationId,  ModelRelation,  frozen,  lastbuilt,  lastmodified,  name  from Relation  WHERE  (ModelRelation = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Relation SET  ModelRelation = :ModelRelation,  frozen = :frozen,  lastbuilt = :lastbuilt,  lastmodified = :lastmodified,  name = :name  '
+      'WHERE Relation.RelationId = :RelationId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Relation (  RelationId,  ModelRelation,  frozen,  lastbuilt,  lastmodified,  name  )'
+      'VALUES (  :RelationId,  :ModelRelation,  :frozen,  :lastbuilt,  :lastmodified,  :name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Relation WHERE Relation.RelationId = :RelationId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 620
+    top = 80
+    object SQLRelationname: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 30
+    end
+    object SQLRelationRelationId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'RelationId'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationModelRelation: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelRelation'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLRelationfrozen: TBooleanField
+      DisplayWidth = 5
+      FieldKind = fkData
+      FieldName = 'frozen'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+    object SQLRelationlastbuilt: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'lastbuilt'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLRelationlastmodified: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'lastmodified'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLRelationPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'RELATIONPROPERTYVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'RELATIONTOPROPERTYVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MASTERPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLRelationPropertyValueAfterDelete
+    AfterInsert = SQLRelationPropertyValueAfterInsert
+    AfterPost = SQLRelationPropertyValueAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  RelationPropertyValueId,  RelationToPropertyValue,  MasterProperty,  PropertyValue  from RelationPropertyValue  WHERE  (RelationToPropertyValue = :RelationId  ) ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE RelationPropertyValue SET  RelationToPropertyValue = :RelationToPropertyValue, MasterProperty=:MasterProperty, PropertyValue = :PropertyValue'
+      'WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into RelationPropertyValue (  RelationPropertyValueId,  RelationToPropertyValue, MasterProperty, PropertyValue  )'
+      'VALUES (  :RelationPropertyValueId,  :RelationToPropertyValue, :MasterProperty, :PropertyValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM RelationPropertyValue WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'RelationId'
+        ParamType = ptInput
+      end>
+    left = 770
+    top = 80
+  end
+  object SQLScreenArtifact: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'SCREENARTIFACTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'ARTIFACTTOATTRIBUTE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CHILDTOARTIFACT'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FAMILYTOARTIFACT'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLScreenArtifactAfterDelete
+    AfterInsert = SQLScreenArtifactAfterInsert
+    AfterPost = SQLScreenArtifactAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ScreenArtifactId, ArtifactToAttribute, ChildToArtifact,  FamilyToArtifact,  Name  from ScreenArtifact  WHERE  (ChildToArtifact = :ScreenChildId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifact SET  ChildToArtifact = :ChildToArtifact, ArtifactToAttribute = :ArtifactToAttribute, FamilyToArtifact = :FamilyToArtifact,  Name = :Name'
+      'WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenArtifact (  ScreenArtifactId, ArtifactToAttribute, ChildToArtifact,  FamilyToArtifact,  Name  )'
+      'VALUES (  :ScreenArtifactId, :ArtifactToAttribute, :ChildToArtifact,  :FamilyToArtifact,  :Name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenArtifact WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenChildId'
+        ParamType = ptInput
+      end>
+    left = 920
+    top = 80
+    object SQLScreenArtifactScreenArtifactId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenArtifactId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactChildToArtifact: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ChildToArtifact'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactFamilyToArtifact: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FamilyToArtifact'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenArtifactARTIFACTTOATTRIBUTE: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ARTIFACTTOATTRIBUTE'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object SQLScreenArtifactType: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'ScreenArtifactTypeId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'Name'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLScreenArtifactTypeAfterDelete
+    AfterInsert = SQLScreenArtifactTypeAfterInsert
+    AfterPost = SQLScreenArtifactTypeAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ScreenArtifactTypeId,  Name  from ScreenArtifactType  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifactType SET  Name = :Name  '
+      'WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenArtifactType (  ScreenArtifactTypeId,  Name  )'
+      'VALUES (  :ScreenArtifactTypeId,  :Name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenArtifactType WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
+    )
+    Params = <>
+    left = 1070
+    top = 80
+    object SQLScreenArtifactTypeScreenArtifactTypeId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenArtifactTypeId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenArtifactTypeName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object SQLScreenChild: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'SCREENCHILDID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENCHILDTOASSOCIATION'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENFAMILYTOSCREENCHILD'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENCHILDTOSELF'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end>
+    AfterDelete = SQLScreenChildAfterDelete
+    AfterInsert = SQLScreenChildAfterInsert
+    AfterPost = SQLScreenChildAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ScreenChildId,  SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name  from ScreenChild  WHERE  (ScreenFamilyToScreenChild = :ScreenFamilyId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenChild SET  ScreenFamilyToScreenChild = :ScreenFamilyToScreenChild,'
+      'SCREENCHILDTOASSOCIATION = :SCREENCHILDTOASSOCIATION,'
+      'ScreenChildToSelf = :ScreenChildToSelf,  Name = :Name'
+      'WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenChild (  ScreenChildId, SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name  )'
+      'VALUES (  :ScreenChildId, :SCREENCHILDTOASSOCIATION,  :ScreenFamilyToScreenChild,  :ScreenChildToSelf,  :Name );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenChild WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenFamilyId'
+        ParamType = ptInput
+      end>
+    left = 1220
+    top = 80
+    object SQLScreenChildScreenChildId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenChildId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenChildScreenFamilyToScreenChild: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenFamilyToScreenChild'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenChildScreenChildToSelf: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenChildToSelf'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenChildName: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenChildSCREENCHILDTOASSOCIATION: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENCHILDTOASSOCIATION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object SQLScreenFamily: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'SCREENFAMILYID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MODELTOSCREENFAMILY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENFAMILYTORELATION'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 160
+      end>
+    AfterDelete = SQLScreenFamilyAfterDelete
+    AfterInsert = SQLScreenFamilyAfterInsert
+    AfterPost = SQLScreenFamilyAfterPost
+    AfterScroll = SQLScreenFamilyAfterScroll
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ScreenFamilyId,  ModelToScreenFamily, SCREENFAMILYTORELATION,  Name  from ScreenFamily  WHERE  (ModelToScreenFamily = :ModelId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenFamily SET  ModelToScreenFamily = :ModelToScreenFamily,  Name = :Name, SCREENFAMILYTORELATION = :SCREENFAMILYTORELATION'
+      'WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenFamily (  ScreenFamilyId,  ModelToScreenFamily,  Name, SCREENFAMILYTORELATION  )'
+      'VALUES (  :ScreenFamilyId,  :ModelToScreenFamily,  :Name, :SCREENFAMILYTORELATION );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenFamily WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ModelId'
+        ParamType = ptInput
+      end>
+    left = 1370
+    top = 80
+    object SQLScreenFamilyScreenFamilyId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenFamilyId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenFamilyModelToScreenFamily: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ModelToScreenFamily'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenFamilyName: TStringField
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'Name'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object SQLScreenFamilySCREENFAMILYTORELATION: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENFAMILYTORELATION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object RelationLookup: TStringField
+      DisplayLabel = 'Relation'
+      DisplayWidth = 30
+      FieldKind = fkLookup
+      FieldName = 'RelationLookup'
+      Index = 4
+      KeyFields = 'ScreenFamilyToRelation'
+      LookupCache = False
+      LookupDataSet = FirebirdLookups.SQLRelationLookup
+      LookupKeyFields = 'RelationId'
+      LookupResultField = 'Name'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object SQLScreenPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'SCREENPROPERTYVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FAMILYTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CHILDTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLScreenPropertyValueAfterDelete
+    AfterInsert = SQLScreenPropertyValueAfterInsert
+    AfterPost = SQLScreenPropertyValueAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  from ScreenPropertyValue'
+      'WHERE  FamilyToScreenPropValue = :ScreenFamilyId;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenPropertyValue SET  FamilyToScreenPropValue = :FamilyToScreenPropValue,'
+      'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY, ChildToScreenPropValue = :ChildToScreenPropValue,  PropertyValue = :PropertyValue'
+      'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId, SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenFamilyId'
+        ParamType = ptInput
+      end>
+    left = 96
+    top = 144
+    object SQLScreenPropertyValueScreenPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenPropertyValueFamilyToScreenPropValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FamilyToScreenPropValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueChildToScreenPropValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ChildToScreenPropValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValuePropertyValue: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLScreenPropertyValueSCREENPROPVALUETOPROPERTY: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPVALUETOPROPERTY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+  end
+  object dsArtifactPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLArtifactPropertyValue
+    Enabled = False
+    left = 20
+    top = 208
+  end
+  object dsAssociation: TDataSource
+    DataSet = SQLAssociation
+    left = 170
+    top = 208
+  end
+  object dsAttribute: TDataSource
+    AutoEdit = False
+    DataSet = SQLAttribute
+    Enabled = False
+    left = 320
+    top = 208
+  end
+  object dsAttributePropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLAttributePropertyValue
+    Enabled = False
+    left = 470
+    top = 208
+  end
+  object dsBuild: TDataSource
+    AutoEdit = False
+    DataSet = SQLBuild
+    Enabled = False
+    left = 620
+    top = 208
+  end
+  object dsEnvironment: TDataSource
+    AutoEdit = False
+    DataSet = SQLEnvironment
+    Enabled = False
+    left = 770
+    top = 208
+  end
+  object dsListDetail: TDataSource
+    DataSet = SQLListDetail
+    left = 920
+    top = 208
+  end
+  object dsListHeader: TDataSource
+    AutoEdit = False
+    DataSet = SQLListHeader
+    Enabled = False
+    left = 1070
+    top = 208
+  end
+  object dsMasterCategory: TDataSource
+    AutoEdit = False
+    DataSet = SQLMasterCategory
+    Enabled = False
+    left = 1220
+    top = 208
+  end
+  object dsMasterProperty: TDataSource
+    AutoEdit = False
+    DataSet = SQLMasterProperty
+    Enabled = False
+    left = 1370
+    top = 208
+  end
+  object dsMasterPropertyValueList: TDataSource
+    AutoEdit = False
+    DataSet = SQLMasterPropertyValueList
+    Enabled = False
+    left = 20
+    top = 272
+  end
+  object dsModel: TDataSource
+    AutoEdit = False
+    DataSet = SQLModel
+    Enabled = False
+    left = 170
+    top = 272
+  end
+  object dsPropertyGroup: TDataSource
+    AutoEdit = False
+    DataSet = SQLPropertyGroup
+    Enabled = False
+    left = 320
+    top = 272
+  end
+  object dsPropertyType: TDataSource
+    AutoEdit = False
+    DataSet = SQLPropertyType
+    Enabled = False
+    left = 470
+    top = 272
+  end
+  object dsRelation: TDataSource
+    DataSet = SQLRelation
+    left = 620
+    top = 272
+  end
+  object dsRelationPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLRelationPropertyValue
+    Enabled = False
+    left = 770
+    top = 272
+  end
+  object dsScreenArtifact: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenArtifact
+    Enabled = False
+    left = 920
+    top = 272
+  end
+  object dsScreenArtifactType: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenArtifactType
+    Enabled = False
+    left = 1070
+    top = 272
+  end
+  object dsScreenChild: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenChild
+    Enabled = False
+    left = 1220
+    top = 272
+  end
+  object dsScreenFamily: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenFamily
+    Enabled = False
+    left = 1370
+    top = 272
+  end
+  object dsScreenPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLScreenPropertyValue
+    Enabled = False
+    left = 20
+    top = 336
+  end
+  object SQLScreenChildPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'SCREENPROPERTYVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SCREENPROPVALUETOPROPERTY'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FAMILYTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CHILDTOSCREENPROPVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PROPERTYVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLScreenPropertyValueAfterDelete
+    AfterInsert = SQLScreenPropertyValueAfterInsert
+    AfterPost = SQLScreenPropertyValueAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  from ScreenPropertyValue'
+      'WHERE  ChildToScreenPropValue = :ScreenChildId;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenPropertyValue SET  FamilyToScreenPropValue = :FamilyToScreenPropValue,'
+      'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY, ChildToScreenPropValue = :ChildToScreenPropValue,  PropertyValue = :PropertyValue'
+      'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId, SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'ScreenChildId'
+        ParamType = ptInput
+      end>
+    left = 280
+    top = 144
+    object SQLScreenPropertyValueScreenPropertyValueId1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ScreenPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLScreenPropertyValueFamilyToScreenPropValue1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'FamilyToScreenPropValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValueChildToScreenPropValue1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ChildToScreenPropValue'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLScreenPropertyValuePropertyValue1: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object SQLScreenPropertyValueSCREENPROPVALUETOPROPERTY1: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCREENPROPVALUETOPROPERTY'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+  end
+  object SQLMasterPropertyToCategory: TSQLQuery
+    FieldDefs = <>
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select MASTERPROPERTYID, MASTERCATEGORYID from masterpropertytocategory where MASTERPROPERTYID = :MASTERPROPERTYID;'
+    )
+    InsertSQL.Strings = (
+      'insert into masterpropertytocategory (MASTERPROPERTYID, MASTERCATEGORYID)'
+      'values (:MASTERPROPERTYID, :MASTERCATEGORYID);'
+    )
+    DeleteSQL.Strings = (
+      'delete from masterpropertytocategory where'
+      'masterpropertytocategory.MASTERPROPERTYID = :MASTERPROPERTYID'
+      'and  masterpropertytocategory.MASTERCATEGORYID = :MASTERCATEGORYID;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MASTERPROPERTYID'
+        ParamType = ptInput
+      end>
+    left = 468
+    top = 144
+  end
+  object SQLBuildTemplate: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDTEMPLATEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'SCRIPT'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildTemplateAfterDelete
+    AfterInsert = SQLBuildTemplateAfterInsert
+    AfterPost = SQLBuildTemplateAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select BUILDTEMPLATEID, NAME, SCRIPT, VERSION FROM BUILDTEMPLATE;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE BUILDTEMPLATE'
+      'SET BUILDTEMPLATE.NAME = :NAME,'
+      'BUILDTEMPLATE.SCRIPT = :SCRIPT,'
+      'BUILDTEMPLATE.VERSION = CURRENT_TIMESTAMP'
+      'WHERE  BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO BUILDTEMPLATE (BUILDTEMPLATEID, NAME, SCRIPT, VERSION)'
+      'VALUES (:BUILDTEMPLATEID, :NAME, :SCRIPT, CURRENT_TIMESTAMP);'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM BUILDTEMPLATE WHERE'
+      'BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
+    )
+    Params = <>
+    left = 620
+    top = 152
+    object SQLBuildTemplateBUILDTEMPLATEID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDTEMPLATEID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildTemplateNAME: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object SQLBuildTemplateSCRIPT: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCRIPT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      BlobType = ftBlob
+      Size = 8
+      Transliterate = False
+    end
+    object SQLBuildTemplateVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLBuildController: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDCONTROLLERID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildControllerAfterDelete
+    AfterInsert = SQLBuildControllerAfterInsert
+    AfterPost = SQLBuildControllerAfterPost
+    AfterScroll = SQLBuildControllerAfterScroll
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select buildcontrollerid, name, version'
+      'from buildcontroller;'
+    )
+    UpdateSQL.Strings = (
+      'update buildcontroller'
+      'set name = :name,'
+      'version = current_timestamp'
+      'where buildcontroller.buildcontrollerid = :buildcontrollerid;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildcontroller(buildcontrollerid, name, VERSION)'
+      'values (:buildcontrollerid, :name, CURRENT_TIMESTAMP);'
+    )
+    DeleteSQL.Strings = (
+      'delete from buildcontroller'
+      'where buildcontroller.buildcontrollerid =  :buildcontrollerid;'
+    )
+    Params = <>
+    left = 728
+    top = 152
+    object SQLBuildControllerBUILDCONTROLLERID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDCONTROLLERID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildControllerNAME: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object SQLBuildControllerVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object SQLBuildScript: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDSCRIPTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BUILDSCRIPTTOBUILDCONTROLLER'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'SCRIPT'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildScriptAfterDelete
+    AfterInsert = SQLBuildScriptAfterInsert
+    AfterPost = SQLBuildScriptAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select BUILDSCRIPTID, name, script, version'
+      'from buildscript order by name;'
+    )
+    UpdateSQL.Strings = (
+      'update buildscript'
+      'set buildscript.name = :name,'
+      'buildscript.script = :script,'
+      'buildscript.version = current_timestamp'
+      'where buildscript.buildscriptid = :buildscriptid;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildscript (BUILDSCRIPTID, name, script, version)'
+      'values (:BUILDSCRIPTID, :name, :script, current_timestamp);'
+    )
+    DeleteSQL.Strings = (
+      'delete from buildscript where'
+      'buildscript.buildscriptid = :buildscriptid;'
+    )
+    Params = <>
+    left = 832
+    top = 152
+    object SQLBuildScriptBUILDSCRIPTID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDSCRIPTID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildScriptNAME: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object SQLBuildScriptSCRIPT: TMemoField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SCRIPT'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      BlobType = ftBlob
+      Size = 8
+      Transliterate = False
+    end
+    object SQLBuildScriptVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+  end
+  object dsBuildController: TDataSource
+    DataSet = SQLBuildController
+    left = 168
+    top = 344
+  end
+  object dsBuildScript: TDataSource
+    DataSet = SQLBuildScript
+    left = 320
+    top = 352
+  end
+  object dsBuildTemplate: TDataSource
+    DataSet = SQLBuildTemplate
+    left = 465
+    top = 347
+  end
+  object SQLBuildControllerScript: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDCONTROLLERSCRIPTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BUILDCONTROLLERID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BUILDSCRIPTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SEQUENCE'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildControllerScriptAfterDelete
+    AfterInsert = SQLBuildControllerScriptAfterInsert
+    AfterPost = SQLBuildControllerScriptAfterPost
+    AfterScroll = SQLBuildControllerScriptAfterScroll
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select BuildControllerscriptid, BuildControllerID, BuildScriptID, Sequence, Version'
+      'from BuildControllerScript where buildcontrollerid = :buildcontrollerid;'
+    )
+    UpdateSQL.Strings = (
+      'update buildcontrollerscript'
+      'set buildcontrollerid = :buildcontrollerid,'
+      'buildscriptid = :buildscriptid,'
+      'sequence = :sequence,'
+      'version = current_timestamp'
+      'where BuildControllerscriptid =:BuildControllerscriptid;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildcontrollerscript (BuildControllerscriptid, buildcontrollerid, buildscriptid, sequence, version)'
+      'values (:BuildControllerscriptid, :buildcontrollerid, :buildscriptid, :sequence, current_timestamp);'
+    )
+    DeleteSQL.Strings = (
+      'delete from buildcontrollerscript'
+      'where buildscriptid = :buildscriptid and buildcontrollerid = :buildcontrollerid;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'buildcontrollerid'
+        ParamType = ptInput
+      end>
+    left = 960
+    top = 152
+    object SQLBuildControllerScriptBUILDCONTROLLERSCRIPTID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDCONTROLLERSCRIPTID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildControllerScriptBUILDCONTROLLERID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDCONTROLLERID'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildControllerScriptBUILDSCRIPTID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDSCRIPTID'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildControllerScriptSEQUENCE: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SEQUENCE'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildControllerScriptVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object BuildScriptLookup: TStringField
+      DisplayLabel = 'Script'
+      DisplayWidth = 40
+      FieldKind = fkLookup
+      FieldName = 'NAME'
+      Index = 5
+      KeyFields = 'BUILDSCRIPTID'
+      LookupCache = False
+      LookupDataSet = FirebirdLookups.SQLBuildScriptLookup
+      LookupKeyFields = 'BUILDSCRIPTID'
+      LookupResultField = 'NAME'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+  end
+  object SQLBuildScriptParameter: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BUILDSCRIPTPARAMETERID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BUILDCONTROLLERSCRIPTID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NAME'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'VALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'VERSION'
+        DataType = ftDateTime
+        Precision = -1
+        Size = 0
+      end>
+    AfterDelete = SQLBuildScriptParameterAfterDelete
+    AfterInsert = SQLBuildScriptParameterAfterInsert
+    AfterPost = SQLBuildScriptParameterAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'select buildscriptparameterid, buildcontrollerscriptid, name, "VALUE", version'
+      'from buildscriptparameter where buildcontrollerscriptid = :buildcontrollerscriptid;'
+    )
+    UpdateSQL.Strings = (
+      'update BUILDSCRIPTPARAMETER'
+      'SET BUILDCONTROLLERSCRIPTID = :BUILDCONTROLLERSCRIPTID,'
+      'NAME = :NAME,'
+      '"VALUE" =:VALUE,'
+      'VERSION = CURRENT_TIMESTAMP'
+      'where BUILDSCRIPTPARAMETER.BUILDSCRIPTPARAMETERID = :BUILDSCRIPTPARAMETERID;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildscriptparameter(buildscriptparameterid, buildcontrollerscriptid, name, "VALUE", version)'
+      'values(:buildscriptparameterid, :buildcontrollerscriptid, :name, :value, current_timestamp);'
+    )
+    DeleteSQL.Strings = (
+      'delete from buildscriptparameter where buildscriptparameter.buildscriptparameterid = :buildscriptparameterid;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'buildcontrollerscriptid'
+        ParamType = ptInput
+      end>
+    left = 1112
+    top = 152
+    object SQLBuildScriptParameterBUILDSCRIPTPARAMETERID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDSCRIPTPARAMETERID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildScriptParameterNAME: TStringField
+      DisplayLabel = 'Name'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'NAME'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 999
+    end
+    object SQLBuildScriptParameterVALUE: TStringField
+      DisplayLabel = 'Value'
+      DisplayWidth = 25
+      FieldKind = fkData
+      FieldName = 'VALUE'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 999
+    end
+    object SQLBuildScriptParameterVERSION: TDateTimeField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'VERSION'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildScriptParameterBUILDCONTROLLERSCRIPTID: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BUILDCONTROLLERSCRIPTID'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+  end
+  object SQLAssociationPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'AssociationPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'AssociationToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperty'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLAssociationPropertyValueAfterDelete
+    AfterInsert = SQLAssociationPropertyValueAfterInsert
+    AfterPost = SQLAssociationPropertyValueAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  AssociationPropertyValueId,  AssociationToPropertyValue,  MasterProperty,  PropertyValue  from AssociationPropertyValue  WHERE  (AssociationToPropertyValue = :AssociationId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE AssociationPropertyValue SET  AssociationToPropertyValue = :AssociationToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue   '
+      'WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into AssociationPropertyValue (  AssociationPropertyValueId,  AssociationToPropertyValue,  MasterProperty,  PropertyValue  )'
+      'VALUES (  :AssociationPropertyValueId,  :AssociationToPropertyValue,  :MasterProperty,  :PropertyValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM AssociationPropertyValue WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'AssociationId'
+        ParamType = ptInput
+      end>
+    left = 224
+    object SQLAssociationPropertyValueAssociationPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AssociationPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLAssociationPropertyValueAssociationToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'AssociationToPropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAssociationPropertyValueMasterProperty: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperty'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLAssociationPropertyValuePropertyValue: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object dsAssociationPropertyValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLAssociationPropertyValue
+    Enabled = False
+    left = 600
+    top = 347
+  end
+  object SQLBuildPropertyValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'BuildPropertyValueId'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'BuildToPropertyValue'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MasterProperty'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'PropertyValue'
+        DataType = ftString
+        Precision = -1
+        Size = 2000
+      end>
+    AfterDelete = SQLBuildPropertyValueAfterDelete
+    AfterInsert = SQLBuildPropertyValueAfterInsert
+    AfterPost = SQLBuildPropertyValueAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  BuildPropertyValueId,  BuildToPropertyValue,  MasterProperty,  PropertyValue  from BuildPropertyValue  WHERE  (BuildToPropertyValue = :BuildId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE BuildPropertyValue SET  BuildToPropertyValue = :BuildToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue   '
+      'WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into BuildPropertyValue (  BuildPropertyValueId,  BuildToPropertyValue,  MasterProperty,  PropertyValue  )'
+      'VALUES (  :BuildPropertyValueId,  :BuildToPropertyValue,  :MasterProperty,  :PropertyValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM BuildPropertyValue WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'BuildId'
+        ParamType = ptInput
+      end>
+    left = 680
+    top = 32
+    object SQLBuildPropertyValueBuildPropertyValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildPropertyValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLBuildPropertyValueBuildToPropertyValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'BuildToPropertyValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildPropertyValueMasterProperty: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MasterProperty'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLBuildPropertyValuePropertyValue: TStringField
+      DisplayWidth = 2000
+      FieldKind = fkData
+      FieldName = 'PropertyValue'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object dsBuildPropertyValue: TDataSource
+    DataSet = SQLBuildPropertyValue
+    left = 736
+    top = 352
+  end
+  object dsBuildControllerScript: TDataSource
+    DataSet = SQLBuildControllerScript
+    left = 880
+    top = 352
+  end
+  object dsBuildScriptParameter: TDataSource
+    DataSet = SQLBuildScriptParameter
+    left = 1008
+    top = 347
+  end
+  object SQLMapping: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MAPPINGID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'CATEGORY'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'NOTES'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end    
+      item
+        Name = 'FROMDESCRIPTION'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'TODESCRIPTION'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'SYSTEMCODE'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end>
+    AfterDelete = SQLMappingAfterDelete
+    AfterInsert = SQLMappingAfterInsert
+    AfterPost = SQLMappingAfterPost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  MappingId,  Category,  Notes,  FromDescription,  ToDescription, SystemCode  from Mapping  ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Mapping SET  Category = :Category  ,'
+      'Notes = :Notes  ,FromDescription = :FromDescription  ,ToDescription = :ToDescription,'
+      'SystemCode = :SystemCode'
+      'WHERE Mapping.MappingId = :MappingId;'
+    )
+    InsertSQL.Strings = (
+      'insert into Mapping (  MappingId,  Category,  Notes,  FromDescription,  ToDescription, SystemCode  )'
+      'VALUES (  :MappingId,  :Category,  :Notes,  :FromDescription,  :ToDescription, :SystemCode );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM Mapping WHERE Mapping.MappingId = :MappingId;'
+    )
+    Params = <>
+    left = 1220
+    top = 144
+    object SQLMappingMappingId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MappingId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingFromDescription: TStringField
+      DisplayLabel = 'From'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'FromDescription'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLMappingToDescription: TStringField
+      DisplayLabel = 'To'
+      DisplayWidth = 30
+      FieldKind = fkData
+      FieldName = 'ToDescription'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+    object SQLMappingCategory: TIntegerField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'Category'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingNotes: TMemoField
+      DisplayWidth = 35
+      FieldKind = fkData
+      FieldName = 'Notes'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+      BlobType = ftBlob
+      Size = 8
+      Transliterate = False
+    end
+    object SQLMappingSYSTEMCODE: TStringField
+      DisplayLabel = 'System Code'
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SYSTEMCODE'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 30
+    end
+  end
+  object dsMapping: TDataSource
+    AutoEdit = False
+    DataSet = SQLMapping
+    Enabled = False
+    left = 1184
+    top = 344
+  end
+  object SQLMappingValue: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'MAPPINGVALUEID'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MAPPINGTOVALUE'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MAPVALUETARGETLOOKUP'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'MAPVALUESOURCELOOKUP'
+        DataType = ftLargeint
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'SOURCEVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'TARGETVALUE'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'SOURCELISTNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'SOURCELABEL'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'SOURCECODE'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end    
+      item
+        Name = 'TARGETLISTNAME'
+        DataType = ftString
+        Precision = -1
+        Size = 40
+      end    
+      item
+        Name = 'TARGETLABEL'
+        DataType = ftString
+        Precision = -1
+        Size = 999
+      end    
+      item
+        Name = 'TARGETCODE'
+        DataType = ftString
+        Precision = -1
+        Size = 256
+      end>
+    AfterDelete = SQLMappingValueAfterDelete
+    AfterInsert = SQLMappingValueAfterInsert
+    AfterPost = SQLMappingValueAfterPost
+    BeforePost = SQLMappingValueBeforePost
+    Database = FirebirdDataModule.IBConnection1
+    Transaction = FirebirdDataModule.SQLTransaction1
+    SQL.Strings = (
+      'SELECT  MappingValueId,  MappingToValue,  MapValueTargetLookup,  MapValueSourceLookup,'
+      'SourceValue,  TargetValue,'
+      ' H.Name as SourceListName,'
+      ' D.Label as SourceLabel,'
+      ' D.Code as SourceCode,'
+      ' HT.Name as TargetListName,'
+      ' DT.Label as TargetLabel,'
+      ' DT.Code as TargetCode'
+      '  FROM MappingValue V'
+      ' LEFT JOIN ListDetail D'
+      ' on V.MapValueSourceLookup = D.ListDetailID'
+      ' LEFT JOIN ListHeader H'
+      ' ON D.ListHeaderToDetail = H.ListHeaderID'
+      ' LEFT JOIN ListDetail DT'
+      ' ON V.MapValueTargetLookup = DT.ListDetailID'
+      ' LEFT JOIN ListHeader HT'
+      ' ON DT.ListHeaderToDetail = HT.ListHeaderID  WHERE  (MappingToValue = :MappingId  )   ;'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MappingValue SET  MappingToValue = :MappingToValue  ,MapValueTargetLookup = :MapValueTargetLookup  ,MapValueSourceLookup = :MapValueSourceLookup  ,SourceValue = :SourceValue  ,TargetValue = :TargetValue   '
+      'WHERE MappingValue.MappingValueId = :MappingValueId;'
+    )
+    InsertSQL.Strings = (
+      'insert into MappingValue (  MappingValueId,  MappingToValue,  MapValueTargetLookup,  MapValueSourceLookup,  SourceValue,  TargetValue  )'
+      'VALUES (  :MappingValueId,  :MappingToValue,  :MapValueTargetLookup,  :MapValueSourceLookup,  :SourceValue,  :TargetValue );'
+    )
+    DeleteSQL.Strings = (
+      'DELETE FROM MappingValue WHERE MappingValue.MappingValueId = :MappingValueId;'
+    )
+    Params = <    
+      item
+        DataType = ftUnknown
+        Name = 'MappingId'
+        ParamType = ptInput
+      end>
+    left = 1328
+    top = 144
+    object SQLMappingValueMappingValueId: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MappingValueId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueMappingToValue: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MappingToValue'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Visible = False
+    end
+    object SQLMappingValueMapValueTargetLookup: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MapValueTargetLookup'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueMapValueSourceLookup: TLargeintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'MapValueSourceLookup'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Visible = False
+    end
+    object SQLMappingValueSourceValue: TStringField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'SourceValue'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMappingValueTargetValue: TStringField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'TargetValue'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMappingValueSOURCELISTNAME: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'SOURCELISTNAME'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMappingValueSOURCELABEL: TStringField
+      DisplayWidth = 999
+      FieldKind = fkData
+      FieldName = 'SOURCELABEL'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMappingValueSOURCECODE: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'SOURCECODE'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+    object SQLMappingValueTARGETLISTNAME: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'TARGETLISTNAME'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 40
+    end
+    object SQLMappingValueTARGETLABEL: TStringField
+      DisplayWidth = 999
+      FieldKind = fkData
+      FieldName = 'TARGETLABEL'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 999
+    end
+    object SQLMappingValueTARGETCODE: TStringField
+      DisplayWidth = 256
+      FieldKind = fkData
+      FieldName = 'TARGETCODE'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 256
+    end
+  end
+  object dsMappingValue: TDataSource
+    AutoEdit = False
+    DataSet = SQLMappingValue
+    Enabled = False
+    left = 1272
+    top = 347
+  end
+end
