@@ -1,4 +1,5 @@
 object FirebirdDataModule: TFirebirdDataModule
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 322
   HorizontalOffset = 1061
@@ -13,18 +14,22 @@ object FirebirdDataModule: TFirebirdDataModule
     Transaction = SQLTransaction1
     UserName = 'SYSDBA'
     LogEvents = []
-    left = 48
-    top = 24
+    CheckTransactionParams = False
+    UseConnectionCharSetIfNone = False
+    Left = 48
+    Top = 24
   end
   object SQLTransaction1: TSQLTransaction
     Active = False
     Database = IBConnection1
-    left = 168
-    top = 24
+    Left = 168
+    Top = 24
   end
   object SQLCreateTables: TSQLScript
     DataBase = IBConnection1
     Transaction = SQLTransaction1
+    AutoCommit = False
+    UseDollarString = False
     Directives.Strings = (
       'SET TERM'
       'COMMIT'
@@ -452,8 +457,8 @@ object FirebirdDataModule: TFirebirdDataModule
     UseSetTerm = True
     UseCommit = False
     UseDefines = False
-    left = 296
-    top = 24
+    Left = 296
+    Top = 24
   end
   object SQLQueryDBObjects: TSQLQuery
     FieldDefs = <>
@@ -464,12 +469,15 @@ object FirebirdDataModule: TFirebirdDataModule
       'select 1 from rdb$relations where rdb$relation_name = ''MODEL'''
     )
     Params = <>
-    left = 416
-    top = 24
+    Macros = <>
+    Left = 416
+    Top = 24
   end
   object SQLCreateData: TSQLScript
     DataBase = IBConnection1
     Transaction = SQLTransaction1
+    AutoCommit = False
+    UseDollarString = False
     Directives.Strings = (
       'SET TERM'
       'COMMIT'
@@ -571,7 +579,7 @@ object FirebirdDataModule: TFirebirdDataModule
     UseSetTerm = False
     UseCommit = False
     UseDefines = False
-    left = 296
-    top = 98
+    Left = 296
+    Top = 98
   end
 end

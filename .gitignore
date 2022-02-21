@@ -1,7 +1,6 @@
 *.exe
 backup/
 lib/
-*.dll
 IDPLicense.txt
 *.FDB
 IPLicense.txt
@@ -11,4 +10,3 @@ Temp/
 firebird.msg
 link.res
 ppas.bat
-*.lib

@@ -17,6 +17,7 @@ type
     SQLQueryDBObjects: TSQLQuery;
     SQLCreateData: TSQLScript;
     SQLTransaction1: TSQLTransaction;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }
   public
@@ -34,6 +35,13 @@ implementation
 
 
 
+
+procedure TFirebirdDataModule.DataModuleCreate(Sender: TObject);
+begin
+           { writeln('hello');   }
+  { xAppPath := ExtractFileDir(Application.ExeName) + PathDelim;  }
+
+end;
 
 end.
 
