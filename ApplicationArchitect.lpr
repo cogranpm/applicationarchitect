@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, sysutils, PascalScriptFCL, FrmMainUnit, mainmoduleunit,
+  Forms, sysutils, PascalScriptFCL, pascalscript, FrmMainUnit, mainmoduleunit,
   appinterfacesunit, firebirdDataModule, FirebirdDataProvider, AppSettingsUnit,
   NavigationNodeUnit, FirebirdQueryModule, MySQLDataModule, MySQLQueryModule,
   MySQLDataProvider, SynMustache, SynCommons, SynLZ, BuildControllerLoadUnit,
@@ -15,7 +15,7 @@ uses
   frmModels, mysqllookupsquery, firebirdlookupsquery, AssociationTree,
   ScreenFamilyViewModel, unitFrmPropertyType, unitfrmListHeader,
   unitFrmPropertyGroup, unitFrmMasterCategory, frmMasterProperty, frmScripting,
-  BuildHelper, jsonObjectWrapper, BuildLookup, PascalScriptLCL,
+  BuildHelper, jsonObjectWrapper, BuildLookup,
   MasterPropertyHelper, SettingsDBModule, dmMySQLImport, MYSQLImportProvider,
   frmModelImporter, mysqlimportquery, FirebirdImportQuery, fraMappings;
 

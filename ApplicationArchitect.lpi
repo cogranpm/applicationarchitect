@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="9"/>
+    <Version Value="12"/>
     <PathDelim Value="\"/>
     <General>
+      <Flags>
+        <CompatibilityMode Value="True"/>
+      </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <MainUnit Value="0"/>
       <Title Value="ApplicationArchitect"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
@@ -14,9 +16,6 @@
     <i18n>
       <EnableI18N LFM="False"/>
     </i18n>
-    <VersionInfo>
-      <StringTable ProductVersion=""/>
-    </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
     </BuildModes>
@@ -24,13 +23,14 @@
       <Version Value="2"/>
     </PublishOptions>
     <RunParams>
-      <local>
-        <FormatVersion Value="1"/>
-      </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default"/>
+      </Modes>
     </RunParams>
     <RequiredPackages Count="6">
       <Item1>
-        <PackageName Value="PascalScriptLCL"/>
+        <PackageName Value="pascalscript"/>
       </Item1>
       <Item2>
         <PackageName Value="SynEdit"/>
@@ -48,7 +48,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="47">
+    <Units Count="46">
       <Unit0>
         <Filename Value="ApplicationArchitect.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -270,87 +270,83 @@
         <UnitName Value="BuildLookup"/>
       </Unit34>
       <Unit35>
-        <Filename Value="F:\Tools\PascalScript\pascalscript-lazarus\pascalscript-master\Source\PascalScriptLCL.lpk"/>
-        <IsPartOfProject Value="True"/>
-      </Unit35>
-      <Unit36>
         <Filename Value="masterpropertyhelper.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MasterPropertyHelper"/>
-      </Unit36>
-      <Unit37>
+      </Unit35>
+      <Unit36>
         <Filename Value="settingsdbmodule.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SettingsDB"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="SettingsDBModule"/>
-      </Unit37>
-      <Unit38>
+      </Unit36>
+      <Unit37>
         <Filename Value="dmmysqlimport.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dmMYSQLImport"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmMySQLImport"/>
-      </Unit38>
-      <Unit39>
+      </Unit37>
+      <Unit38>
         <Filename Value="mysqlimportprovider.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MYSQLImportProvider"/>
-      </Unit39>
-      <Unit40>
+      </Unit38>
+      <Unit39>
         <Filename Value="frmmodelimporter.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmModelImporter"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmModelImporter"/>
-      </Unit40>
-      <Unit41>
+      </Unit39>
+      <Unit40>
         <Filename Value="mysqlimportquery.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MYSQLImportQuery"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-      </Unit41>
-      <Unit42>
+      </Unit40>
+      <Unit41>
         <Filename Value="firebirdimportquery.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FirebirdImportQuery"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="FirebirdImportQuery"/>
-      </Unit42>
-      <Unit43>
+      </Unit41>
+      <Unit42>
         <Filename Value="framappings.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="fraMappings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="fraMappings"/>
-      </Unit43>
-      <Unit44>
+      </Unit42>
+      <Unit43>
         <Filename Value="frmlookupdetaillookup.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmLookupDetailLookup"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmLookupDetailLookup"/>
-      </Unit44>
-      <Unit45>
+      </Unit43>
+      <Unit44>
         <Filename Value="framelookupdetaillookup.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="fraLookupDetailLookup"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="FrameLookupDetailLookup"/>
-      </Unit45>
-      <Unit46>
+      </Unit44>
+      <Unit45>
         <Filename Value="commondataprovider.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CommonDataProvider"/>
-      </Unit46>
+      </Unit45>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -364,6 +360,9 @@
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

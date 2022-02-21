@@ -2,15 +2,15 @@
 <CONFIG>
   <ProjectSession>
     <PathDelim Value="\"/>
-    <Version Value="9"/>
+    <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="51">
+    <Units Count="52">
       <Unit0>
         <Filename Value="ApplicationArchitect.lpr"/>
         <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="72" Y="20"/>
         <UsageCount Value="220"/>
-        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="frmmainunit.pas"/>
@@ -19,29 +19,26 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FrmMainUnit"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="91"/>
         <CursorPos Y="121"/>
         <UsageCount Value="220"/>
-        <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="mainmoduleunit.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="611"/>
         <CursorPos X="33" Y="619"/>
         <UsageCount Value="220"/>
-        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="appinterfacesunit.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="250"/>
         <CursorPos X="121" Y="273"/>
         <UsageCount Value="219"/>
-        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="firebirddatamodule.pas"/>
@@ -58,11 +55,10 @@
         <Filename Value="firebirddataprovider.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="FirebirdDataProvider"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1053"/>
         <CursorPos Y="1099"/>
         <UsageCount Value="212"/>
-        <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="unitdatabasesettings.pas"/>
@@ -90,12 +86,10 @@
         <ComponentName Value="FirebirdQueryModule"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="246"/>
         <CursorPos Y="268"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="mysqldatamodule.pas"/>
@@ -115,22 +109,19 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="MySQLQueryModule"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="621"/>
         <CursorPos X="60" Y="776"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="mysqldataprovider.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MySQLDataProvider"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="365"/>
         <CursorPos Y="390"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="SynMustache.pas"/>
@@ -143,10 +134,11 @@
       <Unit13>
         <Filename Value="SynCommons.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="40256"/>
-        <CursorPos Y="40325"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="11625"/>
+        <CursorPos X="47" Y="11655"/>
         <UsageCount Value="230"/>
+        <Loaded Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="SynLZ.pas"/>
@@ -167,10 +159,11 @@
         <Filename Value="buildcontrollerloadunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="BuildControllerLoadUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="171"/>
-        <CursorPos Y="211"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="144" Y="5"/>
         <UsageCount Value="228"/>
+        <Loaded Value="True"/>
       </Unit16>
       <Unit17>
         <Filename Value="buildentitydtounit.pas"/>
@@ -363,7 +356,6 @@
       </Unit34>
       <Unit35>
         <Filename Value="F:\Tools\PascalScript\pascalscript-lazarus\pascalscript-master\Source\PascalScriptLCL.lpk"/>
-        <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
@@ -406,11 +398,10 @@
         <Filename Value="mysqlimportprovider.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="MYSQLImportProvider"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="172"/>
         <CursorPos X="3" Y="192"/>
         <UsageCount Value="231"/>
-        <Loaded Value="True"/>
       </Unit39>
       <Unit40>
         <Filename Value="frmmodelimporter.pas"/>
@@ -419,13 +410,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="frmModelImporter"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="143"/>
         <CursorPos X="88" Y="166"/>
         <UsageCount Value="231"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit40>
       <Unit41>
         <Filename Value="mysqlimportquery.pas"/>
@@ -433,11 +421,9 @@
         <ComponentName Value="MYSQLImportQuery"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="57" Y="29"/>
         <UsageCount Value="227"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit41>
       <Unit42>
         <Filename Value="firebirdimportquery.pas"/>
@@ -446,7 +432,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="FirebirdImportQuery"/>
-        <EditorIndex Value="4"/>
         <CursorPos X="29" Y="3"/>
         <UsageCount Value="226"/>
         <Loaded Value="True"/>
@@ -491,10 +476,9 @@
         <Filename Value="commondataprovider.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="CommonDataProvider"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="125" Y="16"/>
-        <UsageCount Value="58"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="61"/>
       </Unit46>
       <Unit47>
         <Filename Value="f:\Tools\lazarus1_4\lcl\include\dbcustomnavigator.inc"/>
@@ -524,151 +508,56 @@
         <CursorPos Y="756"/>
         <UsageCount Value="18"/>
       </Unit50>
+      <Unit51>
+        <Filename Value="C:\tools\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\variants.pp"/>
+        <UnitName Value="Variants"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="4162"/>
+        <CursorPos X="33" Y="4179"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit51>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="3" HistoryIndex="2">
       <Position1>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="129" TopLine="92"/>
+        <Filename Value="firebirdimportquery.pas"/>
+        <Caret Line="3" Column="29"/>
       </Position1>
       <Position2>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="132" TopLine="95"/>
+        <Filename Value="SynCommons.pas"/>
+        <Caret Line="11654" Column="14" TopLine="11638"/>
       </Position2>
       <Position3>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="145" TopLine="124"/>
+        <Filename Value="SynCommons.pas"/>
+        <Caret Line="11655" Column="47" TopLine="11625"/>
       </Position3>
-      <Position4>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="150" TopLine="124"/>
-      </Position4>
-      <Position5>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="114" TopLine="91"/>
-      </Position5>
-      <Position6>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="132" TopLine="95"/>
-      </Position6>
-      <Position7>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="150" TopLine="121"/>
-      </Position7>
-      <Position8>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="270" TopLine="248"/>
-      </Position8>
-      <Position9>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="271" TopLine="248"/>
-      </Position9>
-      <Position10>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="270" TopLine="248"/>
-      </Position10>
-      <Position11>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="271" TopLine="248"/>
-      </Position11>
-      <Position12>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="270" TopLine="248"/>
-      </Position12>
-      <Position13>
-        <Filename Value="mainmoduleunit.pas"/>
-        <Caret Line="636" TopLine="610"/>
-      </Position13>
-      <Position14>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="209" Column="16" TopLine="189"/>
-      </Position14>
-      <Position15>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="206" TopLine="189"/>
-      </Position15>
-      <Position16>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="207" TopLine="189"/>
-      </Position16>
-      <Position17>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="212" TopLine="189"/>
-      </Position17>
-      <Position18>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="213" TopLine="189"/>
-      </Position18>
-      <Position19>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="214" TopLine="189"/>
-      </Position19>
-      <Position20>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="215" TopLine="189"/>
-      </Position20>
-      <Position21>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="89" TopLine="56"/>
-      </Position21>
-      <Position22>
-        <Filename Value="appinterfacesunit.pas"/>
-        <Caret Line="272" TopLine="239"/>
-      </Position22>
-      <Position23>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="111" Column="5" TopLine="66"/>
-      </Position23>
-      <Position24>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="27" Column="79" TopLine="4"/>
-      </Position24>
-      <Position25>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="114" Column="103" TopLine="74"/>
-      </Position25>
-      <Position26>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="180" Column="117" TopLine="160"/>
-      </Position26>
-      <Position27>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="229" Column="64" TopLine="206"/>
-      </Position27>
-      <Position28>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="194" Column="37" TopLine="171"/>
-      </Position28>
-      <Position29>
-        <Filename Value="mysqlimportprovider.pas"/>
-        <Caret Line="180" Column="158" TopLine="174"/>
-      </Position29>
-      <Position30>
-        <Filename Value="frmmodelimporter.pas"/>
-        <Caret Line="110" TopLine="100"/>
-      </Position30>
     </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
   <Debugging>
-    <BreakPoints Count="2">
-      <Item1>
+    <BreakPoints>
+      <Item>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="f:\Tools\lazarus1_4\fpc\2.6.4\source\packages\fcl-db\src\base\fields.inc"/>
         <Line Value="470"/>
-      </Item1>
-      <Item2>
+      </Item>
+      <Item>
         <Kind Value="bpkSource"/>
         <WatchScope Value="wpsLocal"/>
         <WatchKind Value="wpkWrite"/>
         <Source Value="f:\Tools\lazarus1_4\fpc\2.6.4\source\packages\fcl-db\src\base\fields.inc"/>
         <Line Value="475"/>
-      </Item2>
+      </Item>
     </BreakPoints>
-    <Watches Count="1">
-      <Item1>
+    <Watches>
+      <Item>
         <Expression Value="PPropertyValuesListWidget.Values[currentValueListKey]"/>
-      </Item1>
+      </Item>
     </Watches>
   </Debugging>
 </CONFIG>

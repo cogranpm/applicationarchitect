@@ -11652,7 +11652,7 @@ type
       const Value: TVarData): Boolean; override;
     {$else}
     function SetProperty(const V: TVarData; const Name: string;
-      const Value: TVarData): Boolean; override;
+      const Value: TVarData): Boolean; virtual;
     {$endif}
     /// clear the content
     // - this default implementation will set VType := varEmpty
