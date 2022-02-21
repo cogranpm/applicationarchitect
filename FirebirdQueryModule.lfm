@@ -1,8 +1,8 @@
 object FirebirdQueryModule: TFirebirdQueryModule
   OldCreateOrder = False
-  Height = 419
-  HorizontalOffset = 289
-  VerticalOffset = 318
+  Height = 565
+  HorizontalOffset = 401
+  VerticalOffset = 401
   Width = 1521
   object SQLArtifactPropertyValue: TSQLQuery
     FieldDefs = <    
@@ -10,25 +10,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ARTIFACTPROPERTYVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ARTIFACTPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ARTIFACTTOPROPERTYVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENARTIFACTTOPROPERTYVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PROPERTYVALUE'
@@ -44,15 +40,15 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ArtifactPropertyValueId,  ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue  from ArtifactPropertyValue  WHERE  (ArtifactToPropertyValue = :ScreenArtifactId  )   ;'
     )
+    InsertSQL.Strings = (
+      'insert into ArtifactPropertyValue (  ArtifactPropertyValueId,  ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue  )'
+      'VALUES (  :ArtifactPropertyValueId, :ARTIFACTPROPVALUETOPROPERTY, :ArtifactToPropertyValue,  :ScreenArtifactToPropertyValue,  :PropertyValue );'
+    )
     UpdateSQL.Strings = (
       'UPDATE ArtifactPropertyValue SET  ArtifactToPropertyValue = :ArtifactToPropertyValue,'
       'ARTIFACTPROPVALUETOPROPERTY = :ARTIFACTPROPVALUETOPROPERTY,'
       ' ScreenArtifactToPropertyValue = :ScreenArtifactToPropertyValue,  PropertyValue = :PropertyValue'
       'WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ArtifactPropertyValue (  ArtifactPropertyValueId,  ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue  )'
-      'VALUES (  :ArtifactPropertyValueId, :ARTIFACTPROPVALUETOPROPERTY, :ArtifactToPropertyValue,  :ScreenArtifactToPropertyValue,  :PropertyValue );'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ArtifactPropertyValue WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
@@ -63,8 +59,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ScreenArtifactId'
         ParamType = ptInput
       end>
-    left = 40
-    top = 24
+    Macros = <>
+    Left = 40
+    Top = 24
     object SQLArtifactPropertyValueArtifactPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -127,13 +124,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ASSOCIATIONID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MODELASSOCIATION'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -145,19 +140,16 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'TYPE'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'OWNER'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'OWNED'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLAssociationAfterDelete
     AfterInsert = SQLAssociationAfterInsert
@@ -167,13 +159,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  AssociationId,  ModelAssociation,  Name,  type, owner, owned  from Association  WHERE  (ModelAssociation = :ModelId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Association SET  ModelAssociation = :ModelAssociation,  Name = :Name,  type = :type, Owner = :Owner, Owned = :Owned'
-      'WHERE Association.AssociationId = :AssociationId;'
-    )
     InsertSQL.Strings = (
       'insert into Association (  AssociationId,  ModelAssociation,  Name,  type, Owner, Owned  )'
       'VALUES (  :AssociationId,  :ModelAssociation,  :Name,  :type, :Owner, :Owned );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Association SET  ModelAssociation = :ModelAssociation,  Name = :Name,  type = :type, Owner = :Owner, Owned = :Owned'
+      'WHERE Association.AssociationId = :AssociationId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Association WHERE Association.AssociationId = :AssociationId;'
@@ -184,7 +176,8 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 104
+    Macros = <>
+    Left = 104
     object SQLAssociationAssociationId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -310,13 +303,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  AttributeId,  RelationAttribute,  allownull,  attributelength,  name,  type  from Attribute  WHERE  (RelationAttribute = :RelationId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Attribute SET  RelationAttribute = :RelationAttribute,  allownull = :allownull,  attributelength = :attributelength,  name = :name,  type = :type  '
-      'WHERE Attribute.AttributeId = :AttributeId;'
-    )
     InsertSQL.Strings = (
       'insert into Attribute (  AttributeId,  RelationAttribute,  allownull,  attributelength,  name,  type  )'
       'VALUES (  :AttributeId,  :RelationAttribute,  :allownull,  :attributelength,  :name,  :type );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Attribute SET  RelationAttribute = :RelationAttribute,  allownull = :allownull,  attributelength = :attributelength,  name = :name,  type = :type  '
+      'WHERE Attribute.AttributeId = :AttributeId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Attribute WHERE Attribute.AttributeId = :AttributeId;'
@@ -327,8 +320,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'RelationId'
         ParamType = ptInput
       end>
-    left = 320
-    top = 16
+    Macros = <>
+    Left = 320
+    Top = 16
     object SQLAttributeAttributeId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -420,7 +414,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'AttributePropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -436,13 +429,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  AttributePropertyValueId,  AttributeToPropertyValue,  MasterProperty,  PropertyValue  from AttributePropertyValue  WHERE  (AttributeToPropertyValue = :AttributeId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE AttributePropertyValue SET  AttributeToPropertyValue = :AttributeToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue'
-      'WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
-    )
     InsertSQL.Strings = (
       'insert into AttributePropertyValue (  AttributePropertyValueId,  AttributeToPropertyValue,  MasterProperty,  PropertyValue  )'
       'VALUES (  :AttributePropertyValueId,  :AttributeToPropertyValue,  :MasterProperty,  :PropertyValue );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE AttributePropertyValue SET  AttributeToPropertyValue = :AttributeToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue'
+      'WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM AttributePropertyValue WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
@@ -453,8 +446,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'AttributeId'
         ParamType = ptInput
       end>
-    left = 470
-    top = 16
+    Macros = <>
+    Left = 470
+    Top = 16
   end
   object SQLBuild: TSQLQuery
     FieldDefs = <    
@@ -462,13 +456,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BuildId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ModelToBuild'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'databaseName'
@@ -498,7 +490,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'hostplatform'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'libpath'
@@ -546,7 +537,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'port'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ProjectPath'
@@ -558,7 +548,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'servertype'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'serviceHost'
@@ -570,7 +559,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'servicePort'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'templatepath'
@@ -598,13 +586,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  BuildId,  ModelToBuild,  Name,  ProjectPath  from Build  WHERE  (ModelToBuild = :ModelId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Build SET  ModelToBuild = :ModelToBuild,  Name = :Name,  ProjectPath = :ProjectPath'
-      'WHERE Build.BuildId = :BuildId;'
-    )
     InsertSQL.Strings = (
       'insert into Build (  BuildId,  ModelToBuild,  Name,  ProjectPath  )'
       'VALUES (  :BuildId,  :ModelToBuild,  :Name,  :ProjectPath);'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Build SET  ModelToBuild = :ModelToBuild,  Name = :Name,  ProjectPath = :ProjectPath'
+      'WHERE Build.BuildId = :BuildId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Build WHERE Build.BuildId = :BuildId;'
@@ -615,8 +603,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 620
-    top = 16
+    Macros = <>
+    Left = 620
+    Top = 16
     object SQLBuildBuildId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -668,7 +657,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'EnvironmentId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'DatabaseName'
@@ -702,20 +690,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  EnvironmentId,  DatabaseName,  DatabaseServer,  MembershipDatabase,  MembershipServer  from Environment  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Environment SET  DatabaseName = :DatabaseName,  DatabaseServer = :DatabaseServer,  MembershipDatabase = :MembershipDatabase,  MembershipServer = :MembershipServer  '
-      'WHERE Environment.EnvironmentId = :EnvironmentId;'
-    )
     InsertSQL.Strings = (
       'insert into Environment (  EnvironmentId,  DatabaseName,  DatabaseServer,  MembershipDatabase,  MembershipServer  )'
       'VALUES (  :EnvironmentId,  :DatabaseName,  :DatabaseServer,  :MembershipDatabase,  :MembershipServer );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Environment SET  DatabaseName = :DatabaseName,  DatabaseServer = :DatabaseServer,  MembershipDatabase = :MembershipDatabase,  MembershipServer = :MembershipServer  '
+      'WHERE Environment.EnvironmentId = :EnvironmentId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Environment WHERE Environment.EnvironmentId = :EnvironmentId;'
     )
     Params = <>
-    left = 770
-    top = 16
+    Macros = <>
+    Left = 770
+    Top = 16
     object SQLEnvironmentEnvironmentId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -774,13 +763,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ListDetailId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ListHeaderToDetail'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Code'
@@ -802,13 +789,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ListDetailId,  ListHeaderToDetail,  Code,  Label  from ListDetail  WHERE  (ListHeaderToDetail = :ListHeaderId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ListDetail SET  ListHeaderToDetail = :ListHeaderToDetail,  Code = :Code,  Label = :Label  '
-      'WHERE ListDetail.ListDetailId = :ListDetailId;'
-    )
     InsertSQL.Strings = (
       'insert into ListDetail (  ListDetailId,  ListHeaderToDetail,  Code,  Label  )'
       'VALUES (  :ListDetailId,  :ListHeaderToDetail,  :Code,  :Label );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListDetail SET  ListHeaderToDetail = :ListHeaderToDetail,  Code = :Code,  Label = :Label  '
+      'WHERE ListDetail.ListDetailId = :ListDetailId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ListDetail WHERE ListDetail.ListDetailId = :ListDetailId;'
@@ -819,8 +806,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ListHeaderId'
         ParamType = ptInput
       end>
-    left = 920
-    top = 16
+    Macros = <>
+    Left = 920
+    Top = 16
     object SQLListDetailListDetailId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -872,7 +860,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ListHeaderId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -889,20 +876,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ListHeaderId,  Name  from ListHeader  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ListHeader SET  Name = :Name  '
-      'WHERE ListHeader.ListHeaderId = :ListHeaderId;'
-    )
     InsertSQL.Strings = (
       'insert into ListHeader (  ListHeaderId,  Name  )'
       'VALUES (  :ListHeaderId,  :Name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListHeader SET  Name = :Name  '
+      'WHERE ListHeader.ListHeaderId = :ListHeaderId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ListHeader WHERE ListHeader.ListHeaderId = :ListHeaderId;'
     )
     Params = <>
-    left = 1070
-    top = 16
+    Macros = <>
+    Left = 1070
+    Top = 16
     object SQLListHeaderListHeaderId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -931,7 +919,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MasterCategoryId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -947,20 +934,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  MasterCategoryId,  Name  from MasterCategory  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE MasterCategory SET  Name = :Name  '
-      'WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
-    )
     InsertSQL.Strings = (
       'insert into MasterCategory (  MasterCategoryId,  Name  )'
       'VALUES (  :MasterCategoryId,  :Name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterCategory SET  Name = :Name  '
+      'WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM MasterCategory WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
     )
     Params = <>
-    left = 1220
-    top = 16
+    Macros = <>
+    Left = 1220
+    Top = 16
     object SQLMasterCategoryMasterCategoryId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -989,7 +977,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MASTERPROPERTYID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'DEFAULTVALUE'
@@ -1013,13 +1000,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MASTERPROPERTYTOGROUP'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MASTERPROPERTYTOTYPE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLMasterPropertyAfterDelete
     AfterInsert = SQLMasterPropertyAfterInsert
@@ -1032,21 +1017,22 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'Name,  Notes, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE'
       '  from MasterProperty  ;'
     )
+    InsertSQL.Strings = (
+      'insert into MasterProperty (  MasterPropertyId,  DefaultValue,  Name,  Notes, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE  )'
+      'VALUES (  :MasterPropertyId,  :DefaultValue,  :Name,  :Notes, :MASTERPROPERTYTOGROUP, :MASTERPROPERTYTOTYPE );'
+    )
     UpdateSQL.Strings = (
       'UPDATE MasterProperty SET  DefaultValue = :DefaultValue,  Name = :Name,  Notes = :Notes,'
       'MASTERPROPERTYTOTYPE = :MASTERPROPERTYTOTYPE, MASTERPROPERTYTOGROUP = :MASTERPROPERTYTOGROUP'
       'WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
     )
-    InsertSQL.Strings = (
-      'insert into MasterProperty (  MasterPropertyId,  DefaultValue,  Name,  Notes, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE  )'
-      'VALUES (  :MasterPropertyId,  :DefaultValue,  :Name,  :Notes, :MASTERPROPERTYTOGROUP, :MASTERPROPERTYTOTYPE );'
-    )
     DeleteSQL.Strings = (
       'DELETE FROM MasterProperty WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
     )
     Params = <>
-    left = 1370
-    top = 16
+    Macros = <>
+    Left = 1370
+    Top = 16
     object SQLMasterPropertyMasterPropertyId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1149,13 +1135,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MasterPropertyValueListId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperyToValueList'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Code'
@@ -1183,13 +1167,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  MasterPropertyValueListId,  MasterProperyToValueList,  Code,  Display,  Name  from MasterPropertyValueList  WHERE  (MasterProperyToValueList = :MasterPropertyId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE MasterPropertyValueList SET  MasterProperyToValueList = :MasterProperyToValueList,  Code = :Code,  Display = :Display,  Name = :Name  '
-      'WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
-    )
     InsertSQL.Strings = (
       'insert into MasterPropertyValueList (  MasterPropertyValueListId,  MasterProperyToValueList,  Code,  Display,  Name  )'
       'VALUES (  :MasterPropertyValueListId,  :MasterProperyToValueList,  :Code,  :Display,  :Name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterPropertyValueList SET  MasterProperyToValueList = :MasterProperyToValueList,  Code = :Code,  Display = :Display,  Name = :Name  '
+      'WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM MasterPropertyValueList WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
@@ -1200,8 +1184,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MasterPropertyId'
         ParamType = ptInput
       end>
-    left = 48
-    top = 80
+    Macros = <>
+    Left = 48
+    Top = 80
     object SQLMasterPropertyValueListMasterPropertyValueListId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1263,7 +1248,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MODELID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -1279,20 +1263,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ModelId,  name  from Model  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Model SET  name = :name  '
-      'WHERE Model.ModelId = :ModelId;'
-    )
     InsertSQL.Strings = (
       'insert into Model (  ModelId,  name  )'
       'VALUES (  :ModelId,  :name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Model SET  name = :name  '
+      'WHERE Model.ModelId = :ModelId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Model WHERE Model.ModelId = :ModelId;'
     )
     Params = <>
-    left = 170
-    top = 80
+    Macros = <>
+    Left = 170
+    Top = 80
     object SQLModelModelId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1322,7 +1307,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'PROPERTYGROUPID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -1338,20 +1322,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  PropertyGroupId,  Name  from PropertyGroup  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE PropertyGroup SET  Name = :Name  '
-      'WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
-    )
     InsertSQL.Strings = (
       'insert into PropertyGroup (  PropertyGroupId,  Name  )'
       'VALUES (  :PropertyGroupId,  :Name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyGroup SET  Name = :Name  '
+      'WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM PropertyGroup WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
     )
     Params = <>
-    left = 320
-    top = 80
+    Macros = <>
+    Left = 320
+    Top = 80
     object SQLPropertyGroupPropertyGroupId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1380,13 +1365,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'PROPERTYTYPEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'DISPLAYCONTROL'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -1408,20 +1391,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  PropertyTypeId,  DisplayControl,  Name,  Notes  from PropertyType  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE PropertyType SET  DisplayControl = :DisplayControl,  Name = :Name,  Notes = :Notes  '
-      'WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
-    )
     InsertSQL.Strings = (
       'insert into PropertyType (  PropertyTypeId,  DisplayControl,  Name,  Notes  )'
       'VALUES (  :PropertyTypeId,  :DisplayControl,  :Name,  :Notes );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyType SET  DisplayControl = :DisplayControl,  Name = :Name,  Notes = :Notes  '
+      'WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM PropertyType WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
     )
     Params = <>
-    left = 470
-    top = 80
+    Macros = <>
+    Left = 470
+    Top = 80
     object SQLPropertyTypePropertyTypeId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1470,31 +1454,26 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'RELATIONID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MODELRELATION'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FROZEN'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'LASTBUILT'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'LASTMODIFIED'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -1511,13 +1490,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  RelationId,  ModelRelation,  frozen,  lastbuilt,  lastmodified,  name  from Relation  WHERE  (ModelRelation = :ModelId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Relation SET  ModelRelation = :ModelRelation,  frozen = :frozen,  lastbuilt = :lastbuilt,  lastmodified = :lastmodified,  name = :name  '
-      'WHERE Relation.RelationId = :RelationId;'
-    )
     InsertSQL.Strings = (
       'insert into Relation (  RelationId,  ModelRelation,  frozen,  lastbuilt,  lastmodified,  name  )'
       'VALUES (  :RelationId,  :ModelRelation,  :frozen,  :lastbuilt,  :lastmodified,  :name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Relation SET  ModelRelation = :ModelRelation,  frozen = :frozen,  lastbuilt = :lastbuilt,  lastmodified = :lastmodified,  name = :name  '
+      'WHERE Relation.RelationId = :RelationId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Relation WHERE Relation.RelationId = :RelationId;'
@@ -1528,8 +1507,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 620
-    top = 80
+    Macros = <>
+    Left = 620
+    Top = 80
     object SQLRelationname: TStringField
       DisplayLabel = 'Name'
       DisplayWidth = 30
@@ -1604,19 +1584,16 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'RELATIONPROPERTYVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'RELATIONTOPROPERTYVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MASTERPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PROPERTYVALUE'
@@ -1630,15 +1607,15 @@ object FirebirdQueryModule: TFirebirdQueryModule
     Database = FirebirdDataModule.IBConnection1
     Transaction = FirebirdDataModule.SQLTransaction1
     SQL.Strings = (
-      'SELECT  RelationPropertyValueId,  RelationToPropertyValue,  MasterProperty,  PropertyValue  from RelationPropertyValue  WHERE  (RelationToPropertyValue = :RelationId  ) ;'
-    )
-    UpdateSQL.Strings = (
-      'UPDATE RelationPropertyValue SET  RelationToPropertyValue = :RelationToPropertyValue, MasterProperty=:MasterProperty, PropertyValue = :PropertyValue'
-      'WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
+      'SELECT  RelationPropertyValueId,  RelationToPropertyValue,  PropertyValue  from RelationPropertyValue  WHERE  (RelationToPropertyValue = :RelationId  ) ;'
     )
     InsertSQL.Strings = (
       'insert into RelationPropertyValue (  RelationPropertyValueId,  RelationToPropertyValue, MasterProperty, PropertyValue  )'
       'VALUES (  :RelationPropertyValueId,  :RelationToPropertyValue, :MasterProperty, :PropertyValue );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE RelationPropertyValue SET  RelationToPropertyValue = :RelationToPropertyValue, MasterProperty=:MasterProperty, PropertyValue = :PropertyValue'
+      'WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM RelationPropertyValue WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
@@ -1649,8 +1626,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'RelationId'
         ParamType = ptInput
       end>
-    left = 770
-    top = 80
+    Macros = <>
+    Left = 770
+    Top = 80
   end
   object SQLScreenArtifact: TSQLQuery
     FieldDefs = <    
@@ -1658,25 +1636,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'SCREENARTIFACTID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ARTIFACTTOATTRIBUTE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CHILDTOARTIFACT'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FAMILYTOARTIFACT'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -1692,13 +1666,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ScreenArtifactId, ArtifactToAttribute, ChildToArtifact,  FamilyToArtifact,  Name  from ScreenArtifact  WHERE  (ChildToArtifact = :ScreenChildId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ScreenArtifact SET  ChildToArtifact = :ChildToArtifact, ArtifactToAttribute = :ArtifactToAttribute, FamilyToArtifact = :FamilyToArtifact,  Name = :Name'
-      'WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
-    )
     InsertSQL.Strings = (
       'insert into ScreenArtifact (  ScreenArtifactId, ArtifactToAttribute, ChildToArtifact,  FamilyToArtifact,  Name  )'
       'VALUES (  :ScreenArtifactId, :ArtifactToAttribute, :ChildToArtifact,  :FamilyToArtifact,  :Name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifact SET  ChildToArtifact = :ChildToArtifact, ArtifactToAttribute = :ArtifactToAttribute, FamilyToArtifact = :FamilyToArtifact,  Name = :Name'
+      'WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenArtifact WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
@@ -1709,8 +1683,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ScreenChildId'
         ParamType = ptInput
       end>
-    left = 920
-    top = 80
+    Macros = <>
+    Left = 920
+    Top = 80
     object SQLScreenArtifactScreenArtifactId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1771,7 +1746,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ScreenArtifactTypeId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -1787,20 +1761,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ScreenArtifactTypeId,  Name  from ScreenArtifactType  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ScreenArtifactType SET  Name = :Name  '
-      'WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
-    )
     InsertSQL.Strings = (
       'insert into ScreenArtifactType (  ScreenArtifactTypeId,  Name  )'
       'VALUES (  :ScreenArtifactTypeId,  :Name );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifactType SET  Name = :Name  '
+      'WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenArtifactType WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
     )
     Params = <>
-    left = 1070
-    top = 80
+    Macros = <>
+    Left = 1070
+    Top = 80
     object SQLScreenArtifactTypeScreenArtifactTypeId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1829,25 +1804,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'SCREENCHILDID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENCHILDTOASSOCIATION'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENFAMILYTOSCREENCHILD'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENCHILDTOSELF'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -1863,15 +1834,15 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ScreenChildId,  SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name  from ScreenChild  WHERE  (ScreenFamilyToScreenChild = :ScreenFamilyId  )   ;'
     )
+    InsertSQL.Strings = (
+      'insert into ScreenChild (  ScreenChildId, SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name  )'
+      'VALUES (  :ScreenChildId, :SCREENCHILDTOASSOCIATION,  :ScreenFamilyToScreenChild,  :ScreenChildToSelf,  :Name );'
+    )
     UpdateSQL.Strings = (
       'UPDATE ScreenChild SET  ScreenFamilyToScreenChild = :ScreenFamilyToScreenChild,'
       'SCREENCHILDTOASSOCIATION = :SCREENCHILDTOASSOCIATION,'
       'ScreenChildToSelf = :ScreenChildToSelf,  Name = :Name'
       'WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ScreenChild (  ScreenChildId, SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name  )'
-      'VALUES (  :ScreenChildId, :SCREENCHILDTOASSOCIATION,  :ScreenFamilyToScreenChild,  :ScreenChildToSelf,  :Name );'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenChild WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
@@ -1882,8 +1853,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ScreenFamilyId'
         ParamType = ptInput
       end>
-    left = 1220
-    top = 80
+    Macros = <>
+    Left = 1220
+    Top = 80
     object SQLScreenChildScreenChildId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1944,19 +1916,16 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'SCREENFAMILYID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MODELTOSCREENFAMILY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENFAMILYTORELATION'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -1973,13 +1942,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  ScreenFamilyId,  ModelToScreenFamily, SCREENFAMILYTORELATION,  Name  from ScreenFamily  WHERE  (ModelToScreenFamily = :ModelId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ScreenFamily SET  ModelToScreenFamily = :ModelToScreenFamily,  Name = :Name, SCREENFAMILYTORELATION = :SCREENFAMILYTORELATION'
-      'WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
-    )
     InsertSQL.Strings = (
       'insert into ScreenFamily (  ScreenFamilyId,  ModelToScreenFamily,  Name, SCREENFAMILYTORELATION  )'
       'VALUES (  :ScreenFamilyId,  :ModelToScreenFamily,  :Name, :SCREENFAMILYTORELATION );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenFamily SET  ModelToScreenFamily = :ModelToScreenFamily,  Name = :Name, SCREENFAMILYTORELATION = :SCREENFAMILYTORELATION'
+      'WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenFamily WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
@@ -1990,8 +1959,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 1370
-    top = 80
+    Macros = <>
+    Left = 1370
+    Top = 80
     object SQLScreenFamilyScreenFamilyId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2058,25 +2028,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'SCREENPROPERTYVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FAMILYTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CHILDTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PROPERTYVALUE'
@@ -2093,14 +2059,14 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'SELECT  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  from ScreenPropertyValue'
       'WHERE  FamilyToScreenPropValue = :ScreenFamilyId;'
     )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId, SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue );'
+    )
     UpdateSQL.Strings = (
       'UPDATE ScreenPropertyValue SET  FamilyToScreenPropValue = :FamilyToScreenPropValue,'
       'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY, ChildToScreenPropValue = :ChildToScreenPropValue,  PropertyValue = :PropertyValue'
       'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ScreenPropertyValue (  ScreenPropertyValueId, SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  )'
-      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue );'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
@@ -2111,8 +2077,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ScreenFamilyId'
         ParamType = ptInput
       end>
-    left = 96
-    top = 144
+    Macros = <>
+    Left = 96
+    Top = 144
     object SQLScreenPropertyValueScreenPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2172,142 +2139,142 @@ object FirebirdQueryModule: TFirebirdQueryModule
     AutoEdit = False
     DataSet = SQLArtifactPropertyValue
     Enabled = False
-    left = 20
-    top = 208
+    Left = 20
+    Top = 208
   end
   object dsAssociation: TDataSource
     DataSet = SQLAssociation
-    left = 170
-    top = 208
+    Left = 170
+    Top = 208
   end
   object dsAttribute: TDataSource
     AutoEdit = False
     DataSet = SQLAttribute
     Enabled = False
-    left = 320
-    top = 208
+    Left = 320
+    Top = 208
   end
   object dsAttributePropertyValue: TDataSource
     AutoEdit = False
     DataSet = SQLAttributePropertyValue
     Enabled = False
-    left = 470
-    top = 208
+    Left = 470
+    Top = 208
   end
   object dsBuild: TDataSource
     AutoEdit = False
     DataSet = SQLBuild
     Enabled = False
-    left = 620
-    top = 208
+    Left = 620
+    Top = 208
   end
   object dsEnvironment: TDataSource
     AutoEdit = False
     DataSet = SQLEnvironment
     Enabled = False
-    left = 770
-    top = 208
+    Left = 770
+    Top = 208
   end
   object dsListDetail: TDataSource
     DataSet = SQLListDetail
-    left = 920
-    top = 208
+    Left = 920
+    Top = 208
   end
   object dsListHeader: TDataSource
     AutoEdit = False
     DataSet = SQLListHeader
     Enabled = False
-    left = 1070
-    top = 208
+    Left = 1070
+    Top = 208
   end
   object dsMasterCategory: TDataSource
     AutoEdit = False
     DataSet = SQLMasterCategory
     Enabled = False
-    left = 1220
-    top = 208
+    Left = 1220
+    Top = 208
   end
   object dsMasterProperty: TDataSource
     AutoEdit = False
     DataSet = SQLMasterProperty
     Enabled = False
-    left = 1370
-    top = 208
+    Left = 1370
+    Top = 208
   end
   object dsMasterPropertyValueList: TDataSource
     AutoEdit = False
     DataSet = SQLMasterPropertyValueList
     Enabled = False
-    left = 20
-    top = 272
+    Left = 20
+    Top = 272
   end
   object dsModel: TDataSource
     AutoEdit = False
     DataSet = SQLModel
     Enabled = False
-    left = 170
-    top = 272
+    Left = 170
+    Top = 272
   end
   object dsPropertyGroup: TDataSource
     AutoEdit = False
     DataSet = SQLPropertyGroup
     Enabled = False
-    left = 320
-    top = 272
+    Left = 320
+    Top = 272
   end
   object dsPropertyType: TDataSource
     AutoEdit = False
     DataSet = SQLPropertyType
     Enabled = False
-    left = 470
-    top = 272
+    Left = 470
+    Top = 272
   end
   object dsRelation: TDataSource
     DataSet = SQLRelation
-    left = 620
-    top = 272
+    Left = 620
+    Top = 272
   end
   object dsRelationPropertyValue: TDataSource
     AutoEdit = False
     DataSet = SQLRelationPropertyValue
     Enabled = False
-    left = 770
-    top = 272
+    Left = 770
+    Top = 272
   end
   object dsScreenArtifact: TDataSource
     AutoEdit = False
     DataSet = SQLScreenArtifact
     Enabled = False
-    left = 920
-    top = 272
+    Left = 920
+    Top = 272
   end
   object dsScreenArtifactType: TDataSource
     AutoEdit = False
     DataSet = SQLScreenArtifactType
     Enabled = False
-    left = 1070
-    top = 272
+    Left = 1070
+    Top = 272
   end
   object dsScreenChild: TDataSource
     AutoEdit = False
     DataSet = SQLScreenChild
     Enabled = False
-    left = 1220
-    top = 272
+    Left = 1220
+    Top = 272
   end
   object dsScreenFamily: TDataSource
     AutoEdit = False
     DataSet = SQLScreenFamily
     Enabled = False
-    left = 1370
-    top = 272
+    Left = 1370
+    Top = 272
   end
   object dsScreenPropertyValue: TDataSource
     AutoEdit = False
     DataSet = SQLScreenPropertyValue
     Enabled = False
-    left = 20
-    top = 336
+    Left = 20
+    Top = 336
   end
   object SQLScreenChildPropertyValue: TSQLQuery
     FieldDefs = <    
@@ -2315,25 +2282,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'SCREENPROPERTYVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FAMILYTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CHILDTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PROPERTYVALUE'
@@ -2350,14 +2313,14 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'SELECT  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  from ScreenPropertyValue'
       'WHERE  ChildToScreenPropValue = :ScreenChildId;'
     )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId, SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue );'
+    )
     UpdateSQL.Strings = (
       'UPDATE ScreenPropertyValue SET  FamilyToScreenPropValue = :FamilyToScreenPropValue,'
       'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY, ChildToScreenPropValue = :ChildToScreenPropValue,  PropertyValue = :PropertyValue'
       'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ScreenPropertyValue (  ScreenPropertyValueId, SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue  )'
-      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue );'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
@@ -2368,8 +2331,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'ScreenChildId'
         ParamType = ptInput
       end>
-    left = 280
-    top = 144
+    Macros = <>
+    Left = 280
+    Top = 144
     object SQLScreenPropertyValueScreenPropertyValueId1: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2447,8 +2411,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MASTERPROPERTYID'
         ParamType = ptInput
       end>
-    left = 468
-    top = 144
+    Macros = <>
+    Left = 468
+    Top = 144
   end
   object SQLBuildTemplate: TSQLQuery
     FieldDefs = <    
@@ -2456,7 +2421,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BUILDTEMPLATEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -2474,7 +2438,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildTemplateAfterDelete
     AfterInsert = SQLBuildTemplateAfterInsert
@@ -2484,6 +2447,10 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'select BUILDTEMPLATEID, NAME, SCRIPT, VERSION FROM BUILDTEMPLATE;'
     )
+    InsertSQL.Strings = (
+      'INSERT INTO BUILDTEMPLATE (BUILDTEMPLATEID, NAME, SCRIPT, VERSION)'
+      'VALUES (:BUILDTEMPLATEID, :NAME, :SCRIPT, CURRENT_TIMESTAMP);'
+    )
     UpdateSQL.Strings = (
       'UPDATE BUILDTEMPLATE'
       'SET BUILDTEMPLATE.NAME = :NAME,'
@@ -2491,17 +2458,14 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'BUILDTEMPLATE.VERSION = CURRENT_TIMESTAMP'
       'WHERE  BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
     )
-    InsertSQL.Strings = (
-      'INSERT INTO BUILDTEMPLATE (BUILDTEMPLATEID, NAME, SCRIPT, VERSION)'
-      'VALUES (:BUILDTEMPLATEID, :NAME, :SCRIPT, CURRENT_TIMESTAMP);'
-    )
     DeleteSQL.Strings = (
       'DELETE FROM BUILDTEMPLATE WHERE'
       'BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
     )
     Params = <>
-    left = 620
-    top = 152
+    Macros = <>
+    Left = 620
+    Top = 152
     object SQLBuildTemplateBUILDTEMPLATEID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2534,7 +2498,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
       ReadOnly = False
       Required = False
       Visible = False
-      BlobType = ftBlob
       Size = 8
       Transliterate = False
     end
@@ -2556,7 +2519,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BUILDCONTROLLERID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -2568,7 +2530,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildControllerAfterDelete
     AfterInsert = SQLBuildControllerAfterInsert
@@ -2580,23 +2541,24 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'select buildcontrollerid, name, version'
       'from buildcontroller;'
     )
+    InsertSQL.Strings = (
+      'insert into buildcontroller(buildcontrollerid, name, VERSION)'
+      'values (:buildcontrollerid, :name, CURRENT_TIMESTAMP);'
+    )
     UpdateSQL.Strings = (
       'update buildcontroller'
       'set name = :name,'
       'version = current_timestamp'
       'where buildcontroller.buildcontrollerid = :buildcontrollerid;'
     )
-    InsertSQL.Strings = (
-      'insert into buildcontroller(buildcontrollerid, name, VERSION)'
-      'values (:buildcontrollerid, :name, CURRENT_TIMESTAMP);'
-    )
     DeleteSQL.Strings = (
       'delete from buildcontroller'
       'where buildcontroller.buildcontrollerid =  :buildcontrollerid;'
     )
     Params = <>
-    left = 728
-    top = 152
+    Macros = <>
+    Left = 728
+    Top = 152
     object SQLBuildControllerBUILDCONTROLLERID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2638,13 +2600,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BUILDSCRIPTID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BUILDSCRIPTTOBUILDCONTROLLER'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -2662,7 +2622,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildScriptAfterDelete
     AfterInsert = SQLBuildScriptAfterInsert
@@ -2673,6 +2632,10 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'select BUILDSCRIPTID, name, script, version'
       'from buildscript order by name;'
     )
+    InsertSQL.Strings = (
+      'insert into buildscript (BUILDSCRIPTID, name, script, version)'
+      'values (:BUILDSCRIPTID, :name, :script, current_timestamp);'
+    )
     UpdateSQL.Strings = (
       'update buildscript'
       'set buildscript.name = :name,'
@@ -2680,17 +2643,14 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'buildscript.version = current_timestamp'
       'where buildscript.buildscriptid = :buildscriptid;'
     )
-    InsertSQL.Strings = (
-      'insert into buildscript (BUILDSCRIPTID, name, script, version)'
-      'values (:BUILDSCRIPTID, :name, :script, current_timestamp);'
-    )
     DeleteSQL.Strings = (
       'delete from buildscript where'
       'buildscript.buildscriptid = :buildscriptid;'
     )
     Params = <>
-    left = 832
-    top = 152
+    Macros = <>
+    Left = 832
+    Top = 152
     object SQLBuildScriptBUILDSCRIPTID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2724,7 +2684,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
       ReadOnly = False
       Required = False
       Visible = False
-      BlobType = ftBlob
       Size = 8
       Transliterate = False
     end
@@ -2742,18 +2701,18 @@ object FirebirdQueryModule: TFirebirdQueryModule
   end
   object dsBuildController: TDataSource
     DataSet = SQLBuildController
-    left = 168
-    top = 344
+    Left = 168
+    Top = 344
   end
   object dsBuildScript: TDataSource
     DataSet = SQLBuildScript
-    left = 320
-    top = 352
+    Left = 320
+    Top = 352
   end
   object dsBuildTemplate: TDataSource
     DataSet = SQLBuildTemplate
-    left = 465
-    top = 347
+    Left = 465
+    Top = 347
   end
   object SQLBuildControllerScript: TSQLQuery
     FieldDefs = <    
@@ -2761,31 +2720,26 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BUILDCONTROLLERSCRIPTID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BUILDCONTROLLERID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BUILDSCRIPTID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SEQUENCE'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildControllerScriptAfterDelete
     AfterInsert = SQLBuildControllerScriptAfterInsert
@@ -2797,6 +2751,10 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'select BuildControllerscriptid, BuildControllerID, BuildScriptID, Sequence, Version'
       'from BuildControllerScript where buildcontrollerid = :buildcontrollerid;'
     )
+    InsertSQL.Strings = (
+      'insert into buildcontrollerscript (BuildControllerscriptid, buildcontrollerid, buildscriptid, sequence, version)'
+      'values (:BuildControllerscriptid, :buildcontrollerid, :buildscriptid, :sequence, current_timestamp);'
+    )
     UpdateSQL.Strings = (
       'update buildcontrollerscript'
       'set buildcontrollerid = :buildcontrollerid,'
@@ -2804,10 +2762,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'sequence = :sequence,'
       'version = current_timestamp'
       'where BuildControllerscriptid =:BuildControllerscriptid;'
-    )
-    InsertSQL.Strings = (
-      'insert into buildcontrollerscript (BuildControllerscriptid, buildcontrollerid, buildscriptid, sequence, version)'
-      'values (:BuildControllerscriptid, :buildcontrollerid, :buildscriptid, :sequence, current_timestamp);'
     )
     DeleteSQL.Strings = (
       'delete from buildcontrollerscript'
@@ -2819,8 +2773,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'buildcontrollerid'
         ParamType = ptInput
       end>
-    left = 960
-    top = 152
+    Macros = <>
+    Left = 960
+    Top = 152
     object SQLBuildControllerScriptBUILDCONTROLLERSCRIPTID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2899,13 +2854,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BUILDSCRIPTPARAMETERID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BUILDCONTROLLERSCRIPTID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -2923,7 +2876,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildScriptParameterAfterDelete
     AfterInsert = SQLBuildScriptParameterAfterInsert
@@ -2934,6 +2886,10 @@ object FirebirdQueryModule: TFirebirdQueryModule
       'select buildscriptparameterid, buildcontrollerscriptid, name, "VALUE", version'
       'from buildscriptparameter where buildcontrollerscriptid = :buildcontrollerscriptid;'
     )
+    InsertSQL.Strings = (
+      'insert into buildscriptparameter(buildscriptparameterid, buildcontrollerscriptid, name, "VALUE", version)'
+      'values(:buildscriptparameterid, :buildcontrollerscriptid, :name, :value, current_timestamp);'
+    )
     UpdateSQL.Strings = (
       'update BUILDSCRIPTPARAMETER'
       'SET BUILDCONTROLLERSCRIPTID = :BUILDCONTROLLERSCRIPTID,'
@@ -2941,10 +2897,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
       '"VALUE" =:VALUE,'
       'VERSION = CURRENT_TIMESTAMP'
       'where BUILDSCRIPTPARAMETER.BUILDSCRIPTPARAMETERID = :BUILDSCRIPTPARAMETERID;'
-    )
-    InsertSQL.Strings = (
-      'insert into buildscriptparameter(buildscriptparameterid, buildcontrollerscriptid, name, "VALUE", version)'
-      'values(:buildscriptparameterid, :buildcontrollerscriptid, :name, :value, current_timestamp);'
     )
     DeleteSQL.Strings = (
       'delete from buildscriptparameter where buildscriptparameter.buildscriptparameterid = :buildscriptparameterid;'
@@ -2955,8 +2907,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'buildcontrollerscriptid'
         ParamType = ptInput
       end>
-    left = 1112
-    top = 152
+    Macros = <>
+    Left = 1112
+    Top = 152
     object SQLBuildScriptParameterBUILDSCRIPTPARAMETERID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3021,19 +2974,16 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'AssociationPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'AssociationToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperty'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -3049,13 +2999,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  AssociationPropertyValueId,  AssociationToPropertyValue,  MasterProperty,  PropertyValue  from AssociationPropertyValue  WHERE  (AssociationToPropertyValue = :AssociationId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE AssociationPropertyValue SET  AssociationToPropertyValue = :AssociationToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue   '
-      'WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
-    )
     InsertSQL.Strings = (
       'insert into AssociationPropertyValue (  AssociationPropertyValueId,  AssociationToPropertyValue,  MasterProperty,  PropertyValue  )'
       'VALUES (  :AssociationPropertyValueId,  :AssociationToPropertyValue,  :MasterProperty,  :PropertyValue );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE AssociationPropertyValue SET  AssociationToPropertyValue = :AssociationToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue   '
+      'WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM AssociationPropertyValue WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
@@ -3066,7 +3016,8 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'AssociationId'
         ParamType = ptInput
       end>
-    left = 224
+    Macros = <>
+    Left = 224
     object SQLAssociationPropertyValueAssociationPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3115,8 +3066,8 @@ object FirebirdQueryModule: TFirebirdQueryModule
     AutoEdit = False
     DataSet = SQLAssociationPropertyValue
     Enabled = False
-    left = 600
-    top = 347
+    Left = 600
+    Top = 347
   end
   object SQLBuildPropertyValue: TSQLQuery
     FieldDefs = <    
@@ -3124,19 +3075,16 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BuildPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BuildToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperty'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -3152,13 +3100,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  BuildPropertyValueId,  BuildToPropertyValue,  MasterProperty,  PropertyValue  from BuildPropertyValue  WHERE  (BuildToPropertyValue = :BuildId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE BuildPropertyValue SET  BuildToPropertyValue = :BuildToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue   '
-      'WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
-    )
     InsertSQL.Strings = (
       'insert into BuildPropertyValue (  BuildPropertyValueId,  BuildToPropertyValue,  MasterProperty,  PropertyValue  )'
       'VALUES (  :BuildPropertyValueId,  :BuildToPropertyValue,  :MasterProperty,  :PropertyValue );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE BuildPropertyValue SET  BuildToPropertyValue = :BuildToPropertyValue  ,MasterProperty = :MasterProperty  ,PropertyValue = :PropertyValue   '
+      'WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM BuildPropertyValue WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
@@ -3169,8 +3117,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'BuildId'
         ParamType = ptInput
       end>
-    left = 680
-    top = 32
+    Macros = <>
+    Left = 680
+    Top = 32
     object SQLBuildPropertyValueBuildPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3217,18 +3166,18 @@ object FirebirdQueryModule: TFirebirdQueryModule
   end
   object dsBuildPropertyValue: TDataSource
     DataSet = SQLBuildPropertyValue
-    left = 736
-    top = 352
+    Left = 736
+    Top = 352
   end
   object dsBuildControllerScript: TDataSource
     DataSet = SQLBuildControllerScript
-    left = 880
-    top = 352
+    Left = 880
+    Top = 352
   end
   object dsBuildScriptParameter: TDataSource
     DataSet = SQLBuildScriptParameter
-    left = 1008
-    top = 347
+    Left = 1008
+    Top = 347
   end
   object SQLMapping: TSQLQuery
     FieldDefs = <    
@@ -3236,13 +3185,11 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MAPPINGID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CATEGORY'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NOTES'
@@ -3276,22 +3223,23 @@ object FirebirdQueryModule: TFirebirdQueryModule
     SQL.Strings = (
       'SELECT  MappingId,  Category,  Notes,  FromDescription,  ToDescription, SystemCode  from Mapping  ;'
     )
+    InsertSQL.Strings = (
+      'insert into Mapping (  MappingId,  Category,  Notes,  FromDescription,  ToDescription, SystemCode  )'
+      'VALUES (  :MappingId,  :Category,  :Notes,  :FromDescription,  :ToDescription, :SystemCode );'
+    )
     UpdateSQL.Strings = (
       'UPDATE Mapping SET  Category = :Category  ,'
       'Notes = :Notes  ,FromDescription = :FromDescription  ,ToDescription = :ToDescription,'
       'SystemCode = :SystemCode'
       'WHERE Mapping.MappingId = :MappingId;'
     )
-    InsertSQL.Strings = (
-      'insert into Mapping (  MappingId,  Category,  Notes,  FromDescription,  ToDescription, SystemCode  )'
-      'VALUES (  :MappingId,  :Category,  :Notes,  :FromDescription,  :ToDescription, :SystemCode );'
-    )
     DeleteSQL.Strings = (
       'DELETE FROM Mapping WHERE Mapping.MappingId = :MappingId;'
     )
     Params = <>
-    left = 1220
-    top = 144
+    Macros = <>
+    Left = 1220
+    Top = 144
     object SQLMappingMappingId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3348,7 +3296,6 @@ object FirebirdQueryModule: TFirebirdQueryModule
       ReadOnly = False
       Required = False
       Visible = False
-      BlobType = ftBlob
       Size = 8
       Transliterate = False
     end
@@ -3369,8 +3316,8 @@ object FirebirdQueryModule: TFirebirdQueryModule
     AutoEdit = False
     DataSet = SQLMapping
     Enabled = False
-    left = 1184
-    top = 344
+    Left = 1184
+    Top = 344
   end
   object SQLMappingValue: TSQLQuery
     FieldDefs = <    
@@ -3378,25 +3325,21 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MAPPINGVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MAPPINGTOVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MAPVALUETARGETLOOKUP'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MAPVALUESOURCELOOKUP'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SOURCEVALUE'
@@ -3471,13 +3414,13 @@ object FirebirdQueryModule: TFirebirdQueryModule
       ' LEFT JOIN ListHeader HT'
       ' ON DT.ListHeaderToDetail = HT.ListHeaderID  WHERE  (MappingToValue = :MappingId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE MappingValue SET  MappingToValue = :MappingToValue  ,MapValueTargetLookup = :MapValueTargetLookup  ,MapValueSourceLookup = :MapValueSourceLookup  ,SourceValue = :SourceValue  ,TargetValue = :TargetValue   '
-      'WHERE MappingValue.MappingValueId = :MappingValueId;'
-    )
     InsertSQL.Strings = (
       'insert into MappingValue (  MappingValueId,  MappingToValue,  MapValueTargetLookup,  MapValueSourceLookup,  SourceValue,  TargetValue  )'
       'VALUES (  :MappingValueId,  :MappingToValue,  :MapValueTargetLookup,  :MapValueSourceLookup,  :SourceValue,  :TargetValue );'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MappingValue SET  MappingToValue = :MappingToValue  ,MapValueTargetLookup = :MapValueTargetLookup  ,MapValueSourceLookup = :MapValueSourceLookup  ,SourceValue = :SourceValue  ,TargetValue = :TargetValue   '
+      'WHERE MappingValue.MappingValueId = :MappingValueId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM MappingValue WHERE MappingValue.MappingValueId = :MappingValueId;'
@@ -3488,8 +3431,9 @@ object FirebirdQueryModule: TFirebirdQueryModule
         Name = 'MappingId'
         ParamType = ptInput
       end>
-    left = 1328
-    top = 144
+    Macros = <>
+    Left = 1328
+    Top = 144
     object SQLMappingValueMappingValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3627,7 +3571,7 @@ object FirebirdQueryModule: TFirebirdQueryModule
     AutoEdit = False
     DataSet = SQLMappingValue
     Enabled = False
-    left = 1272
-    top = 347
+    Left = 1272
+    Top = 347
   end
 end
