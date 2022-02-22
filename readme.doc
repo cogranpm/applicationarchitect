@@ -1,0 +1,22 @@
+This is a free pascal desktop app using lazarus ide
+
+Rationale: code generator and modelling application
+
+Database: firebird embedded, version 2 or mysql version 8
+
+Status: firebird embedded is out of date, is missing fields etc
+mysql is working
+use the script in the data subdirectory: codebreeddatabase.sql
+to import the schema and populate data into a mysql 8 instance
+the other scripts are from the original mariadb incarnation
+scripts had to be updated
+
+Dependencies: other than inbuilt lazaraus stuff, this project brings in some code
+to allow mustache templates and json
+this comes from the mormot project, designed for delphi:
+https://github.com/synopse/mORMot
+
+the code required should be in the repository so no binary required
+
+to run this thing load it into the lazaras ide and build it
+
