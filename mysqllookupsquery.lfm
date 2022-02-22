@@ -1,8 +1,8 @@
 object MySqlLookups: TMySqlLookups
   OldCreateOrder = False
   Height = 507
-  HorizontalOffset = 848
-  VerticalOffset = 470
+  HorizontalOffset = 877
+  VerticalOffset = 54
   Width = 993
   object SQLAttributeTypes: TSQLQuery
     FieldDefs = <    
@@ -10,7 +10,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'code'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'label'
@@ -18,7 +17,7 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -26,8 +25,9 @@ object MySqlLookups: TMySqlLookups
       'where h.name = ''DataTypes'''
     )
     Params = <>
-    left = 56
-    top = 24
+    Macros = <>
+    Left = 56
+    Top = 24
   end
   object SQLAssociationTypes: TSQLQuery
     FieldDefs = <    
@@ -35,7 +35,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'code'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'label'
@@ -43,16 +42,17 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
-    Transaction = FirebirdDataModule.SQLTransaction1
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
       'select cast(code as unsigned) as code, left(label, 50) as label from listdetail d inner join listheader h on h.listheaderid = d.listheadertodetail'
       'where h.name = ''AssociationTypes'''
     )
     Params = <>
-    left = 168
-    top = 24
+    Macros = <>
+    Left = 168
+    Top = 24
   end
   object SQLRelationLookup: TSQLQuery
     FieldDefs = <    
@@ -60,7 +60,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'RelationId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -68,7 +67,7 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 30
       end>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -80,27 +79,28 @@ object MySqlLookups: TMySqlLookups
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 280
-    top = 24
+    Macros = <>
+    Left = 280
+    Top = 24
   end
   object dsAssociationTypes: TDataSource
     DataSet = SQLAssociationTypes
-    left = 168
-    top = 96
+    Left = 168
+    Top = 96
   end
   object dsRelationsLookup: TDataSource
     DataSet = SQLRelationLookup
-    left = 280
-    top = 90
+    Left = 280
+    Top = 90
   end
   object dsAttributeTypes: TDataSource
     DataSet = SQLAttributeTypes
-    left = 56
-    top = 96
+    Left = 56
+    Top = 96
   end
   object SQLGetAssociationsByOwner: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -118,8 +118,9 @@ object MySqlLookups: TMySqlLookups
         Name = 'RelationId'
         ParamType = ptInput
       end>
-    left = 432
-    top = 24
+    Macros = <>
+    Left = 432
+    Top = 24
   end
   object SQLMasterProperties: TSQLQuery
     FieldDefs = <    
@@ -127,7 +128,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'masterpropertyid'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'name'
@@ -163,7 +163,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'displaycontrol'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'propertyTypeNotes'
@@ -177,7 +176,7 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -197,8 +196,9 @@ object MySqlLookups: TMySqlLookups
         Name = 'category'
         ParamType = ptInput
       end>
-    left = 568
-    top = 24
+    Macros = <>
+    Left = 568
+    Top = 24
   end
   object SQLScreenFamilyPropertyValue: TSQLQuery
     FieldDefs = <    
@@ -206,25 +206,21 @@ object MySqlLookups: TMySqlLookups
         Name = 'SCREENPROPERTYVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FAMILYTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CHILDTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PROPERTYVALUE'
@@ -236,7 +232,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CREATEDBY'
@@ -254,14 +249,14 @@ object MySqlLookups: TMySqlLookups
         Name = 'CREATEDON'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UPDATEDON'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT SCREENPROPERTYVALUEID,'
       '    SCREENPROPVALUETOPROPERTY,'
@@ -276,11 +271,11 @@ object MySqlLookups: TMySqlLookups
       'FROM screenpropertyvalue'
       'where FAMILYTOSCREENPROPVALUE = :ScreenfamilyId;'
     )
-    UpdateSQL.Strings = (
-      'CALL pScreenPropertyValueUpdate (:SCREENPROPERTYVALUEID, :SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :UPDATEDBY)'
-    )
     InsertSQL.Strings = (
       'call pScreenPropertyValueInsert (:SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :CREATEDBY)'
+    )
+    UpdateSQL.Strings = (
+      'CALL pScreenPropertyValueUpdate (:SCREENPROPERTYVALUEID, :SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :UPDATEDBY)'
     )
     DeleteSQL.Strings = (
       'call pScreenPropertyValueDelete (:ScreenPropertyValueId)'
@@ -291,8 +286,9 @@ object MySqlLookups: TMySqlLookups
         Name = 'ScreenFamilyId'
         ParamType = ptInput
       end>
-    left = 720
-    top = 24
+    Macros = <>
+    Left = 720
+    Top = 24
     object SQLScreenFamilyPropertyValueSCREENPROPERTYVALUEID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -407,25 +403,21 @@ object MySqlLookups: TMySqlLookups
         Name = 'SCREENPROPERTYVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FAMILYTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CHILDTOSCREENPROPVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PROPERTYVALUE'
@@ -437,7 +429,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CREATEDBY'
@@ -455,14 +446,14 @@ object MySqlLookups: TMySqlLookups
         Name = 'CREATEDON'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UPDATEDON'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT SCREENPROPERTYVALUEID,'
       '    SCREENPROPVALUETOPROPERTY,'
@@ -477,11 +468,11 @@ object MySqlLookups: TMySqlLookups
       'FROM screenpropertyvalue'
       'where CHILDTOSCREENPROPVALUE = :ScreenChildId;'
     )
-    UpdateSQL.Strings = (
-      'CALL pScreenPropertyValueUpdate (:SCREENPROPERTYVALUEID, :SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :UPDATEDBY)'
-    )
     InsertSQL.Strings = (
       'call pScreenPropertyValueInsert (:SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :CREATEDBY)'
+    )
+    UpdateSQL.Strings = (
+      'CALL pScreenPropertyValueUpdate (:SCREENPROPERTYVALUEID, :SCREENPROPVALUETOPROPERTY, :FAMILYTOSCREENPROPVALUE, :CHILDTOSCREENPROPVALUE, :PROPERTYVALUE, :UPDATEDBY)'
     )
     DeleteSQL.Strings = (
       'call pScreenPropertyValueDelete (:ScreenPropertyValueId)'
@@ -492,8 +483,9 @@ object MySqlLookups: TMySqlLookups
         Name = 'ScreenChildId'
         ParamType = ptInput
       end>
-    left = 720
-    top = 112
+    Macros = <>
+    Left = 720
+    Top = 112
     object SQLScreenChildPropertyValueSCREENPROPERTYVALUEID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -604,19 +596,16 @@ object MySqlLookups: TMySqlLookups
         Name = 'ARTIFACTPROPERTYVALUEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ARTIFACTPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ARTIFACTTOPROPERTYVALUE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PROPERTYVALUE'
@@ -628,7 +617,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'VERSION'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CREATEDBY'
@@ -646,14 +634,14 @@ object MySqlLookups: TMySqlLookups
         Name = 'CREATEDON'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UPDATEDON'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select ARTIFACTPROPERTYVALUEID,'
       'ARTIFACTPROPVALUETOPROPERTY,'
@@ -667,11 +655,11 @@ object MySqlLookups: TMySqlLookups
       ' from artifactpropertyvalue'
       'where ARTIFACTTOPROPERTYVALUE = :ScreenArtifactId'
     )
-    UpdateSQL.Strings = (
-      'call pArtifactPropertyValueUpdate (:ARTIFACTPROPERTYVALUEID, :ARTIFACTPROPVALUETOPROPERTY, :ARTIFACTTOPROPERTYVALUE, :PROPERTYVALUE, :UPDATEDBY)'
-    )
     InsertSQL.Strings = (
       'call pArtifactPropertyValueInsert(:ARTIFACTPROPVALUETOPROPERTY, :ARTIFACTTOPROPERTYVALUE, :PROPERTYVALUE, :CREATEDBY)'
+    )
+    UpdateSQL.Strings = (
+      'call pArtifactPropertyValueUpdate (:ARTIFACTPROPERTYVALUEID, :ARTIFACTPROPVALUETOPROPERTY, :ARTIFACTTOPROPERTYVALUE, :PROPERTYVALUE, :UPDATEDBY)'
     )
     DeleteSQL.Strings = (
       'call pArtifactPropertyValueDelete (:ArtifactPropertyValueId)'
@@ -682,8 +670,9 @@ object MySqlLookups: TMySqlLookups
         Name = 'ScreenArtifactId'
         ParamType = ptInput
       end>
-    left = 720
-    top = 168
+    Macros = <>
+    Left = 720
+    Top = 168
     object SQLScreenArtifactPropertyValueARTIFACTPROPERTYVALUEID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -784,7 +773,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'MasterCategoryId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -792,14 +780,15 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select MasterCategoryId, Name from MasterCategory order by Name'
     )
     Params = <>
-    left = 197
-    top = 183
+    Macros = <>
+    Left = 197
+    Top = 183
   end
   object SQLPropertyTypeLookup: TSQLQuery
     FieldDefs = <    
@@ -807,7 +796,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'PROPERTYTYPEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -815,14 +803,15 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT PROPERTYTYPEID, NAME FROM PROPERTYTYPE;'
     )
     Params = <>
-    left = 200
-    top = 256
+    Macros = <>
+    Left = 200
+    Top = 256
   end
   object SQLPropertyGroupLookup: TSQLQuery
     FieldDefs = <    
@@ -830,7 +819,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'PROPERTYGROUPID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -838,18 +826,19 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select PROPERTYGROUPID, NAME FROM PROPERTYGROUP ORDER BY NAME;'
     )
     Params = <>
-    left = 200
-    top = 336
+    Macros = <>
+    Left = 200
+    Top = 336
   end
   object SQLGetCategoryByMasterPropertyID: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select MASTERCATEGORYID from masterpropertytocategory where MASTERPROPERTYID = :MASTERPROPERTYID;'
@@ -860,44 +849,46 @@ object MySqlLookups: TMySqlLookups
         Name = 'MASTERPROPERTYID'
         ParamType = ptInput
       end>
-    left = 312
-    top = 424
+    Macros = <>
+    Left = 312
+    Top = 424
   end
   object dsMasterCategoryLookup: TDataSource
     DataSet = SQLMasterCategoryLookup
-    left = 56
-    top = 183
+    Left = 56
+    Top = 183
   end
   object dsPropertyTypeLookup: TDataSource
     DataSet = SQLPropertyTypeLookup
-    left = 56
-    top = 256
+    Left = 56
+    Top = 256
   end
   object dsPropertyGroupLookup: TDataSource
     DataSet = SQLPropertyGroupLookup
-    left = 64
-    top = 336
+    Left = 64
+    Top = 336
   end
   object dsGetMasterCategoryByMasterPropertyID: TDataSource
     DataSet = SQLGetCategoryByMasterPropertyID
-    left = 64
-    top = 424
+    Left = 64
+    Top = 424
   end
   object SQLModelLookup: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
       'select ModelId, Name from Model order by Name;'
     )
     Params = <>
-    left = 720
-    top = 224
+    Macros = <>
+    Left = 720
+    Top = 224
   end
   object SQLBuildByModelLookup: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -909,8 +900,9 @@ object MySqlLookups: TMySqlLookups
         Name = 'ModelID'
         ParamType = ptInput
       end>
-    left = 720
-    top = 288
+    Macros = <>
+    Left = 720
+    Top = 288
   end
   object SQLBuildScriptLookup: TSQLQuery
     FieldDefs = <    
@@ -918,7 +910,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'BuildScriptID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -926,22 +917,23 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
-    Transaction = FirebirdDataModule.SQLTransaction1
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
       'select BuildScriptID, Name from BuildScript order by Name;'
     )
     Params = <>
-    left = 432
-    top = 96
+    Macros = <>
+    Left = 432
+    Top = 96
   end
   object dsBuildScriptLookup: TDataSource
     AutoEdit = False
     DataSet = SQLBuildScriptLookup
     Enabled = False
-    left = 432
-    top = 160
+    Left = 432
+    Top = 160
   end
   object SQLListHeaderLookup: TSQLQuery
     FieldDefs = <    
@@ -949,7 +941,6 @@ object MySqlLookups: TMySqlLookups
         Name = 'ListHeaderID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -957,7 +948,7 @@ object MySqlLookups: TMySqlLookups
         Precision = -1
         Size = 40
       end>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -965,8 +956,9 @@ object MySqlLookups: TMySqlLookups
       'order by Name;'
     )
     Params = <>
-    left = 376
-    top = 264
+    Macros = <>
+    Left = 376
+    Top = 264
     object SQLListHeaderLookupListHeaderID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -991,7 +983,7 @@ object MySqlLookups: TMySqlLookups
   end
   object SQLListDetailLookup: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -1006,23 +998,24 @@ object MySqlLookups: TMySqlLookups
         Name = 'ListHeaderID'
         ParamType = ptInput
       end>
-    left = 488
-    top = 264
+    Macros = <>
+    Left = 488
+    Top = 264
   end
   object dsListDetailLookup: TDataSource
     DataSet = SQLListDetailLookup
-    left = 488
-    top = 320
+    Left = 488
+    Top = 320
   end
   object dsListHeaderLookup: TDataSource
     AutoEdit = False
     DataSet = SQLListHeaderLookup
-    left = 376
-    top = 320
+    Left = 376
+    Top = 320
   end
   object SQLListDetailByID: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -1039,12 +1032,13 @@ object MySqlLookups: TMySqlLookups
         Name = 'ListDetailID'
         ParamType = ptInput
       end>
-    left = 608
-    top = 264
+    Macros = <>
+    Left = 608
+    Top = 264
   end
   object SQLGetImportSystemCode: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -1058,12 +1052,13 @@ object MySqlLookups: TMySqlLookups
         Name = 'SourceValue'
         ParamType = ptInput
       end>
-    left = 720
-    top = 352
+    Macros = <>
+    Left = 720
+    Top = 352
   end
   object SQLGetMappingValueBySystemCode: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -1093,7 +1088,8 @@ object MySqlLookups: TMySqlLookups
         Name = 'SystemCode'
         ParamType = ptInput
       end>
-    left = 720
-    top = 412
+    Macros = <>
+    Left = 720
+    Top = 412
   end
 end

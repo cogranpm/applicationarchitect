@@ -6,7 +6,7 @@ object MySqlBuildQuery: TMySqlBuildQuery
   Width = 483
   object SQLLoadModel: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select ModelId, Name from model where ModelId = :ModelId;'
@@ -17,12 +17,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 24
-    top = 24
+    Macros = <>
+    Left = 24
+    Top = 24
   end
   object SQLLoadBuild: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT `BUILDID`,'
@@ -42,12 +43,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'BuildId'
         ParamType = ptInput
       end>
-    left = 112
-    top = 24
+    Macros = <>
+    Left = 112
+    Top = 24
   end
   object SQLParentAssociation: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -64,12 +66,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'ownedid'
         ParamType = ptInput
       end>
-    left = 208
-    top = 24
+    Macros = <>
+    Left = 208
+    Top = 24
   end
   object SQLChildAssociation: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select a.name, a.type, p.name as ParentName, c.Name as ChildName, a.owner, a.owned from association a inner join relation p'
@@ -83,12 +86,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'ownerid'
         ParamType = ptInput
       end>
-    left = 320
-    top = 24
+    Macros = <>
+    Left = 320
+    Top = 24
   end
   object SQLLoadRelation: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select relation.RelationId, relation.ModelRelation,'
@@ -104,12 +108,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'relationid'
         ParamType = ptInput
       end>
-    left = 40
-    top = 112
+    Macros = <>
+    Left = 40
+    Top = 112
   end
   object SQLRelationsByModel: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -123,12 +128,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 144
-    top = 112
+    Macros = <>
+    Left = 144
+    Top = 112
   end
   object SQLGetBuildTemplateByName: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -141,12 +147,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'Name'
         ParamType = ptInput
       end>
-    left = 320
-    top = 112
+    Macros = <>
+    Left = 320
+    Top = 112
   end
   object SQLGetBuildScriptsForController: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -161,13 +168,14 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'BuildControllerID'
         ParamType = ptInput
       end>
-    left = 96
-    top = 248
+    Macros = <>
+    Left = 96
+    Top = 248
   end
   object SQLGetBuildScriptByID: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
-    Transaction = FirebirdDataModule.SQLTransaction1
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
       'SELECT BuildScriptID, Name, Script FROM'
@@ -179,13 +187,14 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'BuildScriptID'
         ParamType = ptInput
       end>
-    left = 312
-    top = 208
+    Macros = <>
+    Left = 312
+    Top = 208
   end
   object SQLLoadAttribute: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
-    Transaction = FirebirdDataModule.SQLTransaction1
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
       'SELECT  AttributeId,  RelationAttribute,  allownull,  attributelength,  name,  type  from Attribute  WHERE  (RelationAttribute = :RelationId  )   ;'
@@ -196,12 +205,13 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'RelationId'
         ParamType = ptInput
       end>
-    left = 40
-    top = 168
+    Macros = <>
+    Left = 40
+    Top = 168
   end
   object SQLGetBuildScriptParameters: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     ReadOnly = True
     SQL.Strings = (
@@ -214,7 +224,8 @@ object MySqlBuildQuery: TMySqlBuildQuery
         Name = 'BUILDCONTROLLERSCRIPTID'
         ParamType = ptInput
       end>
-    left = 96
-    top = 312
+    Macros = <>
+    Left = 96
+    Top = 312
   end
 end

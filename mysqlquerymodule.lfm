@@ -1,29 +1,26 @@
 object MySQLQueryModule: TMySQLQueryModule
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 537
-  HorizontalOffset = 251
-  VerticalOffset = 138
-  Width = 1544
+  Height = 742
+  HorizontalOffset = 481
+  VerticalOffset = 112
+  Width = 1430
   object SQLRelationPropertyValue: TSQLQuery
     FieldDefs = <    
       item
         Name = 'RelationPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'RelationToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperty'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -47,24 +44,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLRelationPropertyValueAfterDelete
     AfterInsert = SQLRelationPropertyValueAfterInsert
     AfterPost = SQLRelationPropertyValueAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   RelationPropertyValueId, RelationToPropertyValue, MasterProperty, PropertyValue,'
@@ -72,13 +66,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'from RelationPropertyValue   '
       'WHERE  (RelationToPropertyValue = :RelationId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE RelationPropertyValue SET  RelationPropertyValue.RelationToPropertyValue = :RelationToPropertyValue,  RelationPropertyValue.PropertyValue = :PropertyValue,  RelationPropertyValue.`VERSION`= CURRENT_TIMESTAMP, RelationPropertyValue.UPDATEDBY = :UpdatedBy, RelationPropertyValue.UPDATEDON = Now() '
-      'WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
-    )
     InsertSQL.Strings = (
       'insert into RelationPropertyValue (  RelationPropertyValueId, RelationToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :RelationPropertyValueId, :RelationToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE RelationPropertyValue SET  RelationPropertyValue.RelationToPropertyValue = :RelationToPropertyValue,  RelationPropertyValue.PropertyValue = :PropertyValue,  RelationPropertyValue.`VERSION`= CURRENT_TIMESTAMP, RelationPropertyValue.UPDATEDBY = :UpdatedBy, RelationPropertyValue.UPDATEDON = Now() '
+      'WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM RelationPropertyValue WHERE RelationPropertyValue.RelationPropertyValueId = :RelationPropertyValueId;'
@@ -89,8 +83,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'RelationId'
         ParamType = ptInput
       end>
-    left = 296
-    top = 224
+    Macros = <>
+    Left = 296
+    Top = 224
     object SQLRelationPropertyValueRelationPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -197,7 +192,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ModelId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'name'
@@ -238,27 +232,28 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLModelAfterDelete
     AfterInsert = SQLModelAfterInsert
     AfterPost = SQLModelAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ModelId ,   name ,  '
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from Model  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Model SET  Model.name = :name,  Model.`VERSION`= CURRENT_TIMESTAMP, Model.UPDATEDBY = :UpdatedBy, Model.UPDATEDON = Now() '
-      'WHERE Model.ModelId = :ModelId;'
-    )
     InsertSQL.Strings = (
       'insert into Model (  ModelId,  name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :ModelId,  :name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Model SET  Model.name = :name,  Model.`VERSION`= CURRENT_TIMESTAMP, Model.UPDATEDBY = :UpdatedBy, Model.UPDATEDON = Now() '
+      'WHERE Model.ModelId = :ModelId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Model WHERE Model.ModelId = :ModelId;'
     )
     Params = <>
-    left = 170
-    top = 16
+    Macros = <>
+    Left = 170
+    Top = 16
     object SQLModelModelId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -344,13 +339,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'AssociationId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ModelAssociation'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -362,19 +355,16 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'type'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Owned'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Owner'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CreatedBy'
@@ -392,24 +382,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLAssociationAfterDelete
     AfterInsert = SQLAssociationAfterInsert
     AfterPost = SQLAssociationAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   AssociationId ,   ModelAssociation ,   Name ,   type ,  Owned, Owner,'
@@ -417,15 +404,15 @@ object MySQLQueryModule: TMySQLQueryModule
       'from Association   '
       'WHERE  (ModelAssociation = :ModelId  )   ;'
     )
+    InsertSQL.Strings = (
+      'insert into Association (  AssociationId,  ModelAssociation,  Name,  type, Owner, Owned,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :AssociationId,  :ModelAssociation,  :Name,  :type, :Owner, :Owned,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
     UpdateSQL.Strings = (
       'UPDATE Association SET  Association.ModelAssociation = :ModelAssociation,  Association.Name = :Name,'
       ' Association.type = :type, Owner = :Owner, Owned = :Owned,'
       ' Association.`VERSION`= CURRENT_TIMESTAMP, Association.UPDATEDBY = :UpdatedBy, Association.UPDATEDON = Now()'
       'WHERE Association.AssociationId = :AssociationId;'
-    )
-    InsertSQL.Strings = (
-      'insert into Association (  AssociationId,  ModelAssociation,  Name,  type, Owner, Owned,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :AssociationId,  :ModelAssociation,  :Name,  :type, :Owner, :Owned,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Association WHERE Association.AssociationId = :AssociationId;'
@@ -436,8 +423,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 320
-    top = 16
+    Macros = <>
+    Left = 320
+    Top = 16
     object SQLAssociationAssociationId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -615,7 +603,7 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLRelationAfterDelete
     AfterInsert = SQLRelationAfterInsert
     AfterPost = SQLRelationAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   RelationId ,   ModelRelation ,   name ,   lastmodified ,   lastbuilt ,  convert(frozen, unsigned) as frozen  ,  '
@@ -623,13 +611,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'from Relation   '
       'WHERE  (ModelRelation = :ModelId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Relation SET  Relation.ModelRelation = :ModelRelation,  Relation.name = :name,  Relation.lastmodified = :lastmodified,  Relation.lastbuilt = :lastbuilt,  Relation.frozen = :frozen,  Relation.`VERSION`= CURRENT_TIMESTAMP, Relation.UPDATEDBY = :UpdatedBy, Relation.UPDATEDON = Now() '
-      'WHERE Relation.RelationId = :RelationId;'
-    )
     InsertSQL.Strings = (
       'insert into Relation (  RelationId,  ModelRelation,  name,  lastmodified,  lastbuilt,  frozen,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :RelationId,  :ModelRelation,  :name,  :lastmodified,  :lastbuilt,  :frozen,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Relation SET  Relation.ModelRelation = :ModelRelation,  Relation.name = :name,  Relation.lastmodified = :lastmodified,  Relation.lastbuilt = :lastbuilt,  Relation.frozen = :frozen,  Relation.`VERSION`= CURRENT_TIMESTAMP, Relation.UPDATEDBY = :UpdatedBy, Relation.UPDATEDON = Now() '
+      'WHERE Relation.RelationId = :RelationId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Relation WHERE Relation.RelationId = :RelationId;'
@@ -640,8 +628,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 470
-    top = 16
+    Macros = <>
+    Left = 470
+    Top = 16
     object SQLRelationRelationId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -771,7 +760,7 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLAttributeAfterDelete
     AfterInsert = SQLAttributeAfterInsert
     AfterPost = SQLAttributeAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   AttributeId ,   RelationAttribute ,   name ,   type ,   attributelength ,  convert(allownull, unsigned) as allownull  ,  '
@@ -779,13 +768,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'from Attribute   '
       'WHERE  (RelationAttribute = :RelationId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Attribute SET  Attribute.RelationAttribute = :RelationAttribute,  Attribute.name = :name,  Attribute.type = :type,  Attribute.attributelength = :attributelength,  Attribute.allownull = :allownull,  Attribute.`VERSION`= CURRENT_TIMESTAMP, Attribute.UPDATEDBY = :UpdatedBy, Attribute.UPDATEDON = Now() '
-      'WHERE Attribute.AttributeId = :AttributeId;'
-    )
     InsertSQL.Strings = (
       'insert into Attribute (  AttributeId,  RelationAttribute,  name,  type,  attributelength,  allownull,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :AttributeId,  :RelationAttribute,  :name,  :type,  :attributelength,  :allownull,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Attribute SET  Attribute.RelationAttribute = :RelationAttribute,  Attribute.name = :name,  Attribute.type = :type,  Attribute.attributelength = :attributelength,  Attribute.allownull = :allownull,  Attribute.`VERSION`= CURRENT_TIMESTAMP, Attribute.UPDATEDBY = :UpdatedBy, Attribute.UPDATEDON = Now() '
+      'WHERE Attribute.AttributeId = :AttributeId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Attribute WHERE Attribute.AttributeId = :AttributeId;'
@@ -796,8 +785,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'RelationId'
         ParamType = ptInput
       end>
-    left = 620
-    top = 16
+    Macros = <>
+    Left = 620
+    Top = 16
     object SQLAttributeAttributeId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -946,7 +936,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MasterPropertyId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -970,13 +959,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MASTERPROPERTYTOGROUP'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MASTERPROPERTYTOTYPE'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CreatedBy'
@@ -994,31 +981,32 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLMasterPropertyAfterDelete
     AfterInsert = SQLMasterPropertyAfterInsert
     AfterPost = SQLMasterPropertyAfterPost
     AfterScroll = SQLMasterPropertyAfterScroll
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   MasterPropertyId ,   Name ,   DefaultValue ,   Notes ,'
       'MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE,'
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from MasterProperty  ;'
+    )
+    InsertSQL.Strings = (
+      'insert into MasterProperty (  MasterPropertyId, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE, Name,  DefaultValue,  Notes,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MasterPropertyId, :MASTERPROPERTYTOGROUP, :MASTERPROPERTYTOTYPE,  :Name,  :DefaultValue,  :Notes,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE MasterProperty SET  MasterProperty.Name = :Name,'
@@ -1027,16 +1015,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'MasterProperty.DefaultValue = :DefaultValue,  MasterProperty.Notes = :Notes,  MasterProperty.`VERSION`= CURRENT_TIMESTAMP, MasterProperty.UPDATEDBY = :UpdatedBy, MasterProperty.UPDATEDON = Now()'
       'WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
     )
-    InsertSQL.Strings = (
-      'insert into MasterProperty (  MasterPropertyId, MASTERPROPERTYTOGROUP, MASTERPROPERTYTOTYPE, Name,  DefaultValue,  Notes,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :MasterPropertyId, :MASTERPROPERTYTOGROUP, :MASTERPROPERTYTOTYPE,  :Name,  :DefaultValue,  :Notes,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
-    )
     DeleteSQL.Strings = (
       'DELETE FROM MasterProperty WHERE MasterProperty.MasterPropertyId = :MasterPropertyId;'
     )
     Params = <>
-    left = 770
-    top = 16
+    Macros = <>
+    Left = 770
+    Top = 16
     object SQLMasterPropertyMasterPropertyId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1199,7 +1184,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MasterCategoryId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -1240,27 +1224,28 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLMasterCategoryAfterDelete
     AfterInsert = SQLMasterCategoryAfterInsert
     AfterPost = SQLMasterCategoryAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   MasterCategoryId ,   Name ,  '
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from MasterCategory  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE MasterCategory SET  MasterCategory.Name = :Name,  MasterCategory.`VERSION`= CURRENT_TIMESTAMP, MasterCategory.UPDATEDBY = :UpdatedBy, MasterCategory.UPDATEDON = Now() '
-      'WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
-    )
     InsertSQL.Strings = (
       'insert into MasterCategory (  MasterCategoryId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :MasterCategoryId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterCategory SET  MasterCategory.Name = :Name,  MasterCategory.`VERSION`= CURRENT_TIMESTAMP, MasterCategory.UPDATEDBY = :UpdatedBy, MasterCategory.UPDATEDON = Now() '
+      'WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM MasterCategory WHERE MasterCategory.MasterCategoryId = :MasterCategoryId;'
     )
     Params = <>
-    left = 920
-    top = 16
+    Macros = <>
+    Left = 920
+    Top = 16
     object SQLMasterCategoryMasterCategoryId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1347,7 +1332,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'PropertyGroupId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -1371,44 +1355,42 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLPropertyGroupAfterDelete
     AfterInsert = SQLPropertyGroupAfterInsert
     AfterPost = SQLPropertyGroupAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   PropertyGroupId ,   Name ,  '
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from PropertyGroup  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE PropertyGroup SET  PropertyGroup.Name = :Name,  PropertyGroup.`VERSION`= CURRENT_TIMESTAMP, PropertyGroup.UPDATEDBY = :UpdatedBy, PropertyGroup.UPDATEDON = Now() '
-      'WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
-    )
     InsertSQL.Strings = (
       'insert into PropertyGroup (  PropertyGroupId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :PropertyGroupId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyGroup SET  PropertyGroup.Name = :Name,  PropertyGroup.`VERSION`= CURRENT_TIMESTAMP, PropertyGroup.UPDATEDBY = :UpdatedBy, PropertyGroup.UPDATEDON = Now() '
+      'WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM PropertyGroup WHERE PropertyGroup.PropertyGroupId = :PropertyGroupId;'
     )
     Params = <>
-    left = 1070
-    top = 16
+    Macros = <>
+    Left = 1070
+    Top = 16
     object SQLPropertyGroupPropertyGroupId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1495,25 +1477,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenArtifactId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ArtifactToAttribute'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ChildToArtifact'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FamilyToArtifact'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -1537,24 +1515,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLScreenArtifactAfterDelete
     AfterInsert = SQLScreenArtifactAfterInsert
     AfterPost = SQLScreenArtifactAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ScreenArtifactId ,  ArtifactToAttribute, ChildToArtifact ,   FamilyToArtifact ,   Name ,  '
@@ -1562,13 +1537,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'from ScreenArtifact   '
       'WHERE  (ChildToArtifact = :ScreenChildId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ScreenArtifact SET  ScreenArtifact.ChildToArtifact = :ChildToArtifact, ScreenArtifact.ArtifactToAttribute = :ArtifactToAttribute, ScreenArtifact.FamilyToArtifact = :FamilyToArtifact,  ScreenArtifact.Name = :Name,  ScreenArtifact.`VERSION`= CURRENT_TIMESTAMP, ScreenArtifact.UPDATEDBY = :UpdatedBy, ScreenArtifact.UPDATEDON = Now()'
-      'WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
-    )
     InsertSQL.Strings = (
       'insert into ScreenArtifact (  ScreenArtifactId, ArtifactToAttribute, ChildToArtifact,  FamilyToArtifact,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :ScreenArtifactId, :ArtifactToAttribute, :ChildToArtifact,  :FamilyToArtifact,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifact SET  ScreenArtifact.ChildToArtifact = :ChildToArtifact, ScreenArtifact.ArtifactToAttribute = :ArtifactToAttribute, ScreenArtifact.FamilyToArtifact = :FamilyToArtifact,  ScreenArtifact.Name = :Name,  ScreenArtifact.`VERSION`= CURRENT_TIMESTAMP, ScreenArtifact.UPDATEDBY = :UpdatedBy, ScreenArtifact.UPDATEDON = Now()'
+      'WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenArtifact WHERE ScreenArtifact.ScreenArtifactId = :ScreenArtifactId;'
@@ -1579,8 +1554,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenChildId'
         ParamType = ptInput
       end>
-    left = 616
-    top = 160
+    Macros = <>
+    Left = 616
+    Top = 160
     object SQLScreenArtifactScreenArtifactId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1698,25 +1674,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FamilyToScreenPropValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ChildToScreenPropValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -1740,24 +1712,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLScreenPropertyValueAfterDelete
     AfterInsert = SQLScreenPropertyValueAfterInsert
     AfterPost = SQLScreenPropertyValueAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ScreenPropertyValueId ,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue ,   ChildToScreenPropValue ,   PropertyValue ,  '
@@ -1765,15 +1734,15 @@ object MySQLQueryModule: TMySQLQueryModule
       'from ScreenPropertyValue   '
       'WHERE  FamilyToScreenPropValue = :ScreenFamilyId;'
     )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
     UpdateSQL.Strings = (
       'UPDATE ScreenPropertyValue SET  ScreenPropertyValue.FamilyToScreenPropValue = :FamilyToScreenPropValue,'
       'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY,'
       'ScreenPropertyValue.ChildToScreenPropValue = :ChildToScreenPropValue,  ScreenPropertyValue.PropertyValue = :PropertyValue,  ScreenPropertyValue.`VERSION`= CURRENT_TIMESTAMP, ScreenPropertyValue.UPDATEDBY = :UpdatedBy, ScreenPropertyValue.UPDATEDON = Now()'
       'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ScreenPropertyValue (  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
@@ -1784,8 +1753,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenFamilyId'
         ParamType = ptInput
       end>
-    left = 472
-    top = 160
+    Macros = <>
+    Left = 472
+    Top = 160
     object SQLScreenPropertyValueScreenPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -1904,25 +1874,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ArtifactPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ARTIFACTPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ArtifactToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ScreenArtifactToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -1946,24 +1912,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLArtifactPropertyValueAfterDelete
     AfterInsert = SQLArtifactPropertyValueAfterInsert
     AfterPost = SQLArtifactPropertyValueAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ArtifactPropertyValueId ,  ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue ,   ScreenArtifactToPropertyValue ,   PropertyValue ,  '
@@ -1971,15 +1934,15 @@ object MySQLQueryModule: TMySQLQueryModule
       'from ArtifactPropertyValue   '
       'WHERE  (ArtifactToPropertyValue = :ScreenArtifactId  )   ;'
     )
+    InsertSQL.Strings = (
+      'insert into ArtifactPropertyValue (  ArtifactPropertyValueId, ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ArtifactPropertyValueId, :ARTIFACTPROPVALUETOPROPERTY, :ArtifactToPropertyValue,  :ScreenArtifactToPropertyValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
     UpdateSQL.Strings = (
       'UPDATE ArtifactPropertyValue SET  ArtifactPropertyValue.ArtifactToPropertyValue = :ArtifactToPropertyValue,'
       'ARTIFACTPROPVALUETOPROPERTY = :ARTIFACTPROPVALUETOPROPERTY,'
       ' ArtifactPropertyValue.ScreenArtifactToPropertyValue = :ScreenArtifactToPropertyValue,  ArtifactPropertyValue.PropertyValue = :PropertyValue,  ArtifactPropertyValue.`VERSION`= CURRENT_TIMESTAMP, ArtifactPropertyValue.UPDATEDBY = :UpdatedBy, ArtifactPropertyValue.UPDATEDON = Now()'
       'WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ArtifactPropertyValue (  ArtifactPropertyValueId, ARTIFACTPROPVALUETOPROPERTY, ArtifactToPropertyValue,  ScreenArtifactToPropertyValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :ArtifactPropertyValueId, :ARTIFACTPROPVALUETOPROPERTY, :ArtifactToPropertyValue,  :ScreenArtifactToPropertyValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ArtifactPropertyValue WHERE ArtifactPropertyValue.ArtifactPropertyValueId = :ArtifactPropertyValueId;'
@@ -1990,8 +1953,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenArtifactId'
         ParamType = ptInput
       end>
-    left = 280
-    top = 160
+    Macros = <>
+    Left = 280
+    Top = 160
     object SQLArtifactPropertyValueArtifactPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2109,7 +2073,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenArtifactTypeId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -2150,27 +2113,28 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLScreenArtifactTypeAfterDelete
     AfterInsert = SQLScreenArtifactTypeAfterInsert
     AfterPost = SQLScreenArtifactTypeAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ScreenArtifactTypeId ,   Name ,  '
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from ScreenArtifactType  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ScreenArtifactType SET  ScreenArtifactType.Name = :Name,  ScreenArtifactType.`VERSION`= CURRENT_TIMESTAMP, ScreenArtifactType.UPDATEDBY = :UpdatedBy, ScreenArtifactType.UPDATEDON = Now() '
-      'WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
-    )
     InsertSQL.Strings = (
       'insert into ScreenArtifactType (  ScreenArtifactTypeId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :ScreenArtifactTypeId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ScreenArtifactType SET  ScreenArtifactType.Name = :Name,  ScreenArtifactType.`VERSION`= CURRENT_TIMESTAMP, ScreenArtifactType.UPDATEDBY = :UpdatedBy, ScreenArtifactType.UPDATEDON = Now() '
+      'WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenArtifactType WHERE ScreenArtifactType.ScreenArtifactTypeId = :ScreenArtifactTypeId;'
     )
     Params = <>
-    left = 170
-    top = 80
+    Macros = <>
+    Left = 170
+    Top = 80
     object SQLScreenArtifactTypeScreenArtifactTypeId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2256,7 +2220,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'PropertyTypeId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -2268,7 +2231,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'DisplayControl'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Notes'
@@ -2292,44 +2254,42 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLPropertyTypeAfterDelete
     AfterInsert = SQLPropertyTypeAfterInsert
     AfterPost = SQLPropertyTypeAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   PropertyTypeId ,   Name ,   DisplayControl ,   Notes ,  '
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from PropertyType  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE PropertyType SET  PropertyType.Name = :Name,  PropertyType.DisplayControl = :DisplayControl,  PropertyType.Notes = :Notes,  PropertyType.`VERSION`= CURRENT_TIMESTAMP, PropertyType.UPDATEDBY = :UpdatedBy, PropertyType.UPDATEDON = Now() '
-      'WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
-    )
     InsertSQL.Strings = (
       'insert into PropertyType (  PropertyTypeId,  Name,  DisplayControl,  Notes,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :PropertyTypeId,  :Name,  :DisplayControl,  :Notes,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE PropertyType SET  PropertyType.Name = :Name,  PropertyType.DisplayControl = :DisplayControl,  PropertyType.Notes = :Notes,  PropertyType.`VERSION`= CURRENT_TIMESTAMP, PropertyType.UPDATEDBY = :UpdatedBy, PropertyType.UPDATEDON = Now() '
+      'WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM PropertyType WHERE PropertyType.PropertyTypeId = :PropertyTypeId;'
     )
     Params = <>
-    left = 320
-    top = 80
+    Macros = <>
+    Left = 320
+    Top = 80
     object SQLPropertyTypePropertyTypeId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2436,13 +2396,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BuildId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ModelToBuild'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -2472,24 +2430,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildAfterDelete
     AfterInsert = SQLBuildAfterInsert
     AfterPost = SQLBuildAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   BuildId ,   ModelToBuild ,   Name ,   ProjectPath ,'
@@ -2497,13 +2452,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'from Build   '
       'WHERE  (ModelToBuild = :ModelId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Build SET  Build.ModelToBuild = :ModelToBuild,  Build.Name = :Name,  Build.ProjectPath = :ProjectPath, Build.`VERSION`= CURRENT_TIMESTAMP, Build.UPDATEDBY = :UpdatedBy, Build.UPDATEDON = Now()'
-      'WHERE Build.BuildId = :BuildId;'
-    )
     InsertSQL.Strings = (
       'insert into Build (  BuildId,  ModelToBuild,  Name,  ProjectPath,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :BuildId,  :ModelToBuild,  :Name,  :ProjectPath,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Build SET  Build.ModelToBuild = :ModelToBuild,  Build.Name = :Name,  Build.ProjectPath = :ProjectPath, Build.`VERSION`= CURRENT_TIMESTAMP, Build.UPDATEDBY = :UpdatedBy, Build.UPDATEDON = Now()'
+      'WHERE Build.BuildId = :BuildId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Build WHERE Build.BuildId = :BuildId;'
@@ -2514,8 +2469,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 470
-    top = 80
+    Macros = <>
+    Left = 470
+    Top = 80
     object SQLBuildBuildId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2623,13 +2579,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenFamilyId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ModelToScreenFamily'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -2641,7 +2595,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'SCREENFAMILYTORELATION'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CreatedBy'
@@ -2659,25 +2612,22 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLScreenFamilyAfterDelete
     AfterInsert = SQLScreenFamilyAfterInsert
     AfterPost = SQLScreenFamilyAfterPost
     AfterScroll = SQLScreenFamilyAfterScroll
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ScreenFamilyId ,   ModelToScreenFamily ,   Name , SCREENFAMILYTORELATION, '
@@ -2685,14 +2635,14 @@ object MySQLQueryModule: TMySQLQueryModule
       'from ScreenFamily   '
       'WHERE  (ModelToScreenFamily = :ModelId  )   ;'
     )
+    InsertSQL.Strings = (
+      'insert into ScreenFamily (  ScreenFamilyId,  ModelToScreenFamily,  Name, SCREENFAMILYTORELATION,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenFamilyId,  :ModelToScreenFamily,  :Name,  :SCREENFAMILYTORELATION, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
     UpdateSQL.Strings = (
       'UPDATE ScreenFamily SET  ScreenFamily.ModelToScreenFamily = :ModelToScreenFamily,'
       ' ScreenFamily.Name = :Name, ScreenFamily.SCREENFAMILYTORELATION = :SCREENFAMILYTORELATION,  ScreenFamily.`VERSION`= CURRENT_TIMESTAMP, ScreenFamily.UPDATEDBY = :UpdatedBy, ScreenFamily.UPDATEDON = Now()'
       'WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ScreenFamily (  ScreenFamilyId,  ModelToScreenFamily,  Name, SCREENFAMILYTORELATION,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :ScreenFamilyId,  :ModelToScreenFamily,  :Name,  :SCREENFAMILYTORELATION, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenFamily WHERE ScreenFamily.ScreenFamilyId = :ScreenFamilyId;'
@@ -2703,8 +2653,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ModelId'
         ParamType = ptInput
       end>
-    left = 620
-    top = 80
+    Macros = <>
+    Left = 620
+    Top = 80
     object SQLScreenFamilyScreenFamilyId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -2829,25 +2780,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenChildId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENCHILDTOASSOCIATION'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ScreenFamilyToScreenChild'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ScreenChildToSelf'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -2871,24 +2818,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLScreenChildAfterDelete
     AfterInsert = SQLScreenChildAfterInsert
     AfterPost = SQLScreenChildAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ScreenChildId , SCREENCHILDTOASSOCIATION,  ScreenFamilyToScreenChild ,   ScreenChildToSelf ,   Name ,  '
@@ -2896,15 +2840,15 @@ object MySQLQueryModule: TMySQLQueryModule
       'from ScreenChild   '
       'WHERE  ScreenFamilyToScreenChild = :ScreenFamilyId ;'
     )
+    InsertSQL.Strings = (
+      'insert into ScreenChild (  ScreenChildId, SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenChildId, :SCREENCHILDTOASSOCIATION, :ScreenFamilyToScreenChild,  :ScreenChildToSelf,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
     UpdateSQL.Strings = (
       'UPDATE ScreenChild SET  ScreenChild.ScreenFamilyToScreenChild = :ScreenFamilyToScreenChild,'
       'ScreenChild.SCREENCHILDTOASSOCIATION = :SCREENCHILDTOASSOCIATION,'
       'ScreenChild.ScreenChildToSelf = :ScreenChildToSelf,  ScreenChild.Name = :Name,  ScreenChild.`VERSION`= CURRENT_TIMESTAMP, ScreenChild.UPDATEDBY = :UpdatedBy, ScreenChild.UPDATEDON = Now()'
       'WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ScreenChild (  ScreenChildId, SCREENCHILDTOASSOCIATION, ScreenFamilyToScreenChild,  ScreenChildToSelf,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :ScreenChildId, :SCREENCHILDTOASSOCIATION, :ScreenFamilyToScreenChild,  :ScreenChildToSelf,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenChild WHERE ScreenChild.ScreenChildId = :ScreenChildId;'
@@ -2915,8 +2859,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenFamilyId'
         ParamType = ptInput
       end>
-    left = 770
-    top = 80
+    Macros = <>
+    Left = 770
+    Top = 80
     object SQLScreenChildScreenChildId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3034,13 +2979,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MasterPropertyValueListId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperyToValueList'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -3093,7 +3036,7 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLMasterPropertyValueListAfterDelete
     AfterInsert = SQLMasterPropertyValueListAfterInsert
     AfterPost = SQLMasterPropertyValueListAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   MasterPropertyValueListId ,   MasterProperyToValueList ,   Name ,   Code ,   Display ,  '
@@ -3101,13 +3044,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'from MasterPropertyValueList   '
       'WHERE  (MasterProperyToValueList = :MasterPropertyId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE MasterPropertyValueList SET  MasterPropertyValueList.MasterProperyToValueList = :MasterProperyToValueList,  MasterPropertyValueList.Name = :Name,  MasterPropertyValueList.Code = :Code,  MasterPropertyValueList.Display = :Display,  MasterPropertyValueList.`VERSION`= CURRENT_TIMESTAMP, MasterPropertyValueList.UPDATEDBY = :UpdatedBy, MasterPropertyValueList.UPDATEDON = Now() '
-      'WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
-    )
     InsertSQL.Strings = (
       'insert into MasterPropertyValueList (  MasterPropertyValueListId,  MasterProperyToValueList,  Name,  Code,  Display,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :MasterPropertyValueListId,  :MasterProperyToValueList,  :Name,  :Code,  :Display,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE MasterPropertyValueList SET  MasterPropertyValueList.MasterProperyToValueList = :MasterProperyToValueList,  MasterPropertyValueList.Name = :Name,  MasterPropertyValueList.Code = :Code,  MasterPropertyValueList.Display = :Display,  MasterPropertyValueList.`VERSION`= CURRENT_TIMESTAMP, MasterPropertyValueList.UPDATEDBY = :UpdatedBy, MasterPropertyValueList.UPDATEDON = Now() '
+      'WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM MasterPropertyValueList WHERE MasterPropertyValueList.MasterPropertyValueListId = :MasterPropertyValueListId;'
@@ -3118,8 +3061,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MasterPropertyId'
         ParamType = ptInput
       end>
-    left = 920
-    top = 80
+    Macros = <>
+    Left = 920
+    Top = 80
     object SQLMasterPropertyValueListMasterPropertyValueListId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3239,7 +3183,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ListHeaderId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -3281,27 +3224,28 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterInsert = SQLListHeaderAfterInsert
     AfterPost = SQLListHeaderAfterPost
     AfterScroll = SQLListHeaderAfterScroll
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ListHeaderId ,   Name ,  '
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from ListHeader  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ListHeader SET  ListHeader.Name = :Name,  ListHeader.`VERSION`= CURRENT_TIMESTAMP, ListHeader.UPDATEDBY = :UpdatedBy, ListHeader.UPDATEDON = Now() '
-      'WHERE ListHeader.ListHeaderId = :ListHeaderId;'
-    )
     InsertSQL.Strings = (
       'insert into ListHeader (  ListHeaderId,  Name,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :ListHeaderId,  :Name,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListHeader SET  ListHeader.Name = :Name,  ListHeader.`VERSION`= CURRENT_TIMESTAMP, ListHeader.UPDATEDBY = :UpdatedBy, ListHeader.UPDATEDON = Now() '
+      'WHERE ListHeader.ListHeaderId = :ListHeaderId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ListHeader WHERE ListHeader.ListHeaderId = :ListHeaderId;'
     )
     Params = <>
-    left = 1070
-    top = 80
+    Macros = <>
+    Left = 1070
+    Top = 80
     object SQLListHeaderListHeaderId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3388,13 +3332,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ListDetailId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ListHeaderToDetail'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Code'
@@ -3441,7 +3383,7 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLListDetailAfterDelete
     AfterInsert = SQLListDetailAfterInsert
     AfterPost = SQLListDetailAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ListDetailId ,   ListHeaderToDetail ,   Code ,   Label ,  '
@@ -3449,13 +3391,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'from ListDetail   '
       'WHERE  (ListHeaderToDetail = :ListHeaderId  )   ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE ListDetail SET  ListDetail.ListHeaderToDetail = :ListHeaderToDetail,  ListDetail.Code = :Code,  ListDetail.Label = :Label,  ListDetail.`VERSION`= CURRENT_TIMESTAMP, ListDetail.UPDATEDBY = :UpdatedBy, ListDetail.UPDATEDON = Now() '
-      'WHERE ListDetail.ListDetailId = :ListDetailId;'
-    )
     InsertSQL.Strings = (
       'insert into ListDetail (  ListDetailId,  ListHeaderToDetail,  Code,  Label,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :ListDetailId,  :ListHeaderToDetail,  :Code,  :Label,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE ListDetail SET  ListDetail.ListHeaderToDetail = :ListHeaderToDetail,  ListDetail.Code = :Code,  ListDetail.Label = :Label,  ListDetail.`VERSION`= CURRENT_TIMESTAMP, ListDetail.UPDATEDBY = :UpdatedBy, ListDetail.UPDATEDON = Now() '
+      'WHERE ListDetail.ListDetailId = :ListDetailId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ListDetail WHERE ListDetail.ListDetailId = :ListDetailId;'
@@ -3466,8 +3408,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ListHeaderId'
         ParamType = ptInput
       end>
-    left = 1220
-    top = 80
+    Macros = <>
+    Left = 1220
+    Top = 80
     object SQLListDetailListDetailId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3576,7 +3519,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'EnvironmentId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MembershipServer'
@@ -3635,27 +3577,28 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLEnvironmentAfterDelete
     AfterInsert = SQLEnvironmentAfterInsert
     AfterPost = SQLEnvironmentAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   EnvironmentId ,   MembershipServer ,   MembershipDatabase ,   DatabaseServer ,   DatabaseName ,  '
       'CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` '
       'from Environment  ;'
     )
-    UpdateSQL.Strings = (
-      'UPDATE Environment SET  Environment.MembershipServer = :MembershipServer,  Environment.MembershipDatabase = :MembershipDatabase,  Environment.DatabaseServer = :DatabaseServer,  Environment.DatabaseName = :DatabaseName,  Environment.`VERSION`= CURRENT_TIMESTAMP, Environment.UPDATEDBY = :UpdatedBy, Environment.UPDATEDON = Now() '
-      'WHERE Environment.EnvironmentId = :EnvironmentId;'
-    )
     InsertSQL.Strings = (
       'insert into Environment (  EnvironmentId,  MembershipServer,  MembershipDatabase,  DatabaseServer,  DatabaseName,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
       'VALUES (  :EnvironmentId,  :MembershipServer,  :MembershipDatabase,  :DatabaseServer,  :DatabaseName,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
+    UpdateSQL.Strings = (
+      'UPDATE Environment SET  Environment.MembershipServer = :MembershipServer,  Environment.MembershipDatabase = :MembershipDatabase,  Environment.DatabaseServer = :DatabaseServer,  Environment.DatabaseName = :DatabaseName,  Environment.`VERSION`= CURRENT_TIMESTAMP, Environment.UPDATEDBY = :UpdatedBy, Environment.UPDATEDON = Now() '
+      'WHERE Environment.EnvironmentId = :EnvironmentId;'
     )
     DeleteSQL.Strings = (
       'DELETE FROM Environment WHERE Environment.EnvironmentId = :EnvironmentId;'
     )
     Params = <>
-    left = 1370
-    top = 80
+    Macros = <>
+    Left = 1370
+    Top = 80
     object SQLEnvironmentEnvironmentId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3774,19 +3717,16 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'AttributePropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'AttributeToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperty'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -3810,36 +3750,33 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLAttributePropertyValueAfterDelete
     AfterInsert = SQLAttributePropertyValueAfterInsert
     AfterPost = SQLAttributePropertyValueAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   AttributePropertyValueId, AttributeToPropertyValue, MasterProperty, PropertyValue, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from AttributePropertyValue  WHERE  (AttributeToPropertyValue = :AttributeId  ) ;'
+    )
+    InsertSQL.Strings = (
+      'insert into AttributePropertyValue (  AttributePropertyValueId, AttributeToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES ( :AttributePropertyValueId, :AttributeToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE  AttributePropertyValue SET AttributePropertyValue.AttributeToPropertyValue = :AttributeToPropertyValue ,AttributePropertyValue.MasterProperty = :MasterProperty ,AttributePropertyValue.PropertyValue = :PropertyValue ,'
       'AttributePropertyValue.`VERSION`= CURRENT_TIMESTAMP, AttributePropertyValue.UPDATEDBY = :UpdatedBy, AttributePropertyValue.UPDATEDON = Now()'
       'WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into AttributePropertyValue (  AttributePropertyValueId, AttributeToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES ( :AttributePropertyValueId, :AttributeToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM AttributePropertyValue WHERE AttributePropertyValue.AttributePropertyValueId = :AttributePropertyValueId;'
@@ -3850,8 +3787,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'AttributeId'
         ParamType = ptInput
       end>
-    left = 112
-    top = 160
+    Macros = <>
+    Left = 112
+    Top = 160
     object SQLAttributePropertyValueAttributePropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -3955,141 +3893,141 @@ object MySQLQueryModule: TMySQLQueryModule
     AutoEdit = False
     DataSet = SQLRelationPropertyValue
     Enabled = False
-    left = 840
-    top = 432
+    Left = 840
+    Top = 432
   end
   object dsModel: TDataSource
     DataSet = SQLModel
     Enabled = False
-    left = 170
-    top = 272
+    Left = 170
+    Top = 272
   end
   object dsAssociation: TDataSource
     AutoEdit = False
     DataSet = SQLAssociation
     Enabled = False
-    left = 320
-    top = 272
+    Left = 320
+    Top = 272
   end
   object dsRelation: TDataSource
     DataSet = SQLRelation
     Enabled = False
-    left = 470
-    top = 272
+    Left = 470
+    Top = 272
   end
   object dsAttribute: TDataSource
     DataSet = SQLAttribute
     Enabled = False
-    left = 620
-    top = 272
+    Left = 620
+    Top = 272
   end
   object dsMasterProperty: TDataSource
     AutoEdit = False
     DataSet = SQLMasterProperty
     Enabled = False
-    left = 770
-    top = 272
+    Left = 770
+    Top = 272
   end
   object dsMasterCategory: TDataSource
     AutoEdit = False
     DataSet = SQLMasterCategory
     Enabled = False
-    left = 920
-    top = 272
+    Left = 920
+    Top = 272
   end
   object dsPropertyGroup: TDataSource
     AutoEdit = False
     DataSet = SQLPropertyGroup
     Enabled = False
-    left = 1070
-    top = 272
+    Left = 1070
+    Top = 272
   end
   object dsScreenArtifact: TDataSource
     AutoEdit = False
     DataSet = SQLScreenArtifact
     Enabled = False
-    left = 1220
-    top = 272
+    Left = 1220
+    Top = 272
   end
   object dsScreenPropertyValue: TDataSource
     AutoEdit = False
     DataSet = SQLScreenPropertyValue
     Enabled = False
-    left = 1370
-    top = 272
+    Left = 1370
+    Top = 272
   end
   object dsArtifactPropertyValue: TDataSource
     AutoEdit = False
     DataSet = SQLArtifactPropertyValue
     Enabled = False
-    left = 48
-    top = 320
+    Left = 48
+    Top = 320
   end
   object dsScreenArtifactType: TDataSource
     AutoEdit = False
     DataSet = SQLScreenArtifactType
     Enabled = False
-    left = 170
-    top = 336
+    Left = 170
+    Top = 336
   end
   object dsPropertyType: TDataSource
     AutoEdit = False
     DataSet = SQLPropertyType
     Enabled = False
-    left = 320
-    top = 336
+    Left = 320
+    Top = 336
   end
   object dsBuild: TDataSource
     DataSet = SQLBuild
     Enabled = False
-    left = 470
-    top = 336
+    Left = 470
+    Top = 336
   end
   object dsScreenFamily: TDataSource
     DataSet = SQLScreenFamily
     Enabled = False
-    left = 620
-    top = 336
+    Left = 620
+    Top = 336
   end
   object dsScreenChild: TDataSource
     AutoEdit = False
     DataSet = SQLScreenChild
     Enabled = False
-    left = 770
-    top = 336
+    Left = 770
+    Top = 336
   end
   object dsMasterPropertyValueList: TDataSource
     AutoEdit = False
     DataSet = SQLMasterPropertyValueList
     Enabled = False
-    left = 920
-    top = 336
+    Left = 920
+    Top = 336
   end
   object dsListHeader: TDataSource
     AutoEdit = False
     DataSet = SQLListHeader
     Enabled = False
-    left = 1070
-    top = 336
+    Left = 1070
+    Top = 336
   end
   object dsListDetail: TDataSource
     DataSet = SQLListDetail
-    left = 1220
-    top = 336
+    Left = 1220
+    Top = 336
   end
   object dsEnvironment: TDataSource
     AutoEdit = False
     DataSet = SQLEnvironment
     Enabled = False
-    left = 1370
-    top = 336
+    Left = 1370
+    Top = 336
   end
   object dsAttributePropertyValue: TDataSource
     AutoEdit = False
     DataSet = SQLAttributePropertyValue
     Enabled = False
-    left = 32
-    top = 408
+    Left = 32
+    Top = 408
   end
   object SQLScreenChildPropertyValue: TSQLQuery
     FieldDefs = <    
@@ -4097,25 +4035,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SCREENPROPVALUETOPROPERTY'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FamilyToScreenPropValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'ChildToScreenPropValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -4139,24 +4073,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLScreenPropertyValueAfterDelete
     AfterInsert = SQLScreenPropertyValueAfterInsert
     AfterPost = SQLScreenPropertyValueAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT   ScreenPropertyValueId ,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue ,   ChildToScreenPropValue ,   PropertyValue ,  '
@@ -4164,15 +4095,15 @@ object MySQLQueryModule: TMySQLQueryModule
       'from ScreenPropertyValue   '
       'WHERE  ChildToScreenPropValue = :ScreenChildId;'
     )
+    InsertSQL.Strings = (
+      'insert into ScreenPropertyValue (  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
     UpdateSQL.Strings = (
       'UPDATE ScreenPropertyValue SET  ScreenPropertyValue.FamilyToScreenPropValue = :FamilyToScreenPropValue,'
       'SCREENPROPVALUETOPROPERTY = :SCREENPROPVALUETOPROPERTY,'
       'ScreenPropertyValue.ChildToScreenPropValue = :ChildToScreenPropValue,  ScreenPropertyValue.PropertyValue = :PropertyValue,  ScreenPropertyValue.`VERSION`= CURRENT_TIMESTAMP, ScreenPropertyValue.UPDATEDBY = :UpdatedBy, ScreenPropertyValue.UPDATEDON = Now()'
       'WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into ScreenPropertyValue (  ScreenPropertyValueId,  SCREENPROPVALUETOPROPERTY, FamilyToScreenPropValue,  ChildToScreenPropValue,  PropertyValue,  `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :ScreenPropertyValueId, :SCREENPROPVALUETOPROPERTY, :FamilyToScreenPropValue,  :ChildToScreenPropValue,  :PropertyValue,  CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM ScreenPropertyValue WHERE ScreenPropertyValue.ScreenPropertyValueId = :ScreenPropertyValueId;'
@@ -4183,8 +4114,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'ScreenChildId'
         ParamType = ptInput
       end>
-    left = 112
-    top = 224
+    Macros = <>
+    Left = 112
+    Top = 224
     object SQLScreenPropertyValueScreenPropertyValueId1: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -4299,7 +4231,7 @@ object MySQLQueryModule: TMySQLQueryModule
   end
   object SQLMasterPropertyToCategory: TSQLQuery
     FieldDefs = <>
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select MASTERPROPERTYID, MASTERCATEGORYID from masterpropertytocategory where MASTERPROPERTYID = :MASTERPROPERTYID;'
@@ -4319,8 +4251,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MASTERPROPERTYID'
         ParamType = ptInput
       end>
-    left = 760
-    top = 160
+    Macros = <>
+    Left = 760
+    Top = 160
   end
   object SQLBuildTemplate: TSQLQuery
     FieldDefs = <    
@@ -4328,7 +4261,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BUILDTEMPLATEID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'NAME'
@@ -4340,7 +4272,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'SCRIPT'
         DataType = ftMemo
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CreatedBy'
@@ -4358,28 +4289,29 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildTemplateAfterDelete
     AfterInsert = SQLBuildTemplateAfterInsert
     AfterPost = SQLBuildTemplateAfterPost
-    Database = MySQLDataModule.Connection
-    Transaction = FirebirdDataModule.SQLTransaction1
+    Database = MySQLDataModule.connection
+    Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select BUILDTEMPLATEID, NAME, SCRIPT,   CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
       ' FROM BUILDTEMPLATE;'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO BUILDTEMPLATE (BUILDTEMPLATEID, NAME, SCRIPT, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (:BUILDTEMPLATEID, :NAME, :SCRIPT, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE BUILDTEMPLATE'
@@ -4388,17 +4320,14 @@ object MySQLQueryModule: TMySQLQueryModule
       'BUILDTEMPLATE.`VERSION`= CURRENT_TIMESTAMP, BUILDTEMPLATE.UPDATEDBY = :UpdatedBy, BUILDTEMPLATE.UPDATEDON = Now()'
       'WHERE  BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
     )
-    InsertSQL.Strings = (
-      'INSERT INTO BUILDTEMPLATE (BUILDTEMPLATEID, NAME, SCRIPT, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (:BUILDTEMPLATEID, :NAME, :SCRIPT, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
-    )
     DeleteSQL.Strings = (
       'DELETE FROM BUILDTEMPLATE WHERE'
       'BUILDTEMPLATE.BUILDTEMPLATEID = :BUILDTEMPLATEID;'
     )
     Params = <>
-    left = 952
-    top = 168
+    Macros = <>
+    Left = 952
+    Top = 168
     object SQLBuildTemplateBUILDTEMPLATEID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -4432,7 +4361,7 @@ object MySQLQueryModule: TMySQLQueryModule
       ReadOnly = False
       Required = False
       Visible = False
-      BlobType = ftBlob
+      BlobType = ftMemo
       Transliterate = False
     end
     object SQLBuildTemplateVERSION: TDateTimeField
@@ -4499,7 +4428,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'buildcontrollerid'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'name'
@@ -4523,29 +4451,30 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildControllerAfterDelete
     AfterInsert = SQLBuildControllerAfterInsert
     AfterPost = SQLBuildControllerAfterPost
     AfterScroll = SQLBuildControllerAfterScroll
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select buildcontrollerid, name,   CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
       'from buildcontroller;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildcontroller(buildcontrollerid, name, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'values (:buildcontrollerid, :name, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'update buildcontroller'
@@ -4553,17 +4482,14 @@ object MySQLQueryModule: TMySQLQueryModule
       '   buildcontroller.`VERSION`= CURRENT_TIMESTAMP, buildcontroller.UPDATEDBY = :UpdatedBy, buildcontroller.UPDATEDON = Now()'
       'where buildcontroller.buildcontrollerid = :buildcontrollerid;'
     )
-    InsertSQL.Strings = (
-      'insert into buildcontroller(buildcontrollerid, name, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'values (:buildcontrollerid, :name, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
-    )
     DeleteSQL.Strings = (
       'delete from buildcontroller'
       'where buildcontroller.buildcontrollerid =  :buildcontrollerid;'
     )
     Params = <>
-    left = 1088
-    top = 168
+    Macros = <>
+    Left = 1088
+    Top = 168
     object SQLBuildControllerbuildcontrollerid: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -4650,13 +4576,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BUILDSCRIPTID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BUILDSCRIPTTOBUILDCONTROLLER'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'name'
@@ -4668,7 +4592,6 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'script'
         DataType = ftMemo
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CreatedBy'
@@ -4686,28 +4609,29 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildScriptAfterDelete
     AfterInsert = SQLBuildScriptAfterInsert
     AfterPost = SQLBuildScriptAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'select BUILDSCRIPTID, name, script, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
       'from buildscript order by name;'
+    )
+    InsertSQL.Strings = (
+      'insert into buildscript (BUILDSCRIPTID, name, script, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'values (:BUILDSCRIPTID, :name, :script,   CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'update buildscript'
@@ -4716,17 +4640,14 @@ object MySQLQueryModule: TMySQLQueryModule
       'buildscript.`VERSION`= CURRENT_TIMESTAMP, buildscript.UPDATEDBY = :UpdatedBy, buildscript.UPDATEDON = Now()'
       'where buildscript.buildscriptid = :buildscriptid;'
     )
-    InsertSQL.Strings = (
-      'insert into buildscript (BUILDSCRIPTID, name, script, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'values (:BUILDSCRIPTID, :name, :script,   CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
-    )
     DeleteSQL.Strings = (
       'delete from buildscript where'
       'buildscript.buildscriptid = :buildscriptid;'
     )
     Params = <>
-    left = 1192
-    top = 168
+    Macros = <>
+    Left = 1192
+    Top = 168
     object SQLBuildScriptBUILDSCRIPTID: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -4760,7 +4681,7 @@ object MySQLQueryModule: TMySQLQueryModule
       ReadOnly = False
       Required = False
       Visible = False
-      BlobType = ftBlob
+      BlobType = ftMemo
       Transliterate = False
     end
     object SQLBuildScriptCreatedBy: TStringField
@@ -4823,18 +4744,18 @@ object MySQLQueryModule: TMySQLQueryModule
   end
   object dsBuildController: TDataSource
     DataSet = SQLBuildController
-    left = 184
-    top = 408
+    Left = 184
+    Top = 408
   end
   object dsBuildScript: TDataSource
     DataSet = SQLBuildScript
-    left = 336
-    top = 416
+    Left = 336
+    Top = 416
   end
   object dsBuildTemplate: TDataSource
     DataSet = SQLBuildTemplate
-    left = 481
-    top = 411
+    Left = 481
+    Top = 411
   end
   object SQLAssociationPropertyValue: TSQLQuery
     FieldDefs = <    
@@ -4842,19 +4763,16 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'AssociationPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'AssociationToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperty'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -4865,19 +4783,19 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLAssociationPropertyValueAfterDelete
     AfterInsert = SQLAssociationPropertyValueAfterInsert
     AfterPost = SQLAssociationPropertyValueAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT  AssociationPropertyValueId, AssociationToPropertyValue, MasterProperty, PropertyValue, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from AssociationPropertyValue  WHERE  (AssociationToPropertyValue = :AssociationId  )   ;'
+    )
+    InsertSQL.Strings = (
+      'insert into AssociationPropertyValue (  AssociationPropertyValueId, AssociationToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :AssociationPropertyValueId, :AssociationToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE AssociationPropertyValue SET ,AssociationPropertyValue.AssociationToPropertyValue = :AssociationToPropertyValue ,AssociationPropertyValue.MasterProperty = :MasterProperty ,AssociationPropertyValue.PropertyValue = :PropertyValue , '
       'AssociationPropertyValue.`VERSION`= CURRENT_TIMESTAMP, AssociationPropertyValue.UPDATEDBY = :UpdatedBy, AssociationPropertyValue.UPDATEDON = Now() '
       'WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into AssociationPropertyValue (  AssociationPropertyValueId, AssociationToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :AssociationPropertyValueId, :AssociationToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM AssociationPropertyValue WHERE AssociationPropertyValue.AssociationPropertyValueId = :AssociationPropertyValueId;'
@@ -4888,8 +4806,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'AssociationId'
         ParamType = ptInput
       end>
-    left = 472
-    top = 224
+    Macros = <>
+    Left = 472
+    Top = 224
     object SQLAssociationPropertyValueAssociationPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -4938,8 +4857,8 @@ object MySQLQueryModule: TMySQLQueryModule
     AutoEdit = False
     DataSet = SQLAssociationPropertyValue
     Enabled = False
-    left = 608
-    top = 408
+    Left = 608
+    Top = 408
   end
   object SQLBuildPropertyValue: TSQLQuery
     FieldDefs = <    
@@ -4947,19 +4866,16 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BuildPropertyValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BuildToPropertyValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MasterProperty'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'PropertyValue'
@@ -4970,19 +4886,19 @@ object MySQLQueryModule: TMySQLQueryModule
     AfterDelete = SQLBuildPropertyValueAfterDelete
     AfterInsert = SQLBuildPropertyValueAfterInsert
     AfterPost = SQLBuildPropertyValueAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT  BuildPropertyValueId, BuildToPropertyValue, MasterProperty, PropertyValue, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from BuildPropertyValue  WHERE  (BuildToPropertyValue = :BuildId  )   ;'
+    )
+    InsertSQL.Strings = (
+      'insert into BuildPropertyValue (  BuildPropertyValueId, BuildToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :BuildPropertyValueId, :BuildToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE BuildPropertyValue SET ,BuildPropertyValue.BuildToPropertyValue = :BuildToPropertyValue ,BuildPropertyValue.MasterProperty = :MasterProperty ,BuildPropertyValue.PropertyValue = :PropertyValue , '
       'BuildPropertyValue.`VERSION`= CURRENT_TIMESTAMP, BuildPropertyValue.UPDATEDBY = :UpdatedBy, BuildPropertyValue.UPDATEDON = Now() '
       'WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into BuildPropertyValue (  BuildPropertyValueId, BuildToPropertyValue, MasterProperty, PropertyValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :BuildPropertyValueId, :BuildToPropertyValue, :MasterProperty, :PropertyValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM BuildPropertyValue WHERE BuildPropertyValue.BuildPropertyValueId = :BuildPropertyValueId;'
@@ -4993,8 +4909,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BuildId'
         ParamType = ptInput
       end>
-    left = 744
-    top = 224
+    Macros = <>
+    Left = 744
+    Top = 224
     object SQLBuildPropertyValueBuildPropertyValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -5043,8 +4960,8 @@ object MySQLQueryModule: TMySQLQueryModule
     AutoEdit = False
     DataSet = SQLBuildPropertyValue
     Enabled = False
-    left = 608
-    top = 224
+    Left = 608
+    Top = 224
   end
   object SQLBuildControllerScript: TSQLQuery
     FieldDefs = <    
@@ -5052,25 +4969,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BuildControllerScriptId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BuildControllerId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BuildScriptId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Sequence'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'CreatedBy'
@@ -5088,29 +5001,30 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildControllerScriptAfterDelete
     AfterInsert = SQLBuildControllerScriptAfterInsert
     AfterPost = SQLBuildControllerScriptAfterPost
     AfterScroll = SQLBuildControllerScriptAfterScroll
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT  BuildControllerScriptId, BuildControllerId, BuildScriptId, Sequence, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from BuildControllerScript'
       'where BuildControllerID = :BuildControllerID  ;'
+    )
+    InsertSQL.Strings = (
+      'insert into BuildControllerScript (  BuildControllerScriptId, BuildControllerId, BuildScriptId, Sequence, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :BuildControllerScriptId, :BuildControllerId, :BuildScriptId, :Sequence, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE BuildControllerScript SET BuildControllerScript.BuildControllerId = :BuildControllerId ,'
@@ -5119,10 +5033,6 @@ object MySQLQueryModule: TMySQLQueryModule
       'BuildControllerScript.`VERSION`= CURRENT_TIMESTAMP, BuildControllerScript.UPDATEDBY = :UpdatedBy,'
       'BuildControllerScript.UPDATEDON = Now()'
       'WHERE BuildControllerScript.BuildControllerScriptId = :BuildControllerScriptId;'
-    )
-    InsertSQL.Strings = (
-      'insert into BuildControllerScript (  BuildControllerScriptId, BuildControllerId, BuildScriptId, Sequence, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :BuildControllerScriptId, :BuildControllerId, :BuildScriptId, :Sequence, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM BuildControllerScript WHERE BuildControllerScript.BuildControllerScriptId = :BuildControllerScriptId;'
@@ -5133,8 +5043,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BuildControllerID'
         ParamType = ptInput
       end>
-    left = 1312
-    top = 168
+    Macros = <>
+    Left = 1312
+    Top = 168
     object SQLBuildControllerScriptBuildControllerScriptId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -5255,8 +5166,8 @@ object MySQLQueryModule: TMySQLQueryModule
   end
   object dsBuildControllerScript: TDataSource
     DataSet = SQLBuildControllerScript
-    left = 992
-    top = 432
+    Left = 992
+    Top = 432
   end
   object SQLBuildScriptParameter: TSQLQuery
     FieldDefs = <    
@@ -5264,13 +5175,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BuildScriptParameterId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'BUILDCONTROLLERSCRIPTID'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Name'
@@ -5300,38 +5209,35 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDate
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLBuildScriptParameterAfterDelete
     AfterInsert = SQLBuildScriptParameterAfterInsert
     AfterPost = SQLBuildScriptParameterAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT  BuildScriptParameterId, BUILDCONTROLLERSCRIPTID, Name, Value, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version`'
       'from BuildScriptParameter where BuildScriptParameter.BUILDCONTROLLERSCRIPTID = :BUILDCONTROLLERSCRIPTID ;'
+    )
+    InsertSQL.Strings = (
+      'insert into BuildScriptParameter (  BuildScriptParameterId, BUILDCONTROLLERSCRIPTID,  Name, Value, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :BuildScriptParameterId, :BUILDCONTROLLERSCRIPTID, :Name, :Value, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE BuildScriptParameter SET'
       'BuildScriptParameter.BUILDCONTROLLERSCRIPTID = :BUILDCONTROLLERSCRIPTID, BuildScriptParameter.Name = :Name ,BuildScriptParameter.Value = :Value ,'
       'BuildScriptParameter.`VERSION`= CURRENT_TIMESTAMP, BuildScriptParameter.UPDATEDBY = :UpdatedBy, BuildScriptParameter.UPDATEDON = Now() '
       'WHERE BuildScriptParameter.BuildScriptParameterId = :BuildScriptParameterId;'
-    )
-    InsertSQL.Strings = (
-      'insert into BuildScriptParameter (  BuildScriptParameterId, BUILDCONTROLLERSCRIPTID,  Name, Value, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :BuildScriptParameterId, :BUILDCONTROLLERSCRIPTID, :Name, :Value, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM BuildScriptParameter WHERE BuildScriptParameter.BuildScriptParameterId = :BuildScriptParameterId;'
@@ -5342,8 +5248,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'BUILDCONTROLLERSCRIPTID'
         ParamType = ptInput
       end>
-    left = 1440
-    top = 168
+    Macros = <>
+    Left = 1440
+    Top = 168
     object SQLBuildScriptParameterBuildScriptParameterId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -5448,8 +5355,8 @@ object MySQLQueryModule: TMySQLQueryModule
   end
   object dsBuildScriptParameter: TDataSource
     DataSet = SQLBuildScriptParameter
-    left = 1176
-    top = 440
+    Left = 1176
+    Top = 440
   end
   object SQLMapping: TSQLQuery
     IndexName = 'DEFAULT_ORDER'
@@ -5458,19 +5365,16 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MappingId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Category'
         DataType = ftInteger
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Notes'
         DataType = ftMemo
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'FromDescription'
@@ -5506,27 +5410,28 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end>
     AfterDelete = SQLMappingAfterDelete
     AfterInsert = SQLMappingAfterInsert
     AfterPost = SQLMappingAfterPost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT  MappingId, Category, Notes, FromDescription, ToDescription, SystemCode, CreatedBy, UpdatedBy, CreatedOn, UpdatedOn, `Version` from Mapping  ;'
+    )
+    InsertSQL.Strings = (
+      'insert into Mapping (  MappingId, Category, Notes, FromDescription, ToDescription, SystemCode, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MappingId, :Category, :Notes, :FromDescription, :ToDescription, :SystemCode, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     UpdateSQL.Strings = (
       'UPDATE Mapping SET Mapping.Category = :Category ,Mapping.Notes = :Notes ,'
@@ -5535,16 +5440,13 @@ object MySQLQueryModule: TMySQLQueryModule
       'Mapping.`VERSION`= CURRENT_TIMESTAMP, Mapping.UPDATEDBY = :UpdatedBy, Mapping.UPDATEDON = Now() '
       'WHERE Mapping.MappingId = :MappingId;'
     )
-    InsertSQL.Strings = (
-      'insert into Mapping (  MappingId, Category, Notes, FromDescription, ToDescription, SystemCode, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :MappingId, :Category, :Notes, :FromDescription, :ToDescription, :SystemCode, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
-    )
     DeleteSQL.Strings = (
       'DELETE FROM Mapping WHERE Mapping.MappingId = :MappingId;'
     )
     Params = <>
-    left = 904
-    top = 224
+    Macros = <>
+    Left = 904
+    Top = 224
     object SQLMappingMappingId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -5601,7 +5503,7 @@ object MySQLQueryModule: TMySQLQueryModule
       ReadOnly = False
       Required = False
       Visible = False
-      BlobType = ftBlob
+      BlobType = ftMemo
       Transliterate = False
     end
     object SQLMappingCreatedBy: TStringField
@@ -5678,8 +5580,8 @@ object MySQLQueryModule: TMySQLQueryModule
     AutoEdit = False
     DataSet = SQLMapping
     Enabled = False
-    left = 1344
-    top = 440
+    Left = 1344
+    Top = 440
   end
   object SQLMappingValue: TSQLQuery
     IndexName = 'DEFAULT_ORDER'
@@ -5688,25 +5590,21 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MappingValueId'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MappingToValue'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MapValueTargetLookup'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'MapValueSourceLookup'
         DataType = ftLargeint
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SourceValue'
@@ -5736,19 +5634,16 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'CreatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'UpdatedOn'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'Version'
         DataType = ftDateTime
         Precision = -1
-        Size = 0
       end    
       item
         Name = 'SourceListName'
@@ -5786,12 +5681,11 @@ object MySQLQueryModule: TMySQLQueryModule
         Precision = -1
         Size = 256
       end>
-    Active = True
     AfterDelete = SQLMappingValueAfterDelete
     AfterInsert = SQLMappingValueAfterInsert
     AfterPost = SQLMappingValueAfterPost
     BeforePost = SQLMappingValueBeforePost
-    Database = MySQLDataModule.Connection
+    Database = MySQLDataModule.connection
     Transaction = MySQLDataModule.Transaction
     SQL.Strings = (
       'SELECT  MappingValueId, MappingToValue,'
@@ -5816,14 +5710,14 @@ object MySQLQueryModule: TMySQLQueryModule
       ' ON DT.ListHeaderToDetail = HT.ListHeaderID'
       ' WHERE  (MappingToValue = :MappingId  )   ;'
     )
+    InsertSQL.Strings = (
+      'insert into MappingValue (  MappingValueId, MappingToValue, MapValueTargetLookup, MapValueSourceLookup, SourceValue, TargetValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
+      'VALUES (  :MappingValueId, :MappingToValue, :MapValueTargetLookup, :MapValueSourceLookup, :SourceValue, :TargetValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
+    )
     UpdateSQL.Strings = (
       'UPDATE MappingValue SET MappingValue.MappingToValue = :MappingToValue ,MappingValue.MapValueTargetLookup = :MapValueTargetLookup ,MappingValue.MapValueSourceLookup = :MapValueSourceLookup ,MappingValue.SourceValue = :SourceValue ,MappingValue.TargetValue = :TargetValue ,'
       'MappingValue.`VERSION`= CURRENT_TIMESTAMP, MappingValue.UPDATEDBY = :UpdatedBy, MappingValue.UPDATEDON = Now() '
       'WHERE MappingValue.MappingValueId = :MappingValueId;'
-    )
-    InsertSQL.Strings = (
-      'insert into MappingValue (  MappingValueId, MappingToValue, MapValueTargetLookup, MapValueSourceLookup, SourceValue, TargetValue, `VERSION`, CREATEDBY, UPDATEDBY, CREATEDON, UPDATEDON )'
-      'VALUES (  :MappingValueId, :MappingToValue, :MapValueTargetLookup, :MapValueSourceLookup, :SourceValue, :TargetValue, CURRENT_TIMESTAMP, CreatedBy, CreatedBy, Now(), Now());'
     )
     DeleteSQL.Strings = (
       'DELETE FROM MappingValue WHERE MappingValue.MappingValueId = :MappingValueId;'
@@ -5834,8 +5728,9 @@ object MySQLQueryModule: TMySQLQueryModule
         Name = 'MappingId'
         ParamType = ptInput
       end>
-    left = 992
-    top = 224
+    Macros = <>
+    Left = 992
+    Top = 224
     object SQLMappingValueMappingValueId: TLargeintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -6040,7 +5935,7 @@ object MySQLQueryModule: TMySQLQueryModule
     AutoEdit = False
     DataSet = SQLMappingValue
     Enabled = False
-    left = 1424
-    top = 448
+    Left = 1424
+    Top = 448
   end
 end

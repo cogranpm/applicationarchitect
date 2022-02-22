@@ -5,7 +5,7 @@ unit mysqlimportquery;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, sqldb, db, mysql55conn;
+  Classes, SysUtils, FileUtil, sqldb, db, mysql80conn;
 
 type
   TMYSQLImportQuery = class(TDataModule)
@@ -30,12 +30,12 @@ type
   
   private
     { private declarations }
-    FDatabase:TMySQL55Connection;
+    FDatabase:TMySQL80Connection;
     FTransaction:TSQLTransaction;
 
   public
     { public declarations }
-    property Database: TMySQL55Connection read FDatabase write FDatabase;
+    property Database: TMySQL80Connection read FDatabase write FDatabase;
     property Transaction: TSQLTransaction read FTransaction write FTransaction;
 
     private

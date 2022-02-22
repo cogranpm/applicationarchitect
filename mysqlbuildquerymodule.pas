@@ -5,7 +5,7 @@ unit MySqlBuildQueryModule;
 interface
 
 uses
-  Classes, SysUtils, sqldb, mysql55conn, FileUtil;
+  Classes, SysUtils, sqldb, mysql80conn, FileUtil;
 
 type
 
@@ -27,11 +27,11 @@ type
     SQLRelationsByModel: TSQLQuery;
   private
     { private declarations }
-    FDatabase:TMySQL55Connection;
+    FDatabase:TMySQL80Connection;
     FTransaction:TSQLTransaction;
   public
     { public declarations }
-    property Database: TMySQL55Connection read FDatabase write FDatabase;
+    property Database: TMySQL80Connection read FDatabase write FDatabase;
     property Transaction: TSQLTransaction read FTransaction write FTransaction;
   end;
 

@@ -1,16 +1,20 @@
 object MySQLDataModule: TMySQLDataModule
   OldCreateOrder = False
   Height = 319
-  HorizontalOffset = 1381
-  VerticalOffset = 327
+  HorizontalOffset = 1061
+  VerticalOffset = 256
   Width = 489
   object Transaction: TSQLTransaction
     Active = False
-    Database = Connection
-    left = 152
-    top = 24
+    Database = connection
+    Left = 152
+    Top = 24
   end
   object SQLCreateSchema: TSQLScript
+    DataBase = connection
+    Transaction = Transaction
+    AutoCommit = False
+    UseDollarString = False
     Directives.Strings = (
       'SET TERM'
       'COMMIT'
@@ -1792,29 +1796,48 @@ object MySQLDataModule: TMySQLDataModule
     UseSetTerm = True
     UseCommit = True
     UseDefines = True
-    left = 240
-    top = 24
+    Left = 240
+    Top = 24
   end
   object SQLQueryDBObjects: TSQLQuery
     FieldDefs = <>
+    Database = connection
+    Transaction = Transaction
     Params = <>
-    left = 352
-    top = 24
+    Macros = <>
+    Left = 352
+    Top = 24
   end
-  object Connection: TMySQL55Connection
+  object Connectionx: TMySQL55Connection
     Connected = False
     LoginPrompt = False
     DatabaseName = 'codebreed'
     KeepConnection = True
     Params.Strings = (
-      'Port=3308'
+      'Port=3306'
+    )
+    Password = 'reddingo'
+    UserName = 'paulm'
+    HostName = 'media-server'
+    LogEvents = []
+    SkipLibraryVersionCheck = False
+    Left = 64
+    Top = 24
+  end
+  object connection: TMySQL80Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'codebreed'
+    KeepConnection = True
+    Params.Strings = (
+      'Port=3306'
     )
     Password = 'reddingo'
     Transaction = Transaction
-    UserName = 'root'
-    HostName = 'kron1'
-    LogEvents = []
-    left = 64
-    top = 24
+    UserName = 'paulm'
+    HostName = 'media-server'
+    SkipLibraryVersionCheck = False
+    Left = 64
+    Top = 104
   end
 end

@@ -5,7 +5,7 @@ unit mysqllookupsquery;
 interface
 
 uses
-  Classes, SysUtils, sqldb, db, mysql55conn, FileUtil;
+  Classes, SysUtils, sqldb, db, mysql80conn, FileUtil;
 
 type
 
@@ -75,11 +75,11 @@ type
     SQLRelationLookup: TSQLQuery;
   private
     { private declarations }
-    FDatabase:TMySQL55Connection;
+    FDatabase:TMySQL80Connection;
     FTransaction:TSQLTransaction;
   public
     { public declarations }
-    property Database: TMySQL55Connection read FDatabase write FDatabase;
+    property Database: TMySQL80Connection read FDatabase write FDatabase;
     property Transaction: TSQLTransaction read FTransaction write FTransaction;
   end;
 

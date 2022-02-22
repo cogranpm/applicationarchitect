@@ -5,14 +5,15 @@ unit MySQLDataModule;
 interface
 
 uses
-  Classes, SysUtils, mysql55conn, sqldb, FileUtil;
+  Classes, SysUtils, mysql55conn, mysql80conn, sqldb, FileUtil;
 
 type
 
   { TMySQLDataModule }
 
   TMySQLDataModule = class(TDataModule)
-    Connection: TMySQL55Connection;
+    Connectionx: TMySQL55Connection;
+    connection: TMySQL80Connection;
     SQLCreateSchema: TSQLScript;
     SQLQueryDBObjects: TSQLQuery;
     Transaction: TSQLTransaction;

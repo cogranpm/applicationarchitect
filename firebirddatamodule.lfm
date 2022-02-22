@@ -2,8 +2,8 @@ object FirebirdDataModule: TFirebirdDataModule
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 322
-  HorizontalOffset = 1061
-  VerticalOffset = 142
+  HorizontalOffset = 495
+  VerticalOffset = 251
   Width = 546
   object IBConnection1: TIBConnection
     Connected = False

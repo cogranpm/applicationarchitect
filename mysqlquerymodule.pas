@@ -5,7 +5,7 @@ unit MySQLQueryModule;
 interface
 
 uses
-  Classes, SysUtils, mysql55conn, sqldb, FileUtil, db;
+  Classes, SysUtils, mysql80conn, sqldb, FileUtil, db;
 
 type
 
@@ -527,7 +527,7 @@ type
 	procedure SQLMappingValueAfterPost(DataSet: TDataSet);	
 		
   private
-    FDatabase:TMySQL55Connection;
+    FDatabase:TMySQL80Connection;
     FTransaction:TSQLTransaction;
 	FUserName:String;
   private
@@ -536,7 +536,7 @@ type
    
   public
     { public declarations }
-    property Database: TMySQL55Connection read FDatabase write FDatabase;
+    property Database: TMySQL80Connection read FDatabase write FDatabase;
     property Transaction: TSQLTransaction read FTransaction write FTransaction;
 	property UserName:String read FUserName write FUserName;
   end;

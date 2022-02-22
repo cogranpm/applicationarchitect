@@ -1,7 +1,7 @@
 object FirebirdQueryModule: TFirebirdQueryModule
   OldCreateOrder = False
   Height = 565
-  HorizontalOffset = 401
+  HorizontalOffset = 349
   VerticalOffset = 401
   Width = 1521
   object SQLArtifactPropertyValue: TSQLQuery
@@ -1607,7 +1607,7 @@ object FirebirdQueryModule: TFirebirdQueryModule
     Database = FirebirdDataModule.IBConnection1
     Transaction = FirebirdDataModule.SQLTransaction1
     SQL.Strings = (
-      'SELECT  RelationPropertyValueId,  RelationToPropertyValue,  PropertyValue  from RelationPropertyValue  WHERE  (RelationToPropertyValue = :RelationId  ) ;'
+      'SELECT  RelationPropertyValueId,  RelationToPropertyValue, MasterPropery,  PropertyValue  from RelationPropertyValue  WHERE  (RelationToPropertyValue = :RelationId  ) ;'
     )
     InsertSQL.Strings = (
       'insert into RelationPropertyValue (  RelationPropertyValueId,  RelationToPropertyValue, MasterProperty, PropertyValue  )'
@@ -2498,6 +2498,7 @@ object FirebirdQueryModule: TFirebirdQueryModule
       ReadOnly = False
       Required = False
       Visible = False
+      BlobType = ftMemo
       Size = 8
       Transliterate = False
     end
@@ -2684,6 +2685,7 @@ object FirebirdQueryModule: TFirebirdQueryModule
       ReadOnly = False
       Required = False
       Visible = False
+      BlobType = ftMemo
       Size = 8
       Transliterate = False
     end
@@ -3296,6 +3298,7 @@ object FirebirdQueryModule: TFirebirdQueryModule
       ReadOnly = False
       Required = False
       Visible = False
+      BlobType = ftMemo
       Size = 8
       Transliterate = False
     end
